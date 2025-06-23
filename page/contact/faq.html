@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - The Bridge Community Church</title>
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/contact.css">
+</head>
+<body>
+  <div id="header"></div>
+  <div id="breadcrumb"></div>
+  <main>
+    <section class="faq">
+      <h2>자주 묻는 질문 (FAQ)</h2>
+      <div class="faq-content">
+        <ul>
+          <li><strong>Q. 예배 시간은 언제인가요?</strong><br> A. 주일 오전 11시, 수요예배 오후 7시 30분입니다.</li>
+          <li><strong>Q. 주차는 가능한가요?</strong><br> A. 교회 앞/옆 주차장 이용 가능합니다.</li>
+          <li><strong>Q. 새가족 등록은 어떻게 하나요?</strong><br> A. 예배 후 안내데스크에서 등록 가능합니다.</li>
+        </ul>
+        <p>추가 문의는 연락처 페이지를 참고해 주세요.</p>
+      </div>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script>
+    fetch('/header.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('header').innerHTML = data; });
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('footer').innerHTML = data; });
+  </script>
+</body>
+</html> 

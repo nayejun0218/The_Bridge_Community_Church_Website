@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>주보 보기 - The Bridge Community Church</title>
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/info.css">
+</head>
+<body>
+  <div id="header"></div>
+  <div id="breadcrumb"></div>
+  <main>
+    <section class="bulletin">
+      <h2>주보 보기</h2>
+      <div class="bulletin-content">
+        <p>주간/월간 교회 주보를 PDF 등으로 확인하실 수 있습니다.</p>
+        <ul>
+          <li><a href="#">2024년 6월 4주 주보 (PDF)</a></li>
+          <li><a href="#">2024년 6월 3주 주보 (PDF)</a></li>
+        </ul>
+        <p>과거 주보도 아카이브로 제공할 수 있습니다.</p>
+      </div>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script>
+    fetch('/header.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('header').innerHTML = data; });
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('footer').innerHTML = data; });
+  </script>
+</body>
+</html> 

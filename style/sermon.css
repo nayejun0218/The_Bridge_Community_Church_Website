@@ -1,0 +1,633 @@
+/* 성경 강해 시리즈 스타일 */
+.bible-series-section {
+  background: none;
+  margin-bottom: 2.5rem;
+}
+
+.bible-series-title {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 2rem;
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 0.7em;
+  letter-spacing: -1px;
+}
+
+.bible-series-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.bible-series-slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.bible-series-slider .sermon-card-link {
+  flex: 0 0 calc(100% / 3);
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.bible-series-card {
+  background: #f8f9fa;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(44,62,80,0.07);
+  overflow: hidden;
+  width: 100%;
+  min-width: 260px;
+  max-width: 320px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.bible-series-card:hover {
+  box-shadow: 0 6px 32px rgba(44,62,80,0.13);
+  transform: translateY(-3px) scale(1.015);
+}
+
+.bible-series-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.bible-series-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bible-series-label {
+  position: absolute;
+  left: 1.2rem;
+  bottom: 1.2rem;
+  background: rgba(44,62,80,0.85);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.45em 1.1em;
+  border-radius: 8px;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+}
+
+.bible-series-card-body {
+  padding: 1.3rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #f8f9fa;
+}
+
+.bible-series-meta {
+  font-size: 0.98rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.bible-series-title-main {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1.1rem;
+  letter-spacing: -0.5px;
+}
+
+.bible-series-btn {
+  display: inline-block;
+  background: #1976d2;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 7px;
+  padding: 0.6em 1.4em;
+  text-decoration: none;
+  margin-top: 0.2rem;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+  transition: background 0.2s, color 0.2s;
+}
+
+.bible-series-btn:hover {
+  background: #1251a3;
+  color: #fff;
+}
+
+/* 설교말씀 카드형 시리즈 스타일 (홈 시리즈 카드와 통일) */
+.sermon-section-title-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+#toggle-sermon-list {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+  outline: none;
+  padding: 0 0.5rem;
+  color: #2c3e50;
+  transition: color 0.2s;
+}
+
+#toggle-sermon-list:hover {
+  color: #1976d2;
+}
+
+#arrow-icon {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+#toggle-sermon-list.open #arrow-icon {
+  transform: rotate(180deg);
+}
+
+.sermon-section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #2c3e50;
+  margin: 2.2rem 0 1.2rem 0;
+  letter-spacing: -1px;
+  text-align: left;
+}
+
+.sermon-series-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.2rem;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+.sermon-card {
+  position: relative;
+  background: #f7f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.09);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transition: box-shadow 0.2s, background 0.2s, border 0.3s;
+  border: 1.5px solid #f0f2f4;
+  min-width: 200px;
+  min-height: 220px;
+}
+
+.sermon-card:hover {
+  border: 2.5px solid #e3e8ee;
+  background: #e9eef2;
+}
+
+.sermon-card::after {
+  content: "";
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  background: rgba(44, 62, 80, 0.06);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.sermon-card:hover::after {
+  opacity: 1;
+}
+
+.sermon-card .hover-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #34495e;
+  font-size: 1.2rem;
+  font-weight: 700;
+  min-height: 48px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: none;
+  position: static;
+  border-radius: 0;
+  margin-top: 0.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.sermon-card:hover .hover-text {
+  opacity: 1;
+}
+
+.sermon-card .sermon-info {
+  padding: 0.7rem 1rem 0.7rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sermon-card:hover .sermon-info {
+  opacity: 0;
+}
+
+.sermon-thumb-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #e9ecef;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 0 solid transparent;
+  transition: border 0.2s;
+}
+
+.sermon-card:hover .sermon-thumb-wrap {
+  border: 2px solid #ff0000;
+}
+
+.sermon-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: border 0.2s, transform 0.2s;
+  transform: scale(1.08);
+  border: none !important;
+}
+
+.sermon-card:hover .sermon-thumb {
+  border: 2px solid #ff0000;
+  border-radius: 10px;
+}
+
+.sermon-thumb-wrap .youtube-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.sermon-card:hover .sermon-thumb-wrap .youtube-logo {
+  opacity: 1;
+}
+
+.sermon-label {
+  position: absolute;
+  left: 1.1rem;
+  bottom: 1.1rem;
+  background: #4b5a67;
+  color: #fff;
+  font-size: 1.02rem;
+  font-weight: 700;
+  padding: 0.45em 1.2em;
+  border-radius: 10px;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+}
+
+.sermon-date {
+  font-size: 1.04rem;
+  color: #7a8a99;
+  margin-bottom: -4rem;
+  margin-top: -1rem;
+  font-weight: 500;
+}
+
+.sermon-title {
+  font-size: 1.13rem;
+  font-weight: 800;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  height: 2.9em;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+}
+
+.sermon-btn {
+  display: inline-block;
+  background: #3973e5;
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7em 1.7em;
+  text-decoration: none;
+  margin-top: 0.2rem;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+  transition: background 0.2s, color 0.2s;
+}
+
+.sermon-btn:hover {
+  background: #1746a2;
+  color: #fff;
+}
+
+.sermon-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
+.sermon-card-link:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.sermon-card-link:hover .sermon-card {
+  box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+  background: #e9eef5;
+}
+
+.sermon-card-link:active .sermon-card {
+  box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+}
+
+@media (max-width: 900px) {
+  .bible-series-slider .sermon-card-link {
+    width: calc((100% - 1 * 2.2rem) / 2);
+  }
+  .bible-series-image-wrap { height: 180px; }
+}
+
+@media (max-width: 1200px) {
+  .bible-series-slider { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .bible-series-slider .sermon-card-link {
+    width: 100%;
+  }
+}
+
+.section-divider {
+  border: none;
+  border-top: 2px solid #e3e8ee;
+  margin: 0 0 2.2rem 0;
+  height: 0;
+  width: 100%;
+}
+
+.slider-prev, .slider-next {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: none;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+  color: #00022688;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+  position: relative;
+  z-index: 1000;
+  align-self: center;
+}
+.slider-prev:hover, .slider-next:hover {
+  background: #00022688;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(44,62,80,0.18);
+  transform: scale(1.08);
+}
+.slider-prev:disabled, .slider-next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: #f0f2f4;
+  color: #b0b8c1;
+  box-shadow: none;
+}
+
+.bible-series-title-hover-wrap {
+  position: relative;
+  display: inline-block;
+}
+.bible-series-title-overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  width: 340px;
+  height: 90px;
+  background: transparent;
+  border-radius: 2.5rem;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 10;
+}
+.bible-series-title-overlay.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.04);
+  pointer-events: auto;
+}
+.bible-series-title-overlay-text {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  letter-spacing: -1px;
+  text-align: center;
+  user-select: none;
+}
+.bible-series-title-overlay-text .highlight {
+  color: #1976d2;
+  font-weight: 800;
+  margin-left: 0.5em;
+}
+
+.all-sermons-link {
+  display: flex;
+  align-items: center;
+  gap: 1.1em;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.08);
+  padding: 0.7em 1.5em 0.7em 1.1em;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #222;
+  text-decoration: none;
+  transition: box-shadow 0.18s, background 0.18s;
+  margin-right: 0.2em;
+}
+.all-sermons-link:hover {
+  box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+  background: #f7faff;
+}
+.all-sermons-icon-bg {
+  background: #f7fafd;
+  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.2em;
+}
+.all-sermons-youtube-icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+.all-sermons-play {
+  color: #222;
+  font-size: 1.25em;
+  margin-right: 0.2em;
+  margin-left: 0.1em;
+  vertical-align: middle;
+}
+.all-sermons-text {
+  color: #222;
+  text-decoration: underline;
+  text-underline-position: under;
+  text-underline-offset: 2px;
+  font-weight: 700;
+  font-size: 1.13rem;
+}
+
+.bridge-social-section {
+  background: none;
+  margin-bottom: 2.5rem;
+}
+.bridge-social-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+.bridge-social-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+.bridge-social-card-link:visited {
+  text-decoration: none;
+  color: inherit;
+}
+.bridge-social-card {
+  background: #f8f9fa;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(44,62,80,0.07);
+  overflow: hidden;
+  min-width: 0;
+  width: 100%;
+  max-width: 380px;
+  min-height: 90px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.1em;
+  padding: 1.1em 1.5em;
+  margin: 0 auto;
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+}
+.bridge-social-card:hover {
+  box-shadow: 0 6px 32px rgba(44,62,80,0.13);
+  background: #e9eef2;
+  transform: translateY(-3px) scale(1.015);
+}
+.bridge-social-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  object-fit: contain;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(44,62,80,0.06);
+  padding: 6px;
+}
+.bridge-social-text {
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: #222;
+  margin-left: 1.1rem;
+  vertical-align: middle;
+  word-break: keep-all;
+}
+@media (max-width: 900px) {
+  .bridge-social-cards { grid-template-columns: 1fr; gap: 1.2rem; }
+  .bridge-social-card { max-width: 100%; }
+}
+
+.guide-section {
+  background: none;
+  margin-bottom: 2.5rem;
+}
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+.guide-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+.guide-card-link:visited {
+  text-decoration: none;
+  color: inherit;
+}
+.guide-card {
+  background: #f8f9fa;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(44,62,80,0.07);
+  overflow: hidden;
+  min-width: 0;
+  width: 100%;
+  max-width: 220px;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 1.2em 0.5em;
+  margin: 0 auto;
+  font-size: 1.13rem;
+  font-weight: 600;
+  color: #2c3e50;
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+}
+.guide-card:hover {
+  box-shadow: 0 6px 32px rgba(44,62,80,0.13);
+  background: #e9eef2;
+  transform: translateY(-3px) scale(1.015);
+}
+@media (max-width: 1100px) {
+  .guide-cards { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 700px) {
+  .guide-cards { grid-template-columns: 1fr; gap: 1.2rem; }
+  .guide-card { max-width: 100%; }
+} 

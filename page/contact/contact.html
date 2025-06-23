@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>연락처 - The Bridge Community Church</title>
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/contact.css">
+</head>
+<body>
+  <div id="header"></div>
+  <div id="breadcrumb"></div>
+  <main>
+    <section class="contact">
+      <h2>연락처</h2>
+      <div class="contact-info">
+        <p>주소: 세종특별자치시 아름동 1089 B1호</p>
+        <p>전화: 042-364-5877</p>
+        <p>이메일: atomnkt@gmail.com</p>
+      </div>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script>
+    fetch('/header.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('header').innerHTML = data; });
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('footer').innerHTML = data; });
+  </script>
+</body>
+</html> 

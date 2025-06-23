@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>교제 활동 - The Bridge Community Church</title>
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/community.css">
+</head>
+<body>
+  <div id="header"></div>
+  <div id="breadcrumb"></div>
+  <main>
+    <section class="fellowship">
+      <h2>교제 활동</h2>
+      <div class="fellowship-content">
+        <ul>
+          <li>예배 후 점심 교제</li>
+          <li>나들이 및 야외 예배</li>
+          <li>가족 초청 행사</li>
+          <li>생일/기념일 축하</li>
+        </ul>
+        <p>교회는 예배뿐 아니라 다양한 교제와 나눔의 장을 마련하고 있습니다.</p>
+      </div>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script>
+    fetch('/header.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('header').innerHTML = data; });
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('footer').innerHTML = data; });
+  </script>
+</body>
+</html> 

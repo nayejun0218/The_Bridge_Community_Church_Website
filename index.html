@@ -4,78 +4,184 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Bridge Community Church</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/main.css">
+  <link rel="stylesheet" href="/style/sermon.css">
+  <link rel="stylesheet" href="/style/about.css">
+  <!-- AOS 애니메이션 라이브러리 -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html" class="logo"><img src="logo.png" alt="더브릿지커뮤니티 교회 로고"></a>
-      <ul class="nav-links">
-        <li><a href="index.html">홈</a></li>
-        <li class="dropdown">
-          <a href="about.html">교회소개</a>
-          <ul class="dropdown-menu">
-            <li><a href="pastor.html">담임목사 소개</a></li>
-            <li><a href="vision.html">교회 비전</a></li>
-            <li><a href="worship.html">예배시간 안내</a></li>
-            <li><a href="location.html">찾아오시는 길</a></li>
-          </ul>
-        </li>
-        <li><a href="ministries.html">사역</a></li>
-        <li><a href="contact.html">연락처</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div id="scroll-progress"></div>
+  <div id="header"></div>
   <main>
-    <section class="hero home-hero">
-      <h1>환영합니다!</h1>
-      <p class="hero-sub">The Bridge Community Church는 하나님과 사람, 세상과 복음을 잇는 다리입니다.<br>오늘 이 다리 위에 함께 서게 된 여러분을 진심으로 환영합니다.</p>
-    </section>
-    <section class="home-bridge-summary">
-      <div class="bridge-summary-card">
-        <h2>4 Bridge 비전</h2>
-        <ul>
-          <li><strong>예배</strong> : 하나님과 사람을 화목하게 하는 예배</li>
-          <li><strong>말씀</strong> : 바른 말씀의 선포와 양육</li>
-          <li><strong>기도</strong> : 하나님과 소통, 세상을 위한 중보</li>
-          <li><strong>섬김</strong> : 이웃과 열방을 향한 사랑의 실천</li>
-        </ul>
+    <div class="banner-slider">
+      <img src="/images/major_banner.png" class="banner-img active" alt="배너1">
+      <div class="banner-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+    <section class="welcome-section" data-aos="fade-up">
+      <div class="welcome-text">
+        <h2 id="main-typing-text">행복한 삶, 화목한 교회로<br>당신을 초대합니다.</h2>
+        <p><strong>샬롬!</strong> 세종특별자치시 아름동에 위치한<br>
+        "더브릿지커뮤니티 교회"를 방문하신 여러분을<br>
+        주님의 이름으로 환영하고 축복합니다.</p>
+      </div>
+      <div class="welcome-image">
+        <img src="/images/preview/bridge_entrance.jpg" alt="교회 전경" class="preview-img-set">
       </div>
     </section>
-    <section class="home-worship-cards">
-      <div class="worship-item">
-        <h3>주일 예배</h3>
-        <p>오전 11:00</p>
+    <div class="guide-section" style="max-width:1200px; margin:6rem auto 2.5rem auto;" data-aos="fade-up">
+      <h2 class="bible-series-title" style="font-size:2rem; color:#2c3e50; text-align:left; margin-bottom:0.7em; font-weight:700; letter-spacing:-1px;">교회 안내</h2>
+      <hr style="border:none; border-top:2px solid #ddd; margin-bottom:2.2rem;">
+      <div class="guide-cards" style="display:grid; grid-template-columns:repeat(5,1fr); gap:2.2rem;">
+        <a href="/page/about/preview.html" class="guide-card-link"><div class="guide-card">🧭<br>처음 오셨나요?</div></a>
+        <a href="/page/about/worship.html" class="guide-card-link"><div class="guide-card">📅<br>예배시간 보기</div></a>
+        <a href="/page/sharing/sermon.html" class="guide-card-link"><div class="guide-card">🎤<br>설교 말씀</div></a>
+        <a href="/page/sharing/prayer.html" class="guide-card-link"><div class="guide-card">💬<br>기도제목 나눔</div></a>
+        <a href="/page/info/calendar.html" class="guide-card-link"><div class="guide-card">📷<br>최근 행사</div></a>
       </div>
-      <div class="worship-item">
-        <h3>새벽 기도회</h3>
-        <p>오전 6:00 (화~금)</p>
+    </div>
+    <div class="bible-series-section" style="max-width:1200px; margin:6rem auto 2.5rem auto;" data-aos="fade-up">
+      <h2 class="bible-series-title" id="bible-series-title" style="font-size:2rem; color:#2c3e50; text-align:left; margin-bottom:0.7em; font-weight:700; letter-spacing:-1px; cursor:pointer;">성경 강해 시리즈</h2>
+      <hr style="border:none; border-top:2px solid #ddd; margin-bottom:2.2rem;">
+      <div class="bible-series-slider-wrapper" style="position:relative; display:flex; align-items:center;">
+        <button class="slider-prev" style="font-size:3rem;">‹</button>
+        <div id="sermon-cards" class="bible-series-slider" style="flex:1 1 0; overflow:hidden; position:relative;"></div>
+        <button class="slider-next" style="font-size:3rem;">›</button>
       </div>
-      <div class="worship-item">
-        <h3>금요 기도회</h3>
-        <p>오후 9:00</p>
+    </div>
+    <div class="bridge-social-section" style="max-width:1200px; margin: 6rem auto 2.5rem auto;" data-aos="fade-up">
+      <h2 class="bible-series-title" style="font-size:2rem; color:#2c3e50; text-align:left; margin-bottom:0.7em; font-weight:700; letter-spacing:-1px;">온라인에서 더 가까이</h2>
+      <hr style="border:none; border-top:2px solid #ddd; margin-bottom:2.2rem;">
+      <div class="bridge-social-cards" style="display:grid; grid-template-columns:repeat(3,1fr); gap:2.2rem;">
+        <a href="https://www.youtube.com/@TheBridgeCommunity__Church/videos" target="_blank" class="bridge-social-card-link">
+          <div class="bridge-social-card">
+            <img src="/images/youtube-logo.png" alt="유튜브" class="bridge-social-logo">
+            <span class="bridge-social-text">▶ 이번 주 설교 말씀 바로가기</span>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/thebridgecommunity__church/" target="_blank" class="bridge-social-card-link">
+          <div class="bridge-social-card">
+            <img src="/images/instagram_logo.png" alt="인스타그램" class="bridge-social-logo">
+            <span class="bridge-social-text">❤️ 교회 일상/소식 보기 (인스타그램)</span>
+          </div>
+        </a>
+        <a href="https://blog.naver.com/atomnkt" target="_blank" class="bridge-social-card-link">
+          <div class="bridge-social-card">
+            <img src="/images/naverblog_logo.png" alt="네이버 블로그" class="bridge-social-logo">
+            <span class="bridge-social-text">✍️ 교회 소식 및 칼럼 (네이버 블로그)</span>
+          </div>
+        </a>
       </div>
-    </section>
-    <section class="home-quick-links">
-      <a href="about.html" class="quick-link-card">교회소개</a>
-      <a href="vision.html" class="quick-link-card">교회 비전</a>
-      <a href="worship.html" class="quick-link-card">예배시간 안내</a>
-      <a href="location.html" class="quick-link-card">찾아오시는 길</a>
-    </section>
-    <section class="home-contact-summary">
-      <div class="contact-info">
-        <p>주소: 세종특별자치시 아름동 1089 B1호</p>
-        <p>전화: 042-364-5877</p>
-        <p>이메일: atomnkt@gmail.com</p>
-        <p>교회블로그 : <a href="https://blog.naver.com/atomnkt" target="_blank">https://blog.naver.com/atomnkt</a></p>
-        <p>온라인 헌금 계좌 : 하나은행 551-910004-61705 더브릿지커뮤니티 교회</p>
-      </div>
+    </div>
+    <section class="home-bridge-summary" data-aos="fade-up">
+      <div class="welcome-bridge-message" style="margin-top:2rem; font-size:1.08rem; color:#18262f; line-height:1.7; text-align:center;">The Bridge Community Church는 여러분이 믿음과 삶의 중심에서 하나님과 사람을 연결하는 따뜻한 공동체가 되길 소망합니다.<br>언제든지 방문해 주세요!</div>
     </section>
   </main>
-  <footer>
-    <p>교회블로그 : <a href="https://blog.naver.com/atomnkt" target="_blank">https://blog.naver.com/atomnkt</a></p>
-    <p>온라인 헌금 계좌 : 하나은행 551-910004-61705 더브릿지커뮤니티 교회</p>
-    <p>&copy; 2024 The Bridge Community Church. All rights reserved.</p>
-  </footer>
+  <div id="footer"></div>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="/main.js"></script>
+  <script>
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('header').innerHTML = data; });
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('footer').innerHTML = data; });
+
+    let currentIndex = 0;
+    let cardsData = [];
+
+    function getCardsPerPage() {
+      if (window.innerWidth <= 700) return 1;
+      if (window.innerWidth <= 900) return 2;
+      return 3;
+    }
+
+    function setupSlider() {
+      const container = document.getElementById('sermon-cards');
+      container.innerHTML = ''; 
+      const track = document.createElement('div');
+      track.className = 'bible-series-slider-track';
+      
+      track.innerHTML = cardsData.map(card => `
+        <a href="${card.url}" target="_blank" class="sermon-card-link">
+          <div class="sermon-card">
+            <div class="sermon-thumb-wrap">
+              <img class="sermon-thumb" src="${card.thumb}" alt="썸네일">
+              <img class="youtube-logo" src="/images/youtube-logo.png" alt="YouTube Logo">
+            </div>
+            <div class="sermon-info">
+              <div class="sermon-title">${card.title}</div>
+              <div class="sermon-date">${card.date}</div>
+            </div>
+            <span class="hover-text">강해 바로가기</span>
+          </div>
+        </a>
+      `).join('');
+      
+      container.appendChild(track);
+      updateSlider();
+    }
+
+    function updateSlider() {
+      const track = document.querySelector('.bible-series-slider-track');
+      if (!track || !track.children.length) return;
+
+      const cardWidth = track.children[0].offsetWidth;
+      track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+      
+      const cardsPerPage = getCardsPerPage();
+      document.querySelector('.slider-prev').disabled = currentIndex === 0;
+      document.querySelector('.slider-next').disabled = currentIndex + cardsPerPage >= cardsData.length;
+    }
+
+    fetch('/sermons.json')
+      .then(res => res.json())
+      .then(data => {
+        cardsData = data.filter(card => card.series === '창세기 강해');
+        setupSlider();
+      });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.slider-prev').addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSlider();
+        }
+      });
+
+      document.querySelector('.slider-next').addEventListener('click', () => {
+        const cardsPerPage = getCardsPerPage();
+        if (currentIndex + cardsPerPage < cardsData.length) {
+          currentIndex++;
+          updateSlider();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        // 창 크기 변경 시 애니메이션 없이 즉시 위치 조정
+        const track = document.querySelector('.bible-series-slider-track');
+        if(track) {
+            track.style.transition = 'none';
+            updateSlider();
+            // 약간의 딜레이 후 애니메이션 다시 활성화
+            setTimeout(() => {
+                track.style.transition = 'transform 0.5s ease-in-out';
+            }, 50);
+        }
+      });
+      
+      const title = document.getElementById('bible-series-title');
+      if(title) {
+        title.addEventListener('click', () => {
+            window.location.href = '/page/sharing/sermon.html';
+        });
+      }
+    });
+  </script>
 </body>
 </html>

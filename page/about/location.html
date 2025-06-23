@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>찾아오시는 길 - The Bridge Community Church</title>
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/about.css">
+  <link rel="stylesheet" href="/style/main.css">
+</head>
+<body>
+  <div id="header"></div>
+  <div id="breadcrumb"></div>
+  <main>
+    <section class="location">
+      <h2>찾아오시는 길</h2>
+      <div class="location-content">
+        <p>주소: 세종특별자치시 아름동 1089 B1호</p>
+        <p>전화: 042-364-5877</p>
+        <div class="map-wrap" style="margin:2rem 0; width:100%; max-width:600px;">
+          <iframe 
+            src="https://naver.me/GtJmLm21" 
+            width="100%" 
+            height="400" 
+            frameborder="0" 
+            style="border:0;" 
+            allowfullscreen 
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </section>
+    <section class="parking-info">
+      <h2>주차 안내</h2>
+      <div class="parking-card">
+        <p>본 교회 건물에는 별도의 지정 주차장은 없지만, 건물 뒤편 빈 공간에 자유롭게 주차하실 수 있습니다.</p> 
+        <p>주차 가능 구역은 비어 있는 자리 어디든 이용 가능하며, 다른 차량 통행에 방해되지 않도록만 유의해 주세요.</p>
+      </div>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script>
+    fetch('/header.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('header').innerHTML = data; });
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('footer').innerHTML = data; });
+  </script>
+</body>
+</html> 

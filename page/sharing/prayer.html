@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기도제목 나눔 - The Bridge Community Church</title>
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/community.css">
+</head>
+<body>
+  <div id="header"></div>
+  <div id="breadcrumb"></div>
+  <main>
+    <section class="prayer">
+      <h2>기도제목 나눔</h2>
+      <div class="prayer-card">
+        <ul>
+          <li><strong>가정</strong>: 자녀의 건강과 신앙을 위해</li>
+          <li><strong>교회</strong>: 여름성경학교 준비와 은혜를 위해</li>
+          <li><strong>선교</strong>: 파송 선교사님의 안전과 사역을 위해</li>
+        </ul>
+        <p style="margin-top:1.2rem; color:#555; font-size:0.98rem;">성도들이 함께 기도할 수 있는 제목을 자유롭게 나눌 수 있습니다.</p>
+      </div>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script>
+    fetch('/header.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('header').innerHTML = data; });
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('footer').innerHTML = data; });
+  </script>
+</body>
+</html> 

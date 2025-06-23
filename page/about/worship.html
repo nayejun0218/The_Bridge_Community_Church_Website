@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>예배시간 안내 - The Bridge Community Church</title>
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/about.css">
+  <link rel="stylesheet" href="/style/info.css">
+</head>
+<body>
+  <div id="header"></div>
+  <div id="breadcrumb"></div>
+  <main>
+    <section class="worship">
+      <h2>예배 안내</h2>
+      <div class="worship-times">
+        <div class="worship-item">
+          <h3>주일 예배</h3>
+          <p>오전 11:00</p>
+        </div>
+        <div class="worship-item">
+          <h3>새벽 기도회</h3>
+          <p>오전 6:00 (화~금)</p>
+        </div>
+        <div class="worship-item">
+          <h3>금요 기도회</h3>
+          <p>오후 9:00</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script>
+    fetch('/header.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('header').innerHTML = data; });
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('footer').innerHTML = data; });
+  </script>
+</body>
+</html> 

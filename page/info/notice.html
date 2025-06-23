@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공지사항 - The Bridge Community Church</title>
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/info.css">
+</head>
+<body>
+  <div id="header"></div>
+  <div id="breadcrumb"></div>
+  <main>
+    <section class="notice">
+      <h2>공지사항</h2>
+      <div class="notice-card">
+        <ul>
+          <li><strong>행사 일정</strong>: 6월 30일(주일) 여름성경학교 안내</li>
+          <li><strong>예배 변경</strong>: 7월 첫째주부터 주일예배 시간이 오전 11시로 변경됩니다.</li>
+          <li><strong>교회 소식</strong>: 홈페이지 리뉴얼 완료!</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script>
+    fetch('/header.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('header').innerHTML = data; });
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('footer').innerHTML = data; });
+  </script>
+</body>
+</html> 
