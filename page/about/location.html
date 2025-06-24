@@ -7,17 +7,22 @@
   <link rel="stylesheet" href="/style/style.css">
   <link rel="stylesheet" href="/style/about.css">
   <link rel="stylesheet" href="/style/main.css">
+  <link rel="stylesheet" href="/style/sermon.css">
 </head>
 <body>
   <div id="header"></div>
-  <div id="breadcrumb"></div>
-  <main>
-    <section class="location">
-      <h2>찾아오시는 길</h2>
-      <div class="location-content">
-        <p>주소: 세종특별자치시 아름동 1089 B1호</p>
+  <main class="preview-main">
+    <section class="preview-hero">
+      <div class="preview-hero-text">
+        <h1>찾아오시는 길</h1>
+      </div>
+    </section>
+
+    <section class="preview-section">
+      <h2>교회 위치 안내</h2>
+        <p>주소: 세종특별자치시 아름동 1089 지하 1층</p>
         <p>전화: 042-364-5877</p>
-        <div class="map-wrap" style="margin:2rem 0; width:100%; max-width:600px;">
+        <!-- <div class="map-wrap" style="margin:2rem 0; width:100%; max-width:600px;">
           <iframe 
             src="https://naver.me/GtJmLm21" 
             width="100%" 
@@ -27,15 +32,27 @@
             allowfullscreen 
             loading="lazy">
           </iframe>
+        </div> -->
+        <div class="bridge-social-cards" style="display:grid; grid-template-columns:repeat(2,1fr); gap:2.2rem; max-width:600px; margin:2.5rem auto 0 auto;">
+          <a href="https://naver.me/FOZPjsht" target="_blank" class="bridge-social-card-link">
+            <div class="bridge-social-card">
+              <img src="/images/Naver_map.png" alt="네이버 지도" class="bridge-social-logo">
+              <span class="bridge-social-text">네이버 지도 바로가기</span>
+            </div>
+          </a>
+          <a href="https://map.kakao.com/?map_type=TYPE_MAP&target=car&rt=,,556123.9999999995,839343.0000000005&rt1=&rt2=더브릿지커뮤니티교회&rtIds=,1037742928" target="_blank" class="bridge-social-card-link">
+            <div class="bridge-social-card">
+              <img src="/images/Kakao_map.png" alt="카카오맵" class="bridge-social-logo">
+              <span class="bridge-social-text">카카오맵 바로가기</span>
+            </div>
+          </a>
         </div>
-      </div>
     </section>
-    <section class="parking-info">
-      <h2>주차 안내</h2>
-      <div class="parking-card">
-        <p>본 교회 건물에는 별도의 지정 주차장은 없지만, 건물 뒤편 빈 공간에 자유롭게 주차하실 수 있습니다.</p> 
-        <p>주차 가능 구역은 비어 있는 자리 어디든 이용 가능하며, 다른 차량 통행에 방해되지 않도록만 유의해 주세요.</p>
-      </div>
+
+    <section class="preview-section">
+      <h2>교회 주차 안내</h2>
+        <p>본 교회 건물에는 별도의 지정 주차장은 없지만, 건물 뒤편 또는 인근에 자유롭게 주차하실 수 있습니다.</p> 
+        <p>주차 가능 구역은 비어 있는 자리 어디든 이용 가능하며, 다른 차량 통행에 방해되지 않도록 유의해 주시면 감사하겠습니다.</p>
     </section>
   </main>
   <div id="footer"></div>
