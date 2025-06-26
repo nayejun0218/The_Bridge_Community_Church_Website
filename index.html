@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Bridge Community Church</title>
-  <link rel="stylesheet" href="./style/style.css">
-  <link rel="stylesheet" href="./style/main.css">
-  <link rel="stylesheet" href="./style/sermon.css">
-  <link rel="stylesheet" href="./style/about.css">
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/main.css">
+  <link rel="stylesheet" href="/style/sermon.css">
+  <link rel="stylesheet" href="/style/about.css">
   <!-- AOS 애니메이션 라이브러리 -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 </head>
@@ -16,7 +16,7 @@
   <div id="header"></div>
   <main>
     <div class="banner-slider">
-      <img src="./images/major_banner.png" class="banner-img active" alt="배너1">
+      <img src="/images/major_banner.png" class="banner-img active" alt="배너1">
       <div class="banner-dots">
         <span class="dot active"></span>
         <span class="dot"></span>
@@ -30,18 +30,18 @@
         주님의 이름으로 환영하고 축복합니다.</p>
       </div>
       <div class="welcome-image">
-        <img src="./images/preview/bridge_entrance.jpg" alt="교회 전경" class="preview-img-set">
+        <img src="/images/preview/bridge_entrance.jpg" alt="교회 전경" class="preview-img-set">
       </div>
     </section>
     <div class="guide-section" style="max-width:1200px; margin:6rem auto 2.5rem auto;" data-aos="fade-up">
       <h2 class="bible-series-title" style="font-size:2rem; color:#2c3e50; text-align:left; margin-bottom:0.7em; font-weight:700; letter-spacing:-1px;">교회 안내</h2>
       <hr style="border:none; border-top:2px solid #ddd; margin-bottom:2.2rem;">
       <div class="guide-cards" style="display:grid; grid-template-columns:repeat(5,1fr); gap:2.2rem;">
-        <a href="./page/about/preview.html" class="guide-card-link"><div class="guide-card">🧭<br>처음 오셨나요?</div></a>
-        <a href="./page/about/worship.html" class="guide-card-link"><div class="guide-card">📅<br>예배시간 보기</div></a>
-        <a href="./page/sharing/sermon.html" class="guide-card-link"><div class="guide-card">🎤<br>설교 말씀</div></a>
-        <a href="./page/sharing/prayer.html" class="guide-card-link"><div class="guide-card">💬<br>기도제목 나눔</div></a>
-        <a href="./page/info/calendar.html" class="guide-card-link"><div class="guide-card">📷<br>최근 행사</div></a>
+        <a href="/page/about/preview.html" class="guide-card-link"><div class="guide-card">🧭<br>처음 오셨나요?</div></a>
+        <a href="/page/about/worship.html" class="guide-card-link"><div class="guide-card">📅<br>예배시간 보기</div></a>
+        <a href="/page/sharing/sermon.html" class="guide-card-link"><div class="guide-card">🎤<br>설교 말씀</div></a>
+        <a href="/page/sharing/prayer.html" class="guide-card-link"><div class="guide-card">💬<br>기도제목 나눔</div></a>
+        <a href="/page/info/calendar.html" class="guide-card-link"><div class="guide-card">📷<br>최근 행사</div></a>
       </div>
     </div>
     <div class="bible-series-section" style="max-width:1200px; margin:6rem auto 2.5rem auto;" data-aos="fade-up">
@@ -59,19 +59,19 @@
       <div class="bridge-social-cards" style="display:grid; grid-template-columns:repeat(3,1fr); gap:2.2rem;">
         <a href="https://www.youtube.com/@TheBridgeCommunity__Church/videos" target="_blank" class="bridge-social-card-link">
           <div class="bridge-social-card">
-            <img src="./images/logo/youtube-logo.png" alt="유튜브" class="bridge-social-logo">
+            <img src="/images/logo/youtube-logo.png" alt="유튜브" class="bridge-social-logo">
             <span class="bridge-social-text">▶ 이번 주 설교 말씀 바로가기</span>
           </div>
         </a>
         <a href="https://www.instagram.com/thebridgecommunity__church/" target="_blank" class="bridge-social-card-link">
           <div class="bridge-social-card">
-            <img src="./images/logo/instagram_logo.png" alt="인스타그램" class="bridge-social-logo">
+            <img src="/images/logo/instagram_logo.png" alt="인스타그램" class="bridge-social-logo">
             <span class="bridge-social-text">❤️ 교회 일상/소식 보기</span>
           </div>
         </a>
         <a href="https://blog.naver.com/atomnkt" target="_blank" class="bridge-social-card-link">
           <div class="bridge-social-card">
-            <img src="./images/logo/naverblog_logo.png" alt="네이버 블로그" class="bridge-social-logo">
+            <img src="/images/logo/naverblog_logo.png" alt="네이버 블로그" class="bridge-social-logo">
             <span class="bridge-social-text">✍️ 교회 소식 및 칼럼</span>
           </div>
         </a>
@@ -83,7 +83,7 @@
   </main>
   <div id="footer"></div>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script src="./main.js"></script>
+  <script src="/main.js"></script>
   <script>
     fetch('header.html')
       .then(res => res.text())
@@ -139,7 +139,7 @@
       document.querySelector('.slider-next').disabled = currentIndex + cardsPerPage >= cardsData.length;
     }
 
-    fetch('./sermons.json')
+    fetch('/sermons.json')
       .then(res => res.json())
       .then(data => {
         cardsData = data.filter(card => card.series === '창세기 강해');
@@ -178,7 +178,7 @@
       const title = document.getElementById('bible-series-title');
       if(title) {
         title.addEventListener('click', () => {
-            window.location.href = './page/sharing/sermon.html';
+            window.location.href = '/page/sharing/sermon.html';
         });
       }
     });
