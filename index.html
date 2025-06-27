@@ -84,9 +84,7 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script src="/main.js"></script>
   <script>
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => { document.getElementById('header').innerHTML = data; });
+    // 푸터 로드
     fetch('footer.html')
       .then(res => res.text())
       .then(data => { document.getElementById('footer').innerHTML = data; });
