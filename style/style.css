@@ -149,6 +149,43 @@ footer a:hover {
   .welcome-section {
     padding: 2rem 3%;
   }
+  
+  .guide-section,
+  .bible-series-section,
+  .bridge-social-section {
+    margin: 5rem auto 2rem auto;
+  }
+  
+  .guide-cards {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.8rem;
+  }
+  
+  .bridge-social-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+  }
+  
+  .home-hero {
+    margin-top: 3.5rem;
+    padding: 4.5rem 0;
+  }
+  
+  .home-hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero-sub {
+    font-size: 1.1rem;
+  }
+  
+  .welcome-text h2 {
+    font-size: 1.8rem;
+  }
+  
+  .welcome-text p {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -170,6 +207,189 @@ footer a:hover {
   
   .nav-links a {
     font-size: 0.95rem;
+  }
+  
+  .guide-section .bible-series-title,
+  .bible-series-section .bible-series-title,
+  .bridge-social-section .bible-series-title {
+    font-size: 1.8rem;
+  }
+  
+  .guide-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .welcome-bridge-message {
+    font-size: 1rem;
+  }
+  
+  .home-hero {
+    padding: 4rem 0;
+  }
+  
+  .home-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-sub {
+    font-size: 1rem;
+  }
+  
+  .welcome-section {
+    padding: 2.5rem 3%;
+  }
+  
+  .welcome-text h2 {
+    font-size: 1.6rem;
+  }
+  
+  .welcome-text p {
+    font-size: 0.95rem;
+  }
+  
+  .welcome-image img {
+    max-width: 300px;
+  }
+  
+  .bridge-summary-card {
+    padding: 2rem 2rem 1.5rem 2rem;
+    max-width: 380px;
+  }
+  
+  .bridge-summary-card h2 {
+    font-size: 1.2rem;
+  }
+  
+  .bridge-summary-card li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .guide-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  
+  .bridge-social-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  
+  .guide-section,
+  .bible-series-section,
+  .bridge-social-section {
+    margin: 4rem auto 1.5rem auto;
+  }
+  
+  .guide-section .bible-series-title,
+  .bible-series-section .bible-series-title,
+  .bridge-social-section .bible-series-title {
+    font-size: 1.6rem;
+  }
+  
+  .welcome-bridge-message {
+    font-size: 0.95rem;
+  }
+  
+  .contact-info-cards {
+    max-width: 100%;
+    gap: 1.5rem;
+  }
+  
+  .location-cards {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    gap: 1.5rem;
+  }
+  
+  .quote-block {
+    font-size: 1.1rem;
+    margin: 3rem auto 2rem auto;
+  }
+  
+  .contact-info-text {
+    font-size: 1rem;
+  }
+  
+  .contact-info-text.blue {
+    font-size: 0.95rem;
+  }
+  
+  .home-bridge-summary, .home-contact-summary {
+    margin-bottom: 2rem;
+  }
+  
+  .bridge-summary-card {
+    padding: 1.8rem 1.8rem 1.3rem 1.8rem;
+    max-width: 350px;
+  }
+  
+  .home-worship-cards, .home-quick-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  
+  .welcome-section {
+    padding: 2rem 3%;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .welcome-image img {
+    max-width: 280px;
+  }
+  
+  .home-bridge-row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .parking-card {
+    max-width: 100%;
+  }
+  
+  .banner-slider { 
+    margin-bottom: 2rem;
+  }
+  
+  .home-hero {
+    margin-top: 3rem;
+    padding: 3.5rem 0;
+  }
+  
+  .home-hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero-sub {
+    font-size: 0.95rem;
+  }
+  
+  .welcome-text h2 {
+    font-size: 1.5rem;
+  }
+  
+  .welcome-text p {
+    font-size: 0.9rem;
+  }
+  
+  .guide-card {
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+  
+  .bridge-social-text {
+    font-size: 0.95rem;
+  }
+  
+  .bridge-summary-card h2 {
+    font-size: 1.1rem;
+  }
+  
+  .bridge-summary-card li {
+    font-size: 0.9rem;
   }
 }
 
@@ -211,34 +431,28 @@ footer a:hover {
     font-size: 1.1rem;
     padding: 0.8rem 0;
     display: block;
+    width: 100%;
     border-bottom: 1px solid #e9ecef;
   }
   
-  /* 모바일에서 드롭다운 메뉴 스타일 */
   .dropdown-menu {
-    position: static !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
+    position: static;
+    background: none;
     box-shadow: none;
-    background: #f8f9fa;
-    border-radius: 8px;
+    border: none;
+    padding: 0 0 0 1.5rem;
     margin-top: 0.5rem;
-    margin-left: 1rem;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    display: block !important; /* 강제로 표시 */
+    display: none;
   }
   
   .dropdown.active .dropdown-menu {
-    max-height: 300px;
+    display: block;
   }
   
   .dropdown-menu a {
-    padding: 0.6rem 1rem;
     font-size: 1rem;
-    border-bottom: 1px solid #e9ecef;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f1f3f4;
   }
   
   .dropdown-menu a:last-child {
@@ -246,7 +460,7 @@ footer a:hover {
   }
   
   nav {
-    padding: 0.8rem 4%;
+    padding: 1rem 1.5rem;
   }
   
   .logo {
@@ -262,12 +476,11 @@ footer a:hover {
   }
   
   section {
-    padding: 3rem 4%;
+    padding: 2.5rem 1.5rem;
   }
   
   h2 {
     font-size: 1.6rem;
-    margin-bottom: 1.5rem;
   }
   
   footer {
@@ -275,19 +488,244 @@ footer a:hover {
     margin-top: 3rem;
   }
   
-  /* 탭/아코디언 모바일 대응 */
-  .tab-buttons {
-    flex-wrap: wrap;
-    gap: 0.8rem;
+  .guide-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
   
-  .tab-btn {
-    padding: 0.6rem 1.2rem;
+  .bridge-social-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .guide-section,
+  .bible-series-section,
+  .bridge-social-section {
+    margin: 3rem auto 1rem auto;
+  }
+  
+  .guide-section .bible-series-title,
+  .bible-series-section .bible-series-title,
+  .bridge-social-section .bible-series-title {
+    font-size: 1.4rem;
+  }
+  
+  .welcome-bridge-message {
+    font-size: 0.9rem;
+  }
+  
+  .slider-prev, .slider-next {
+    font-size: 2.5rem;
+  }
+  
+  .contact-info-cards {
+    gap: 1rem;
+    margin: 2rem auto 1.5rem auto;
+  }
+  
+  .location-cards {
+    gap: 1rem;
+    margin: 2rem auto 0 auto;
+  }
+  
+  .quote-block {
+    font-size: 1rem;
+    margin: 2.5rem auto 2rem auto;
+  }
+  
+  .contact-info-text {
     font-size: 0.95rem;
   }
   
-  .tab-contents {
-    padding: 1rem 1.2rem;
+  .contact-info-text.blue {
+    font-size: 0.9rem;
+  }
+  
+  .contact-info-text.small {
+    font-size: 0.9rem;
+  }
+  
+  .home-hero {
+    margin-top: 2.5rem;
+    padding: 3rem 0;
+  }
+  
+  .home-hero h1 {
+    font-size: 1.6rem;
+  }
+  
+  .hero-sub {
+    font-size: 0.9rem;
+  }
+  
+  .welcome-section {
+    padding: 2rem 1.5rem;
+  }
+  
+  .welcome-text h2 {
+    font-size: 1.4rem;
+  }
+  
+  .welcome-text p {
+    font-size: 0.85rem;
+  }
+  
+  .banner-slider {
+    margin-bottom: 1.5rem;
+  }
+  
+  .banner-dots {
+    bottom: 1rem;
+  }
+  
+  .banner-dots .dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+  }
+  
+  .guide-card {
+    max-width: 100%;
+    font-size: 0.9rem;
+    min-height: 100px;
+  }
+  
+  .bridge-social-text {
+    font-size: 0.9rem;
+  }
+  
+  .bridge-summary-card h2 {
+    font-size: 1rem;
+  }
+  
+  .bridge-summary-card li {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .guide-section,
+  .bible-series-section,
+  .bridge-social-section {
+    margin: 2.5rem auto 1rem auto;
+  }
+  
+  .guide-section .bible-series-title,
+  .bible-series-section .bible-series-title,
+  .bridge-social-section .bible-series-title {
+    font-size: 1.3rem;
+  }
+  
+  .welcome-bridge-message {
+    font-size: 0.85rem;
+  }
+  
+  .slider-prev, .slider-next {
+    font-size: 2rem;
+  }
+  
+  .contact-info-cards {
+    gap: 0.8rem;
+    margin: 1.5rem auto 1rem auto;
+  }
+  
+  .location-cards {
+    gap: 0.8rem;
+    margin: 1.5rem auto 0 auto;
+  }
+  
+  .quote-block {
+    font-size: 0.9rem;
+    margin: 2rem auto 1.5rem auto;
+  }
+  
+  .contact-info-text {
+    font-size: 0.9rem;
+  }
+  
+  .contact-info-text.blue {
+    font-size: 0.85rem;
+  }
+  
+  .contact-info-text.small {
+    font-size: 0.85rem;
+  }
+  
+  .social-card-link { 
+    max-width: 98%; 
+  }
+  
+  .social-card { 
+    padding: 1rem 0.7rem; 
+  }
+  
+  .social-logo { 
+    width: 36px; 
+    height: 36px; 
+    padding: 4px; 
+  }
+  
+  .home-hero {
+    margin-top: 2rem;
+    padding: 2.5rem 0;
+  }
+  
+  .home-hero h1 {
+    font-size: 1.4rem;
+  }
+  
+  .hero-sub {
+    font-size: 0.85rem;
+  }
+  
+  .welcome-section {
+    padding: 1.5rem 1rem;
+  }
+  
+  .welcome-text h2 {
+    font-size: 1.3rem;
+  }
+  
+  .welcome-text p {
+    font-size: 0.8rem;
+  }
+  
+  .banner-slider {
+    margin-bottom: 1rem;
+  }
+  
+  .banner-dots {
+    bottom: 0.8rem;
+  }
+  
+  .banner-dots .dot {
+    width: 6px;
+    height: 6px;
+    margin: 0 3px;
+  }
+  
+  .bridge-social-logo {
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+  }
+  
+  .bridge-social-text {
+    font-size: 0.85rem;
+  }
+  
+  .guide-card {
+    max-width: 100%;
+    font-size: 0.85rem;
+    min-height: 90px;
+  }
+  
+  .bridge-summary-card h2 {
+    font-size: 0.95rem;
+  }
+  
+  .bridge-summary-card li {
+    font-size: 0.8rem;
   }
 }
 
@@ -299,14 +737,16 @@ footer a:hover {
   
   .nav-links a {
     font-size: 1rem;
+    padding: 1rem 0;
   }
   
   .dropdown-menu a {
     font-size: 0.95rem;
+    padding: 0.7rem 0;
   }
   
   nav {
-    padding: 0.7rem 5%;
+    padding: 1rem 1rem;
   }
   
   .logo {
@@ -322,30 +762,142 @@ footer a:hover {
   }
   
   section {
-    padding: 2.5rem 5%;
+    padding: 2rem 1rem;
   }
   
   h2 {
     font-size: 1.4rem;
-    margin-bottom: 1.2rem;
   }
   
   footer {
-    padding: 1.2rem;
-    margin-top: 2.5rem;
+    padding: 1rem;
+    margin-top: 2rem;
   }
   
-  .tab-buttons {
+  .guide-section,
+  .bible-series-section,
+  .bridge-social-section {
+    margin: 2rem auto 0.5rem auto;
+  }
+  
+  .guide-section .bible-series-title,
+  .bible-series-section .bible-series-title,
+  .bridge-social-section .bible-series-title {
+    font-size: 1.2rem;
+  }
+  
+  .welcome-bridge-message {
+    font-size: 0.8rem;
+  }
+  
+  .slider-prev, .slider-next {
+    font-size: 1.8rem;
+  }
+  
+  .contact-info-cards {
     gap: 0.6rem;
+    margin: 1rem auto 0.8rem auto;
   }
   
-  .tab-btn {
-    padding: 0.5rem 1rem;
+  .location-cards {
+    gap: 0.6rem;
+    margin: 1rem auto 0 auto;
+  }
+  
+  .quote-block {
+    font-size: 0.8rem;
+    margin: 1.5rem auto 1rem auto;
+  }
+  
+  .contact-info-text {
+    font-size: 0.85rem;
+  }
+  
+  .contact-info-text.blue {
+    font-size: 0.8rem;
+  }
+  
+  .contact-info-text.small {
+    font-size: 0.8rem;
+  }
+  
+  .home-hero {
+    margin-top: 1.5rem;
+    padding: 2rem 0;
+  }
+  
+  .home-hero h1 {
+    font-size: 1.2rem;
+  }
+  
+  .hero-sub {
+    font-size: 0.8rem;
+  }
+  
+  .welcome-section {
+    padding: 1.5rem 0.8rem;
+  }
+  
+  .welcome-text h2 {
+    font-size: 1.1rem;
+  }
+  
+  .welcome-text p {
+    font-size: 0.75rem;
+  }
+  
+  .banner-slider {
+    margin-bottom: 0.8rem;
+  }
+  
+  .banner-dots {
+    bottom: 0.6rem;
+  }
+  
+  .banner-dots .dot {
+    width: 5px;
+    height: 5px;
+    margin: 0 2px;
+  }
+  
+  .bridge-social-card {
+    padding: 0.8rem 1rem;
+    min-height: 80px;
+  }
+  
+  .bridge-social-logo {
+    width: 36px;
+    height: 36px;
+    padding: 3px;
+  }
+  
+  .bridge-social-text {
+    font-size: 0.8rem;
+  }
+  
+  .guide-card {
+    max-width: 100%;
+    font-size: 0.8rem;
+    min-height: 80px;
+    padding: 1rem 0.3rem;
+  }
+  
+  .social-card {
+    padding: 0.8rem 1rem;
+  }
+  
+  .social-logo {
+    width: 32px;
+    height: 32px;
+    padding: 3px;
+  }
+  
+  .bridge-summary-card h2 {
     font-size: 0.9rem;
   }
   
-  .tab-contents {
-    padding: 0.8rem 1rem;
+  .bridge-summary-card li {
+    font-size: 0.75rem;
   }
 }
 
@@ -571,25 +1123,219 @@ body, p, li {
 }
 
 .guide-section {
-  background: none;
-  margin-bottom: 2.5rem;
+  max-width: 1200px;
+  margin: 6rem auto 2.5rem auto;
 }
+
+.guide-section .bible-series-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  text-align: left;
+  margin-bottom: 0.7em;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.guide-section hr {
+  border: none;
+  border-top: 2px solid #ddd;
+  margin-bottom: 2.2rem;
+}
+
 .guide-cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 2.2rem;
-  margin-bottom: 1.5rem;
 }
+
+/* 성경 강해 시리즈 섹션 */
+.bible-series-section {
+  max-width: 1200px;
+  margin: 6rem auto 2.5rem auto;
+}
+
+.bible-series-section .bible-series-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  text-align: left;
+  margin-bottom: 0.7em;
+  font-weight: 700;
+  letter-spacing: -1px;
+  cursor: pointer;
+}
+
+.bible-series-section hr {
+  border: none;
+  border-top: 2px solid #ddd;
+  margin-bottom: 2.2rem;
+}
+
+.bible-series-slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.bible-series-slider {
+  flex: 1 1 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-prev, .slider-next {
+  font-size: 3rem;
+}
+
+/* 브릿지 소셜 섹션 */
+.bridge-social-section {
+  max-width: 1200px;
+  margin: 6rem auto 2.5rem auto;
+}
+
+.bridge-social-section .bible-series-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  text-align: left;
+  margin-bottom: 0.7em;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.bridge-social-section hr {
+  border: none;
+  border-top: 2px solid #ddd;
+  margin-bottom: 2.2rem;
+}
+
+.bridge-social-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem;
+}
+
+/* 홈 브릿지 요약 */
+.home-bridge-summary {
+  margin-top: 2rem;
+}
+
+.welcome-bridge-message {
+  margin-top: 2rem;
+  font-size: 1.08rem;
+  color: #18262f;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* 추가 공통 스타일 */
+.welcome-bridge-message.blue {
+  color: #3498db;
+}
+
+.contact-info-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.2rem;
+  max-width: 480px;
+  margin: 2.5rem auto 2rem auto;
+}
+
+.contact-info-card {
+  pointer-events: none;
+  cursor: default;
+}
+
+.contact-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-left: 1.2rem;
+}
+
+.contact-info-text {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.contact-info-text.blue {
+  color: #1976d2;
+  font-size: 1.05rem;
+}
+
+.contact-info-text.small {
+  font-size: 0.98rem;
+  color: #555;
+}
+
+.contact-info-text.margin-top {
+  margin-top: 1.2rem;
+}
+
+.contact-info-text.margin-bottom {
+  margin-bottom: 2.5rem;
+}
+
+.quote-block {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #8c8682;
+  font-style: italic;
+  margin: 3.5rem auto 2.5rem auto;
+  max-width: 900px;
+}
+
+.quote-author {
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-size: 0.8rem;
+  color: #6ca77a;
+  font-style: normal;
+}
+
+.location-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.2rem;
+  max-width: 600px;
+  margin: 2.5rem auto 0 auto;
+}
+
+.sermon-section-title-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#toggle-sermon-list {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+  outline: none;
+  padding: 0 0.5rem;
+}
+
+.sermon-section-title.margin-top {
+  margin-top: 2.5rem;
+}
+
+h2.no-margin-top {
+  margin-top: 0;
+}
+
+/* 가이드 카드 스타일 */
 .guide-card-link {
   text-decoration: none;
   color: inherit;
   display: block;
   cursor: pointer;
 }
+
 .guide-card-link:visited {
   text-decoration: none;
   color: inherit;
 }
+
 .guide-card {
   background: #f8f9fa;
   border-radius: 18px;
@@ -611,41 +1357,26 @@ body, p, li {
   color: #2c3e50;
   transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
 }
+
 .guide-card:hover {
   box-shadow: 0 6px 32px rgba(44,62,80,0.13);
   background: #e9eef2;
   transform: translateY(-3px) scale(1.015);
 }
 
-@media (max-width: 1100px) {
-  .guide-cards { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 700px) {
-  .guide-cards { grid-template-columns: 1fr; gap: 1.2rem; }
-  .guide-card { max-width: 100%; }
-} 
-
-.bridge-social-section {
-  background: none;
-  margin-bottom: 2.5rem;
-}
-.bridge-social-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.2rem;
-  margin-bottom: 1.5rem;
-}
+/* 브릿지 소셜 카드 스타일 */
 .bridge-social-card-link {
   text-decoration: none;
   color: inherit;
   display: block;
   cursor: pointer;
 }
+
 .bridge-social-card-link:visited {
   text-decoration: none;
   color: inherit;
 }
+
 .bridge-social-card {
   background: #f8f9fa;
   border-radius: 18px;
@@ -663,11 +1394,13 @@ body, p, li {
   margin: 0 auto;
   transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
 }
+
 .bridge-social-card:hover {
   box-shadow: 0 6px 32px rgba(44,62,80,0.13);
   background: #e9eef2;
   transform: translateY(-3px) scale(1.015);
 }
+
 .bridge-social-logo {
   width: 50px;
   height: 50px;
@@ -677,6 +1410,7 @@ body, p, li {
   box-shadow: 0 1px 4px rgba(44,62,80,0.06);
   padding: 6px;
 }
+
 .bridge-social-text {
   font-size: 1rem;
   font-weight: 500;
@@ -684,11 +1418,6 @@ body, p, li {
   margin-left: 0rem;
   vertical-align: middle;
   word-break: keep-all;
-}
-
-@media (max-width: 900px) {
-  .bridge-social-cards { grid-template-columns: 1fr; gap: 1.2rem; }
-  .bridge-social-card { max-width: 100%; }
 }
 
 /* 소셜 카드 스타일 */
@@ -746,12 +1475,6 @@ body, p, li {
 .hero-sub {
   font-size: 1.2rem;
   color: #555;
-}
-
-.home-bridge-summary {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2.5rem;
 }
 
 .bridge-summary-card {
