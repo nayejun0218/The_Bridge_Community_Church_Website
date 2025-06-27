@@ -45,7 +45,7 @@ nav {
 
 /* 햄버거 메뉴 스타일 */
 .hamburger-menu {
-  display: none;
+  display: none; /* 기본적으로 숨김 */
   flex-direction: column;
   cursor: pointer;
   padding: 0.5rem;
@@ -195,6 +195,7 @@ footer a:hover {
     transition: right 0.3s ease;
     overflow-y: auto;
     z-index: 1001;
+    display: flex !important; /* 강제로 표시 */
   }
   
   .nav-links.active {
@@ -227,6 +228,7 @@ footer a:hover {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+    display: block !important; /* 강제로 표시 */
   }
   
   .dropdown.active .dropdown-menu {

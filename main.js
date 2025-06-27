@@ -1,22 +1,26 @@
 // 햄버거 메뉴 기능 초기화 함수
 function initHamburgerMenu() {
-  console.log('햄버거 메뉴 초기화 시작');
   const hamburger = document.querySelector('.hamburger-menu');
   const navLinks = document.querySelector('.nav-links');
   const dropdowns = document.querySelectorAll('.dropdown');
   
-  console.log('햄버거 요소:', hamburger);
-  console.log('네비게이션 링크:', navLinks);
-  console.log('드롭다운 개수:', dropdowns.length);
+  console.log('햄버거 메뉴 초기화:', { hamburger, navLinks, dropdownsLength: dropdowns.length });
   
   // 햄버거 메뉴 토글
   if (hamburger && navLinks) {
-    console.log('햄버거 메뉴 이벤트 리스너 추가');
-    hamburger.addEventListener('click', () => {
+    hamburger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       console.log('햄버거 메뉴 클릭됨');
+      
       hamburger.classList.toggle('active');
       navLinks.classList.toggle('active');
       document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+      
+      console.log('클래스 상태:', {
+        hamburgerActive: hamburger.classList.contains('active'),
+        navLinksActive: navLinks.classList.contains('active')
+      });
     });
     
     // 메뉴 외부 클릭 시 닫기
@@ -68,11 +72,9 @@ function initHamburgerMenu() {
 
 // 헤더 로드 후 햄버거 메뉴 초기화
 function loadHeaderAndInit() {
-  console.log('헤더 로드 시작');
   fetch('header.html')
     .then(res => res.text())
     .then(data => { 
-      console.log('헤더 로드 완료');
       document.getElementById('header').innerHTML = data;
       // 헤더 로드 후 햄버거 메뉴 초기화
       setTimeout(initHamburgerMenu, 100);
@@ -84,25 +86,20 @@ function loadHeaderAndInit() {
 
 // 페이지 로드 시 헤더 로드 및 초기화
 if (document.getElementById('header')) {
-  console.log('헤더 컨테이너 발견, 헤더 로드 시작');
   loadHeaderAndInit();
 } else {
-  console.log('헤더 컨테이너 없음, DOMContentLoaded 대기');
   // 이미 헤더가 있는 경우 바로 초기화
   document.addEventListener('DOMContentLoaded', initHamburgerMenu);
 }
 
 // 모든 페이지에서 헤더 로드 후 햄버거 메뉴 초기화
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOMContentLoaded 이벤트 발생');
   // 헤더가 이미 로드되어 있는지 확인
   const header = document.querySelector('header');
   if (header) {
-    console.log('헤더가 이미 존재함, 바로 초기화');
     // 헤더가 이미 있으면 바로 초기화
     setTimeout(initHamburgerMenu, 100);
   } else {
-    console.log('헤더가 없음, 로드 후 초기화');
     // 헤더가 없으면 로드 후 초기화
     loadHeaderAndInit();
   }
