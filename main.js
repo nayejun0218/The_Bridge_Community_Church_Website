@@ -1,3 +1,62 @@
+// 햄버거 메뉴 기능
+(function() {
+  const hamburger = document.querySelector('.hamburger-menu');
+  const navLinks = document.querySelector('.nav-links');
+  const dropdowns = document.querySelectorAll('.dropdown');
+  
+  // 햄버거 메뉴 토글
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    // 메뉴 외부 클릭 시 닫기
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+    
+    // 모바일에서 드롭다운 토글
+    dropdowns.forEach(dropdown => {
+      const link = dropdown.querySelector('a');
+      const menu = dropdown.querySelector('.dropdown-menu');
+      
+      if (link && menu) {
+        link.addEventListener('click', (e) => {
+          // 모바일에서만 드롭다운 토글
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+            
+            // 다른 드롭다운 닫기
+            dropdowns.forEach(other => {
+              if (other !== dropdown) {
+                other.classList.remove('active');
+              }
+            });
+          }
+        });
+      }
+    });
+    
+    // 링크 클릭 시 메뉴 닫기
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  }
+})();
+
 // 카드/버튼 호버 애니메이션
 const quickCards = document.querySelectorAll('.quick-link-card');
 quickCards.forEach(card => {

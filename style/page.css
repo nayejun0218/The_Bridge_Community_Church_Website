@@ -30,7 +30,7 @@
 }
 
 .preview-hero-text p {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: #000000;
   line-height: 1.7;
   margin-bottom: 0;
@@ -67,7 +67,7 @@
 }
 
 .preview-section p {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: #000000;
   line-height: 1.7;
   margin-bottom: 0;
@@ -87,7 +87,7 @@
 }
 
 .preview-desc {
-  font-size: 1.08rem;
+  font-size: 1rem;
   color: #222;
   line-height: 1.7;
   margin-bottom: 0;
@@ -123,7 +123,7 @@
 }
 
 .preview-invite p {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: #000000;
   line-height: 1.7;
 }
@@ -145,7 +145,7 @@
 }
 
 .preview-twocol-desc {
-  font-size: 1.08rem;
+  font-size: 1rem;
   color: #222;
   line-height: 1.7;
   overflow-wrap: break-word;
@@ -183,7 +183,7 @@
   }
   
   .preview-hero-text p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   
   .preview-section h2 {
@@ -191,11 +191,11 @@
   }
   
   .preview-section p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   
   .preview-desc {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
   }
   
   .preview-invite {
@@ -207,7 +207,7 @@
   }
   
   .preview-invite p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   
   .preview-twocol {
@@ -216,7 +216,7 @@
   }
   
   .preview-twocol-desc {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
   }
   
   .preview-hero-title-bg {
@@ -241,7 +241,7 @@
   }
   
   .preview-hero-text p {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
   }
   
   .preview-section h2 {
@@ -249,11 +249,11 @@
   }
   
   .preview-section p {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
   }
   
   .preview-desc {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   
   .preview-invite {
@@ -265,7 +265,7 @@
   }
   
   .preview-invite p {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
   }
   
   .preview-twocol {
@@ -274,7 +274,7 @@
   }
   
   .preview-twocol-desc {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   
   .preview-hero-title-bg {
@@ -307,7 +307,7 @@
   }
   
   .preview-hero-text p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: center;
   }
   
@@ -317,7 +317,7 @@
   }
   
   .preview-section p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: center;
   }
   
@@ -327,7 +327,7 @@
   }
   
   .preview-desc {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     text-align: center;
   }
   
@@ -346,7 +346,7 @@
   }
   
   .preview-invite p {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   
   .preview-twocol {
@@ -362,7 +362,7 @@
   .preview-twocol-desc {
     padding-left: 0;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
   
   .preview-hero-title-bg {
@@ -392,7 +392,7 @@
   }
   
   .preview-hero-text p {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
   
   .preview-section h2 {
@@ -402,7 +402,7 @@
   }
   
   .preview-section p {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
   
   .preview-flex {
@@ -410,7 +410,7 @@
   }
   
   .preview-desc {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   
   .preview-img-set {
@@ -427,7 +427,7 @@
   }
   
   .preview-invite p {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
   
   .preview-twocol {
@@ -440,7 +440,7 @@
   }
   
   .preview-twocol-desc {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   
   .preview-hero-title-bg {
@@ -465,7 +465,7 @@
   }
   
   .preview-hero-text p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   
   .preview-section h2 {
@@ -475,7 +475,7 @@
   }
   
   .preview-section p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   
   .preview-flex {
@@ -483,7 +483,7 @@
   }
   
   .preview-desc {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
   
   .preview-img-set {
@@ -500,7 +500,7 @@
   }
   
   .preview-invite p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   
   .preview-twocol {
@@ -513,7 +513,7 @@
   }
   
   .preview-twocol-desc {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
   
   .preview-hero-title-bg {
@@ -539,7 +539,7 @@
   }
   
   .preview-hero-text p {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
   
   .preview-section h2 {
@@ -549,7 +549,7 @@
   }
   
   .preview-section p {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
   
   .preview-flex {
@@ -557,7 +557,7 @@
   }
   
   .preview-desc {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   
   .preview-img-set {
@@ -574,7 +574,7 @@
   }
   
   .preview-invite p {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
   
   .preview-twocol {
@@ -587,7 +587,7 @@
   }
   
   .preview-twocol-desc {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   
   .preview-hero-title-bg {
