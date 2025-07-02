@@ -7,6 +7,13 @@ function initHamburgerMenu() {
   
   console.log('햄버거 메뉴 초기화:', { hamburger, navLinks, overlay, dropdownsLength: dropdowns.length });
   
+  // 모든 드롭다운 아코디언 닫기 함수
+  function closeAllDropdowns() {
+    dropdowns.forEach(dropdown => {
+      dropdown.classList.remove('active');
+    });
+  }
+  
   // 햄버거 메뉴 토글
   if (hamburger && navLinks && overlay) {
     hamburger.addEventListener('click', (e) => {
@@ -24,24 +31,36 @@ function initHamburgerMenu() {
         navLinksActive: navLinks.classList.contains('active'),
         overlayActive: overlay.classList.contains('active')
       });
+      // 메뉴가 닫힐 때만 아코디언 초기화
+      if (!navLinks.classList.contains('active')) {
+        closeAllDropdowns();
+      }
     });
     
-    // 오버레이 클릭 시 메뉴 닫기
+    // 오버레이 클릭 시 메뉴 닫기 + 아코디언 초기화
     overlay.addEventListener('click', () => {
       hamburger.classList.remove('active');
       navLinks.classList.remove('active');
       overlay.classList.remove('active');
       document.body.style.overflow = '';
+      closeAllDropdowns();
     });
     
-    // 메뉴 외부 클릭 시 닫기 (오버레이 제외)
+    // 메뉴 외부 클릭 시 닫기 (오버레이 제외) + 아코디언 초기화
     document.addEventListener('click', (e) => {
-      if (!hamburger.contains(e.target) && !navLinks.contains(e.target) && !overlay.contains(e.target)) {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
+      // 메뉴 내부 클릭은 무시
+      if (
+        hamburger.contains(e.target) ||
+        navLinks.contains(e.target) ||
+        overlay.contains(e.target)
+      ) {
+        return;
       }
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      closeAllDropdowns();
     });
     
     // 모바일 아코디언 드롭다운
@@ -64,7 +83,7 @@ function initHamburgerMenu() {
       }
     });
     
-    // 링크 클릭 시 메뉴 닫기 (하위 메뉴만)
+    // 링크 클릭 시 메뉴 닫기 (하위 메뉴만) + 아코디언 초기화
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', (e) => {
         if (window.innerWidth <= 768) {
@@ -78,6 +97,7 @@ function initHamburgerMenu() {
           navLinks.classList.remove('active');
           overlay.classList.remove('active');
           document.body.style.overflow = '';
+          closeAllDropdowns();
         }
       });
     });
@@ -88,7 +108,7 @@ function initHamburgerMenu() {
 
 // 헤더 로드 후 햄버거 메뉴 초기화
 function loadHeaderAndInit() {
-  fetch('header.html')
+  fetch('/header.html')
     .then(res => res.text())
     .then(data => { 
       document.getElementById('header').innerHTML = data;
@@ -228,3 +248,8 @@ window.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('loaded');
   }, 900);
 });
+
+// 푸터 로드
+fetch('/footer.html')
+  .then(res => res.text())
+  .then(data => { document.getElementById('footer').innerHTML = data; });
