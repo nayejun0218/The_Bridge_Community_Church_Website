@@ -157,7 +157,7 @@ footer a:hover {
   }
   
   .guide-cards {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.8rem;
   }
   
@@ -267,127 +267,97 @@ footer a:hover {
 }
 
 @media (max-width: 900px) {
-  .guide-cards {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.2rem;
-  }
-  
   .bridge-social-cards {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.2rem;
   }
-  
   .guide-section,
   .bible-series-section,
   .bridge-social-section {
     margin: 4rem auto 1.5rem auto;
   }
-  
   .guide-section .bible-series-title,
   .bible-series-section .bible-series-title,
   .bridge-social-section .bible-series-title {
     font-size: 1.6rem;
   }
-  
   .welcome-bridge-message {
     font-size: 0.95rem;
   }
-  
   .contact-info-cards {
     max-width: 100%;
     gap: 1.5rem;
   }
-  
   .location-cards {
     grid-template-columns: 1fr;
     max-width: 100%;
     gap: 1.5rem;
   }
-  
   .quote-block {
     font-size: 1.1rem;
     margin: 3rem auto 2rem auto;
   }
-  
   .contact-info-text {
     font-size: 1rem;
   }
-  
   .contact-info-text.blue {
     font-size: 0.95rem;
   }
-  
   .home-bridge-summary, .home-contact-summary {
     margin-bottom: 2rem;
   }
-  
   .bridge-summary-card {
     padding: 1.8rem 1.8rem 1.3rem 1.8rem;
     max-width: 350px;
   }
-  
   .home-worship-cards, .home-quick-links {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.2rem;
   }
-  
   .welcome-section {
     padding: 2rem 3%;
     flex-direction: column;
     gap: 2rem;
   }
-  
   .welcome-image img {
     max-width: 280px;
   }
-  
   .home-bridge-row {
     flex-direction: column;
     gap: 1.5rem;
   }
-  
   .parking-card {
     max-width: 100%;
   }
-  
   .banner-slider { 
     margin-bottom: 2rem;
   }
-  
   .home-hero {
     margin-top: 3rem;
     padding: 3.5rem 0;
   }
-  
   .home-hero h1 {
     font-size: 1.8rem;
   }
-  
   .hero-sub {
     font-size: 0.95rem;
   }
-  
   .welcome-text h2 {
     font-size: 1.5rem;
   }
-  
   .welcome-text p {
     font-size: 0.9rem;
   }
-  
   .guide-card {
     max-width: 100%;
     font-size: 0.95rem;
   }
-  
   .bridge-social-text {
     font-size: 0.95rem;
   }
-  
   .bridge-summary-card h2 {
     font-size: 1.1rem;
   }
-  
   .bridge-summary-card li {
     font-size: 0.9rem;
   }
@@ -489,7 +459,7 @@ footer a:hover {
   }
   
   .guide-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
   
@@ -1144,7 +1114,7 @@ body, p, li {
 
 .guide-cards {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 2.2rem;
 }
 
