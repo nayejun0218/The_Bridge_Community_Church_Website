@@ -469,7 +469,7 @@ footer a:hover {
   }
   
   .bridge-social-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 1rem;
   }
   
@@ -560,7 +560,9 @@ footer a:hover {
   }
   
   .guide-card {
-    /* width, min-width, max-width 모두 제거 */
+    padding: 0.7em 0.3em;
+    min-height: 70px;
+    font-size: 0.95rem;
   }
   
   .bridge-social-text {
@@ -688,7 +690,9 @@ footer a:hover {
   }
   
   .guide-card {
-    /* width, min-width, max-width 모두 제거 */
+    padding: 0.7em 0.3em;
+    min-height: 70px;
+    font-size: 0.95rem;
   }
   
   .bridge-summary-card h2 {
@@ -847,12 +851,14 @@ footer a:hover {
   }
   
   .guide-cards {
-    grid-template-columns: 1fr !important;
-    gap: 0.7rem !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
   }
   
   .guide-card {
-    /* width, min-width, max-width 모두 제거 */
+    padding: 0.7em 0.3em;
+    min-height: 70px;
+    font-size: 0.9rem;
   }
   
   .social-card {
@@ -1649,7 +1655,9 @@ h2.no-margin-top {
   }
   
   .guide-card {
-    font-size: 0.9rem;
+    padding: 0.7em 0.3em;
+    min-height: 70px;
+    font-size: 0.95rem;
   }
   
   .bridge-social-text {
@@ -1724,8 +1732,9 @@ h2.no-margin-top {
   }
   
   .guide-card {
-    font-size: 0.85rem;
-    padding: 1em 0.4em;
+    padding: 0.7em 0.3em;
+    min-height: 70px;
+    font-size: 0.95rem;
   }
   
   .bridge-summary-card h2 {
@@ -1797,6 +1806,8 @@ h2.no-margin-top {
   }
   
   .guide-card {
+    padding: 0.6em 0.3em;
+    min-height: 70px;
     font-size: 0.8rem;
     padding: 0.8em 0.3em;
     min-height: 100px;
