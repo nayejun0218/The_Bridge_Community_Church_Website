@@ -264,6 +264,28 @@ footer a:hover {
   .bridge-summary-card li {
     font-size: 0.95rem;
   }
+  
+  .bible-series-slider-wrapper .slider-prev,
+  .bible-series-slider-wrapper .slider-next {
+    display: none !important;
+  }
+  .bible-series-slider {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+  .bible-series-slider::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  .bible-series-slider-track {
+    display: flex !important;
+    gap: 1rem;
+    min-width: max-content;
+  }
+  .sermon-card-link {
+    flex: 0 0 48vw;
+    max-width: 260px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -282,7 +304,7 @@ footer a:hover {
     font-size: 1.6rem;
   }
   .welcome-bridge-message {
-    font-size: 0.95rem;
+    font-size: 0.9rem !important;
   }
   .contact-info-cards {
     max-width: 100%;
@@ -456,6 +478,12 @@ footer a:hover {
   footer {
     padding: 1.5rem;
     margin-top: 3rem;
+    font-size: 0.8rem !important;
+    line-height: 1.5;
+  }
+  
+  footer a {
+    font-size: 0.8rem !important;
   }
   
   .guide-cards {
@@ -486,7 +514,7 @@ footer a:hover {
   }
   
   .welcome-bridge-message {
-    font-size: 0.9rem;
+    font-size: 0.9rem !important;
   }
   
   .slider-prev, .slider-next {
@@ -576,6 +604,24 @@ footer a:hover {
   .bridge-summary-card li {
     font-size: 0.85rem;
   }
+
+  /* 제목 폰트 크기 줄이기 */
+  .bible-series-title,
+  .guide-section .bible-series-title,
+  .bible-series-section .bible-series-title,
+  .bridge-social-section .bible-series-title,
+  h2 {
+    font-size: 1.1rem !important;
+    padding-left: 0.5em !important;
+  }
+
+  /* 제목 아래 밑줄 간격 줄이기 */
+  .guide-section hr,
+  .bible-series-section hr,
+  .bridge-social-section hr {
+    margin-top: 0.3em !important;
+    margin-bottom: 1em !important;
+  }
 }
 
 @media (max-width: 600px) {
@@ -592,7 +638,7 @@ footer a:hover {
   }
   
   .welcome-bridge-message {
-    font-size: 0.85rem;
+    font-size: 0.8rem !important;
   }
   
   .slider-prev, .slider-next {
@@ -747,6 +793,11 @@ footer a:hover {
   footer {
     padding: 1rem;
     margin-top: 2rem;
+    font-size: 0.6rem !important;
+  }
+  
+  footer a {
+    font-size: 0.6rem !important;
   }
   
   .guide-section,
@@ -762,7 +813,7 @@ footer a:hover {
   }
   
   .welcome-bridge-message {
-    font-size: 0.8rem;
+    font-size: 0.7rem !important;
   }
   
   .slider-prev, .slider-next {
