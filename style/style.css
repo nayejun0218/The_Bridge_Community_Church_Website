@@ -212,7 +212,7 @@ footer a:hover {
   .guide-section .bible-series-title,
   .bible-series-section .bible-series-title,
   .bridge-social-section .bible-series-title {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
   }
   
   .guide-cards {
@@ -290,7 +290,7 @@ footer a:hover {
 
 @media (max-width: 900px) {
   .bridge-social-cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.2rem;
   }
   .guide-section,
@@ -301,7 +301,7 @@ footer a:hover {
   .guide-section .bible-series-title,
   .bible-series-section .bible-series-title,
   .bridge-social-section .bible-series-title {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
   }
   .welcome-bridge-message {
     font-size: 0.9rem !important;
@@ -498,7 +498,7 @@ footer a:hover {
   
   .bridge-social-cards {
     grid-template-columns: 1fr !important;
-    gap: 1rem;
+    gap: 0.5rem !important;
   }
   
   .guide-section,
@@ -510,7 +510,7 @@ footer a:hover {
   .guide-section .bible-series-title,
   .bible-series-section .bible-series-title,
   .bridge-social-section .bible-series-title {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
   
   .welcome-bridge-message {
@@ -611,7 +611,7 @@ footer a:hover {
   .bible-series-section .bible-series-title,
   .bridge-social-section .bible-series-title,
   h2 {
-    font-size: 1.1rem !important;
+    font-size: 1.5rem !important;
     padding-left: 0.5em !important;
   }
 
@@ -625,6 +625,40 @@ footer a:hover {
 }
 
 @media (max-width: 600px) {
+  .welcome-section {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.7rem !important;
+    padding: 0.7rem 0.3rem !important;
+  }
+  .welcome-text {
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: left !important;
+  }
+  .welcome-text h2 {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5em !important;
+  }
+  .welcome-text p {
+    font-size: 0.7rem !important;
+  }
+  .welcome-image {
+    flex: 0 0 80px;
+    min-width: 60px;
+    max-width: 32vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .welcome-image img {
+    width: 100%;
+    max-width: 80px;
+    min-width: 50px;
+    border-radius: 10px;
+  }
   .guide-section,
   .bible-series-section,
   .bridge-social-section {
@@ -634,7 +668,7 @@ footer a:hover {
   .guide-section .bible-series-title,
   .bible-series-section .bible-series-title,
   .bridge-social-section .bible-series-title {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
   
   .welcome-bridge-message {
@@ -809,7 +843,7 @@ footer a:hover {
   .guide-section .bible-series-title,
   .bible-series-section .bible-series-title,
   .bridge-social-section .bible-series-title {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
   
   .welcome-bridge-message {
@@ -887,7 +921,7 @@ footer a:hover {
   }
   
   .bridge-social-card {
-    padding: 0.8rem 1rem;
+    padding: 0.8rem 0.5rem;
     min-height: 80px;
   }
   
@@ -1842,8 +1876,8 @@ h2.no-margin-top {
   }
   
   .bridge-social-card {
-    padding: 0.9em 1.2em;
-    gap: 0.8em;
+    padding: 0.5em 0.5em;
+    gap: 0.5em;
   }
   
   .bridge-social-logo {
