@@ -727,10 +727,22 @@ footer a:hover {
   }
   
   .contact-info-cards {
-    gap: 0.8rem;
-    margin: 1.5rem auto 1rem auto;
+    gap: 0.7rem !important;
+    padding: 0.5rem 0.2rem !important;
   }
-  
+  .contact-info-card {
+    padding: 0.7rem 0.7rem !important;
+    border-radius: 12px !important;
+    font-size: 0.92rem !important;
+  }
+  .contact-info-text {
+    font-size: 0.95rem !important;
+  }
+  .contact-info-text.small,
+  .contact-info-text.blue {
+    font-size: 0.85rem !important;
+  }
+
   .location-cards {
     gap: 0.8rem;
     margin: 1.5rem auto 0 auto;
@@ -740,19 +752,7 @@ footer a:hover {
     font-size: 0.9rem;
     margin: 2rem auto 1.5rem auto;
   }
-  
-  .contact-info-text {
-    font-size: 0.9rem;
-  }
-  
-  .contact-info-text.blue {
-    font-size: 0.85rem;
-  }
-  
-  .contact-info-text.small {
-    font-size: 0.85rem;
-  }
-  
+
   .social-card-link { 
     max-width: 98%; 
   }
@@ -904,6 +904,7 @@ footer a:hover {
   .contact-info-cards {
     gap: 0.6rem;
     margin: 1rem auto 0.8rem auto;
+    min-height: 60px !important;
   }
   
   .location-cards {
@@ -969,7 +970,7 @@ footer a:hover {
   
   .bridge-social-card {
     padding: 0.8rem 0.5rem;
-    min-height: 80px;
+    min-height: 60px !important;
   }
   
   .bridge-social-logo {
@@ -989,7 +990,7 @@ footer a:hover {
   
   .guide-card {
     padding: 0.7em 0.3em;
-    min-height: 70px;
+    min-height: 60px !important;
     font-size: 0.9rem;
   }
   
@@ -1966,10 +1967,19 @@ h2.no-margin-top {
 
 /* 데스크탑에서 호버 드롭다운 완전히 제거 */
 @media (min-width: 769px) {
-  .dropdown-menu {
-    display: none !important;
+  .dropdown {
+    position: relative;
+    padding-bottom: 0.5rem;
   }
-  .dropdown:hover .dropdown-menu {
-    display: none !important;
+  .dropdown-menu {
+    top: 100%;
+    left: 0;
+    margin-top: 0;
+  }
+  .dropdown-menu {
+    display: none;
+  }
+  .dropdown:hover > .dropdown-menu {
+    display: block;
   }
 } 
