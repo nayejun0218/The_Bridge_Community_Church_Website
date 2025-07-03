@@ -68,12 +68,11 @@
           const card = cards[0];
           const style = window.getComputedStyle(grid);
           const gap = parseFloat(style.gap) || 0;
-          const rowCount = Math.ceil(n / 4);
+          // 한 줄에 몇 개가 들어가는지 동적으로 계산
+          const cardsPerRow = Math.floor(grid.offsetWidth / card.offsetWidth) || 1;
+          const rowCount = Math.ceil(n / cardsPerRow);
           const cardHeight = card.offsetHeight;
-          
-          // 카드의 높이를 계산할 수 없는 경우, 기본 높이를 지정하여 오류 방지
           if (cardHeight === 0) {
-            // (카드 높이 + 갭) * 줄 수
             return (250 + gap) * rowCount; 
           }
           return rowCount * cardHeight + (rowCount - 1) * gap + 20;

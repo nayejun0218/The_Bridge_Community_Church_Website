@@ -1035,7 +1035,7 @@
   }
   
   .sermon-card {
-    min-height: 160px;
+    min-height: 160px !important;
   }
   
   .sermon-title {
@@ -1068,6 +1068,51 @@
     font-size: 0.9rem;
     min-height: 40px;
   }
+
+  .sermon h2 {
+    font-size: 1.5rem !important;
+  }
+
+  .sermon-series-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.7rem !important;
+    min-width: 200px !important;
+    min-height: 200px !important;
+  }
+  .sermon-card-link {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+  .sermon-card {
+    min-height: 80px !important;
+    height: auto !important;
+    padding: 0.5em 0.3em !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+  }
+  .sermon-thumb-wrap {
+    margin-bottom: 0.3em !important;
+  }
+  .sermon-thumb {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    border-radius: 5px !important;
+    object-fit: cover !important;
+  }
+  .sermon-title {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.1em !important;
+  }
+  .sermon-date {
+    font-size: 0.7rem !important;
+    margin-top: 0.1em !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1076,7 +1121,7 @@
   }
   
   .sermon-section-title {
-    font-size: 1rem;
+    font-size: 1.2rem !important;
     margin: 0.6rem 0 0.4rem 0;
   }
   
