@@ -44,18 +44,32 @@ async function fetchPlaylistItems(playlistId, series) {
       const title = snippet?.title || '';
       const published = snippet?.publishedAt || '';
       
-      // 날짜 표시 형식 맞추기(예: 2025.06.15)
-      const d = new Date(published);
-      const date = isNaN(d) ? '' :
-        `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
+      // 제목에서 날짜 추출 (2025.06.29 형식)
+      const titleDateMatch = title.match(/(\d{4})\.(\d{1,2})\.(\d{1,2})/);
+      let date = '';
+      let sortDate = published; // 정렬용 기본값은 업로드 날짜
+      
+      if (titleDateMatch) {
+        // 제목에서 날짜를 찾았으면 사용
+        const [, year, month, day] = titleDateMatch;
+        date = `${year}.${month.padStart(2,'0')}.${day.padStart(2,'0')}`;
+        // 정렬용 날짜도 제목 날짜로 설정
+        sortDate = `${year}-${month.padStart(2,'0')}-${day.padStart(2,'0')}T09:00:00Z`;
+      } else {
+        // 제목에 날짜가 없으면 업로드 날짜 사용
+        const d = new Date(published);
+        date = isNaN(d) ? '' :
+          `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
+        sortDate = published;
+      }
 
       return {
         url: `https://youtu.be/${videoId}`,
         thumb: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
         title,
         date,
-        // 원본 발행 시각(정렬용)
-        publishedAt: published,
+        // 원본 발행 시각(정렬용) - 제목 날짜 우선
+        publishedAt: sortDate,
         series,
       };
     });
