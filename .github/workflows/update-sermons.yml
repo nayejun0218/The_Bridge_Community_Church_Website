@@ -26,6 +26,16 @@ jobs:
       - name: Install dependencies
         run: npm install node-fetch@3
       
+      - name: Debug environment
+        run: |
+          echo "YT_API_KEY length: ${#YT_API_KEY}"
+          echo "YT_PLAYLIST_GENESIS: $YT_PLAYLIST_GENESIS"
+          echo "YT_PLAYLIST_SPECIAL: $YT_PLAYLIST_SPECIAL"
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          YT_PLAYLIST_GENESIS: ${{ secrets.YT_PLAYLIST_GENESIS }}
+          YT_PLAYLIST_SPECIAL: ${{ secrets.YT_PLAYLIST_SPECIAL }}
+      
       - name: Update sermons.json
         run: node scripts/update_sermons.mjs
         env:
