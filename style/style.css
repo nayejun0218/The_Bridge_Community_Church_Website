@@ -1069,7 +1069,7 @@ footer a:hover {
 .dropdown-menu a:hover {
   background: linear-gradient(135deg, #e8e8f9 0%, #e0e4ff 100%);
   color: #1976d2;
-  transform: translateX(3px);
+  transform: none !important;
 }
 
 .dropdown-menu a:hover::before {

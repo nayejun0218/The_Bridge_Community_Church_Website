@@ -1,0 +1,66 @@
+name: Update sermons.json weekly
+
+on:
+  schedule:
+    # 매주 월요일 00:00 UTC (한국시간 09:00)
+    - cron: "0 0 * * 1"
+  
+  # 수동 실행 가능
+  workflow_dispatch:
+
+jobs:
+  update-sermons:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: npm install node-fetch@3
+      
+      - name: Update sermons.json
+        run: node scripts/update_sermons.mjs
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          YT_PLAYLIST_GENESIS: ${{ secrets.YT_PLAYLIST_GENESIS }}
+          YT_PLAYLIST_SPECIAL: ${{ secrets.YT_PLAYLIST_SPECIAL }}
+      
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet sermons.json; then
+            echo "변경사항이 없습니다."
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "sermons.json이 업데이트되었습니다."
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Commit and push changes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sermons.json
+          git commit -m "chore: weekly update sermons.json 📺"
+          git push
+      
+      - name: Create summary
+        run: |
+          echo "## 📺 설교 데이터 업데이트 완료" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.changes.outputs.changed }}" == "true" ]; then
+            echo "✅ sermons.json이 최신 YouTube 데이터로 업데이트되었습니다." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ 변경사항이 없어 업데이트를 건너뛰었습니다." >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**업데이트 시간:** $(date -u)" >> $GITHUB_STEP_SUMMARY

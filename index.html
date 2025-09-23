@@ -36,12 +36,12 @@
       <h2 class="bible-series-title">교회 안내</h2>
       <hr>
       <div class="guide-cards">
-        <a href="/page/about/preview.html" class="guide-card-link"><div class="guide-card">🧭<br>처음 오셨나요?</div></a>
-        <a href="/page/about/worship.html" class="guide-card-link"><div class="guide-card">📅<br>예배시간 보기</div></a>
-        <a href="/page/info/bulletin.html" class="guide-card-link"><div class="guide-card">📰<br>주보 보기</div></a>
-        <a href="/page/about/location.html" class="guide-card-link"><div class="guide-card">🚗<br>찾아오시는 길</div></a>
-        <a href="/page/community/fellowship.html" class="guide-card-link"><div class="guide-card">👥<br>교제 활동</div></a>
-        <a href="/page/contact/contact.html" class="guide-card-link"><div class="guide-card">💬<br>문의사항</div></a>
+        <a href="/page/about/preview.html" class="guide-card-link"><div class="guide-card">🧭 처음 오셨나요?</div></a>
+        <a href="/page/about/pastor.html" class="guide-card-link"><div class="guide-card">👤 담임목사 소개</div></a>
+        <a href="/page/info/bulletin.html" class="guide-card-link"><div class="guide-card">📰 주보 보기</div></a>
+        <a href="/page/about/worship.html" class="guide-card-link"><div class="guide-card">📅 예배시간 보기</div></a>
+        <a href="/page/about/location.html" class="guide-card-link"><div class="guide-card">🚗 찾아오시는 길</div></a>
+        <a href="/page/contact/contact.html" class="guide-card-link"><div class="guide-card">💬 문의사항</div></a>
       </div>
     </div>
     <div class="bible-series-section" data-aos="fade-up">
@@ -137,12 +137,15 @@
       document.querySelector('.slider-next').disabled = currentIndex + cardsPerPage >= cardsData.length;
     }
 
+    // 홈 성경 강해 카드: GitHub Actions로 주간 업데이트된 JSON 사용
     fetch('/sermons.json')
       .then(res => res.json())
       .then(data => {
-        cardsData = data.filter(card => card.series === '창세기 강해');
+        // 시리즈 필터 및 최신순 상위 일부만 노출
+        cardsData = data.filter(card => card.series === '창세기 강해').slice(0, 12);
         setupSlider();
-      });
+      })
+      .catch(err => console.error('홈 설교 카드 로드 실패:', err));
 
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.slider-prev').addEventListener('click', () => {

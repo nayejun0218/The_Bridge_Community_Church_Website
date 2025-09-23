@@ -38,11 +38,85 @@
     // DOMContentLoaded에서 updateView()를 호출하지 않도록 수정
     // fetch 후 카드 렌더링이 끝난 뒤에만 updateView()를 한 번만 호출
 
-    fetch('/sermons.json')
-      .then(res => res.json())
-      .then(data => {
-        const grid = document.getElementById('genesis-sermons');
-        grid.innerHTML = data.filter(card => card.series === '창세기 강해').map(card => `
+    // 설교 데이터 로드 (GitHub Actions로 주간 업데이트된 JSON 사용)
+    async function loadSermonData() {
+      try {
+        const res = await fetch('/sermons.json');
+        if (!res.ok) {
+          throw new Error(`설교 데이터 로드 실패: ${res.status}`);
+        }
+        return await res.json();
+      } catch (error) {
+        console.error('설교 데이터 로드 실패:', error.message);
+        return [];
+      }
+    }
+
+    loadSermonData().then(data => {
+      const grid = document.getElementById('genesis-sermons');
+      grid.innerHTML = data.filter(card => card.series === '창세기 강해').map(card => `
+        <a href="${card.url}" target="_blank" class="sermon-card-link">
+          <div class="sermon-card">
+            <div class="sermon-thumb-wrap">
+              <img class="sermon-thumb" src="${card.thumb}" alt="썸네일">
+              <img class="youtube-logo" src="/images/logo/youtube-logo.png" alt="YouTube Logo">
+            </div>
+            <div class="sermon-info">
+              <div class="sermon-title">${card.title}</div>
+              <div class="sermon-date">${card.date}</div>
+            </div>
+            <span class="hover-text">강해 바로가기</span>
+          </div>
+        </a>
+      `).join('');
+
+      // 더보기/슬라이드 다운 JS를 여기서만 실행
+      const cards = grid.querySelectorAll('.sermon-card-link');
+      const btn = document.getElementById('toggle-sermon-list');
+      let expanded = false;
+
+      function getCardHeight(n) {
+        if (cards.length === 0) return 0;
+        const card = cards[0];
+        const style = window.getComputedStyle(grid);
+        const gap = parseFloat(style.gap) || 0;
+        // 한 줄에 몇 개가 들어가는지 동적으로 계산
+        const cardsPerRow = Math.floor(grid.offsetWidth / card.offsetWidth) || 1;
+        const rowCount = Math.ceil(n / cardsPerRow);
+        const cardHeight = card.offsetHeight;
+        if (cardHeight === 0) {
+          return (250 + gap) * rowCount; 
+        }
+        return rowCount * cardHeight + (rowCount - 1) * gap + 20;
+      }
+
+      function updateView() {
+        if (expanded) {
+          grid.style.maxHeight = getCardHeight(cards.length) + 'px';
+        } else {
+          grid.style.maxHeight = getCardHeight(4) + 'px';
+        }
+        btn.setAttribute('aria-label', expanded ? '접기' : '더보기');
+        btn.classList.toggle('open', expanded);
+      }
+
+      // 이벤트 리스너가 중복으로 등록되지 않도록 한 번만 실행
+      if (!btn.dataset.listenerAttached) {
+          btn.addEventListener('click', function() {
+            expanded = !expanded;
+            updateView();
+          });
+          window.addEventListener('resize', () => updateView());
+          btn.dataset.listenerAttached = 'true';
+      }
+      
+      // 최초 4개만 보이게 (여기서만 호출)
+      updateView();
+
+      // 특별주일 설교 카드 렌더링 (추가)
+      document.getElementById('special-sermons').innerHTML = data
+        .filter(card => card.series === '특별주일 설교')
+        .map(card => `
           <a href="${card.url}" target="_blank" class="sermon-card-link">
             <div class="sermon-card">
               <div class="sermon-thumb-wrap">
@@ -57,69 +131,9 @@
             </div>
           </a>
         `).join('');
-
-        // 더보기/슬라이드 다운 JS를 여기서만 실행
-        const cards = grid.querySelectorAll('.sermon-card-link');
-        const btn = document.getElementById('toggle-sermon-list');
-        let expanded = false;
-
-        function getCardHeight(n) {
-          if (cards.length === 0) return 0;
-          const card = cards[0];
-          const style = window.getComputedStyle(grid);
-          const gap = parseFloat(style.gap) || 0;
-          // 한 줄에 몇 개가 들어가는지 동적으로 계산
-          const cardsPerRow = Math.floor(grid.offsetWidth / card.offsetWidth) || 1;
-          const rowCount = Math.ceil(n / cardsPerRow);
-          const cardHeight = card.offsetHeight;
-          if (cardHeight === 0) {
-            return (250 + gap) * rowCount; 
-          }
-          return rowCount * cardHeight + (rowCount - 1) * gap + 20;
-        }
-
-        function updateView() {
-          if (expanded) {
-            grid.style.maxHeight = getCardHeight(cards.length) + 'px';
-          } else {
-            grid.style.maxHeight = getCardHeight(4) + 'px';
-          }
-          btn.setAttribute('aria-label', expanded ? '접기' : '더보기');
-          btn.classList.toggle('open', expanded);
-        }
-
-        // 이벤트 리스너가 중복으로 등록되지 않도록 한 번만 실행
-        if (!btn.dataset.listenerAttached) {
-            btn.addEventListener('click', function() {
-              expanded = !expanded;
-              updateView();
-            });
-            window.addEventListener('resize', () => updateView());
-            btn.dataset.listenerAttached = 'true';
-        }
-        
-        // 최초 4개만 보이게 (여기서만 호출)
-        updateView();
-
-        // 특별주일 설교 카드 렌더링 (추가)
-        document.getElementById('special-sermons').innerHTML = data
-          .filter(card => card.series === '특별주일 설교')
-          .map(card => `
-            <a href="${card.url}" target="_blank" class="sermon-card-link">
-              <div class="sermon-card">
-                <div class="sermon-thumb-wrap">
-                  <img class="sermon-thumb" src="${card.thumb}" alt="썸네일">
-                  <img class="youtube-logo" src="/images/logo/youtube-logo.png" alt="YouTube Logo">
-                </div>
-                <div class="sermon-info">
-                  <div class="sermon-title">${card.title}</div>
-                  <div class="sermon-date">${card.date}</div>
-                </div>
-                <span class="hover-text">강해 바로가기</span>
-              </div>
-            </a>
-          `).join('');
-      });
+    }).catch(error => {
+      console.error('설교 데이터 로드 실패:', error);
+    });
   </script>
 </body>
 </html> 
