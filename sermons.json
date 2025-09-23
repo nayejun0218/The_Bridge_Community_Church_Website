@@ -1,114 +1,205 @@
 [
   {
-    "url": "https://youtu.be/ePvs5JyHEUU?si=mfU-8E0x1LrBVKi3",
-    "thumb": "https://img.youtube.com/vi/ePvs5JyHEUU/hqdefault.jpg",
-    "title": "[창세기 강해 1]: 주일성수",
-    "date": "2025.03.02",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/_CMvaWJ1hkc?si=xVFe7VywFw8gm32B",
-    "thumb": "https://img.youtube.com/vi/_CMvaWJ1hkc/hqdefault.jpg",
-    "title": "[창세기 강해 2]: 주님, 날 빚으소서!",
-    "date": "2025.03.09",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/UgHvm5XdHKs?si=bD9GSqBmlbeCKJmE",
-    "thumb": "https://img.youtube.com/vi/UgHvm5XdHKs/hqdefault.jpg",
-    "title": "[창세기 강해 3]: 에덴동산과 인간의 삶",
-    "date": "2025.03.16",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/R1a1jsoceOw?si=zbQlL25Gv6wFyvWM",
-    "thumb": "https://img.youtube.com/vi/R1a1jsoceOw/hqdefault.jpg",
-    "title": "[창세기 강해 4]: 하나님이 만드신 가정",
-    "date": "2025.03.23",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/n3JdeDKh-K0?si=xeFNrYKILBBB81asvn",
-    "thumb": "https://img.youtube.com/vi/n3JdeDKh-K0/hqdefault.jpg",
-    "title": "[창세기 강해 5]: 인간의 타락과 죄의 기원",
-    "date": "2025.03.30",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/AadHPilfcHw?si=N-UMQaV85SfXd9mv",
-    "thumb": "https://img.youtube.com/vi/AadHPilfcHw/hqdefault.jpg",
-    "title": "[창세기 강해 6]: 하나님의 심판과 은혜",
-    "date": "2025.04.06",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/y1zHZvEH5Eg?si=4ulUf4Jz8QW8se0y",
-    "thumb": "https://img.youtube.com/vi/y1zHZvEH5Eg/hqdefault.jpg",
-    "title": "[창세기 강해 7]: 하나님께서 원하시는 예배",
-    "date": "2025.04.13",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/Orv0Sj7GPhg?si=vEYKoq9h88EE_IcI",
-    "thumb": "https://img.youtube.com/vi/Orv0Sj7GPhg/hqdefault.jpg",
-    "title": "[창세기 강해 8]: 믿음은 계승되고 있다",
-    "date": "2025.04.27",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/hCzM5QL5rds?si=fVd6Mlg0PpgL6iMG",
-    "thumb": "https://img.youtube.com/vi/hCzM5QL5rds/hqdefault.jpg",
-    "title": "[창세기 강해 9]: 그 때와 지금은 다르다!?",
-    "date": "2025.05.11",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/A96E-pcozF8?si=0WOcl-5Dyr34k_N1",
-    "thumb": "https://img.youtube.com/vi/A96E-pcozF8/hqdefault.jpg",
-    "title": "[창세기 강해 10]: 폭싹 망했을까!?",
-    "date": "2025.05.18",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/RzRhqDoWPeM?si=Gnir0nPCHbl0NSmy",
-    "thumb": "https://img.youtube.com/vi/RzRhqDoWPeM/hqdefault.jpg",
-    "title": "[창세기 강해 11]: 무지개 - 십자가의 \"티저\"",
-    "date": "2025.05.25",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/gpDuDnH4GOI?si=KP4-Qe0a24bW3M2F",
-    "thumb": "https://img.youtube.com/vi/gpDuDnH4GOI/hqdefault.jpg",
-    "title": "[창세기 강해 12]: 탑? 십자가?",
-    "date": "2025.06.01",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/zLBWSPUsv9g?si=whMtgJ-Ly2Ib5wpq",
-    "thumb": "https://img.youtube.com/vi/zLBWSPUsv9g/hqdefault.jpg",
-    "title": "[창세기 강해 13]: \"오징어 게임\"에서 떠나라! 가라!: 방황하는 이 시대, 하나님이 부르시는 곳으로!",
-    "date": "2025.06.08",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/FWT5MCSx5KU?si=X-D0GnI0zExb5DA6",
-    "thumb": "https://img.youtube.com/vi/FWT5MCSx5KU/hqdefault.jpg",
-    "title": "[창세기 강해 14]: 벧엘행: 실패는 끝이 아니다, 다시 예배의 자리로!",
-    "date": "2025.06.15",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/Za9JDtWMUb4?si=Y9cwVgQXtDisRXvJ",
-    "thumb": "https://img.youtube.com/vi/Za9JDtWMUb4/hqdefault.jpg",
-    "title": "[창세기 강해 15]: 예배, 세상 속에서 드러나다!",
-    "date": "2025.06.22",
-    "series": "창세기 강해"
-  },
-  {
-    "url": "https://youtu.be/XTyok_GTYtw?si=4a27-wKbG1Mswo44",
+    "url": "https://youtu.be/XTyok_GTYtw",
     "thumb": "https://img.youtube.com/vi/XTyok_GTYtw/hqdefault.jpg",
-    "title": "[부활절]: 부활하신 하나님 (누가복음)",
-    "date": "2025.04.20",
+    "title": "[부활절] 부활하신 하나님 | 누가복음 24:2-12 | 2025.04.20 | 더브릿지커뮤니티교회",
+    "date": "2025.09.23",
     "series": "특별주일 설교"
+  },
+  {
+    "url": "https://youtu.be/kc25goYhkF4",
+    "thumb": "https://img.youtube.com/vi/kc25goYhkF4/hqdefault.jpg",
+    "title": "[창세기 강해 32, 아브라함 16] 응답하라 175 : 집으로 | 창세기 25:5-11 | 2025.09.21 | 더브릿지커뮤니티교회",
+    "date": "2025.09.21",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/0AzFK8_t4JY",
+    "thumb": "https://img.youtube.com/vi/0AzFK8_t4JY/hqdefault.jpg",
+    "title": "[창세기 강해 31, 아브라함 15] 그 아들 : 십자가의 데칼코마니 | 창세기 22:1-19 | 2025.09.14 | 더브릿지커뮤니티교회",
+    "date": "2025.09.14",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/tJyI_pzs27Y",
+    "thumb": "https://img.youtube.com/vi/tJyI_pzs27Y/hqdefault.jpg",
+    "title": "[창세기 강해 30, 아브라함 14] 굿 플레이스 : 십자가의 데칼코마니 | 창세기 22:1-19 | 2025.09.07 | 더브릿지커뮤니티교회",
+    "date": "2025.09.07",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/957s_yovUh0",
+    "thumb": "https://img.youtube.com/vi/957s_yovUh0/hqdefault.jpg",
+    "title": "[창세기 강해 29, 아브라함 13] 극한상황, 극적응답 | 창세기 21:1-7 | 2025.08.31 | 더브릿지커뮤니티교회",
+    "date": "2025.08.31",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/KiFIWbAOJGQ",
+    "thumb": "https://img.youtube.com/vi/KiFIWbAOJGQ/hqdefault.jpg",
+    "title": "[창세기 강해 28, 아브라함 12] 데자뷰, 반복 | 창세기 20:1-18 | 2025.08.24 | 더브릿지커뮤니티교회",
+    "date": "2025.08.24",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/zctQqAVWE7E",
+    "thumb": "https://img.youtube.com/vi/zctQqAVWE7E/hqdefault.jpg",
+    "title": "[창세기 강해 27, 아브라함 11] 내 마음 속의 소알성 | 창세기 19:1-38 | 2025.08.17 | 더브릿지커뮤니티교회",
+    "date": "2025.08.17",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/d83D6fentt0",
+    "thumb": "https://img.youtube.com/vi/d83D6fentt0/hqdefault.jpg",
+    "title": "[창세기 강해 26, 아브라함 10] 그 날, 기도가 움직였다! | 창세기 18:20-33 | 2025.08.10 | 더브릿지커뮤니티교회",
+    "date": "2025.08.10",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/_i7aSBgwVG4",
+    "thumb": "https://img.youtube.com/vi/_i7aSBgwVG4/hqdefault.jpg",
+    "title": "[창세기 강해 25, 아브라함 9] Misson: Impossible (Possible in God) | 창세기 18:16-19 | 2025.08.03 | 더브릿지커뮤니티교회",
+    "date": "2025.08.03",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/EmJeFUOrvcI",
+    "thumb": "https://img.youtube.com/vi/EmJeFUOrvcI/hqdefault.jpg",
+    "title": "[창세기 강해 24, 아브라함 8] ‘웃음TT’, ‘웃음^^’ -여호와께서 능하지 못할 일이 있겠느냐! | 창세기 18:1-15 | 2025.07.27 | 더브릿지커뮤니티교회",
+    "date": "2025.07.27",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/g6plE5dNzwM",
+    "thumb": "https://img.youtube.com/vi/g6plE5dNzwM/hqdefault.jpg",
+    "title": "[창세기 강해 23, 아브라함 7] 99세, 지금 다시 언약하러 오셨습니다! | 창세기 17:1-11 | 2025.07.20 | 더브릿지커뮤니티교회",
+    "date": "2025.07.20",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/Fj3qE5QRGHY",
+    "thumb": "https://img.youtube.com/vi/Fj3qE5QRGHY/hqdefault.jpg",
+    "title": "[창세기 강해 22, 아브라함 6] 브엘라해로이, 하갈이 해갈되다 | 창세기 16:4-16 | 2025.07.13 | 더브릿지커뮤니티교회",
+    "date": "2025.07.13",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/TiieV12p4Qc",
+    "thumb": "https://img.youtube.com/vi/TiieV12p4Qc/hqdefault.jpg",
+    "title": "[창세기 강해 21, 아브라함 5] 그 해, 아브라함은 | 창세기 16:1-3 | 2025.07.06 | 더브릿지커뮤니티교회",
+    "date": "2025.07.06",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/C6YLbh-4nno",
+    "thumb": "https://img.youtube.com/vi/C6YLbh-4nno/hqdefault.jpg",
+    "title": "[창세기 강해 20, 아브라함 4] 오직 의인은 믿음으로 말미암아 살리라! | 창세기 15:1-6 | 2025.06.29 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/Za9JDtWMUb4",
+    "thumb": "https://img.youtube.com/vi/Za9JDtWMUb4/hqdefault.jpg",
+    "title": "[창세기 강해 19, 아브라함 3] 예배, 세상 속에서 드러나다! | 창세기 14:12-24 | 2025.06.22 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/FWT5MCSx5KU",
+    "thumb": "https://img.youtube.com/vi/FWT5MCSx5KU/hqdefault.jpg",
+    "title": "[창세기 강해 18, 아브라함 2] 벧엘행: 실패는 끝이 아니다, 다시 예배의 자리로! | 창세기 12:10-13:18 | 2025.06.15 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/zLBWSPUsv9g",
+    "thumb": "https://img.youtube.com/vi/zLBWSPUsv9g/hqdefault.jpg",
+    "title": "[창세기 강해 17, 아브라함 1] 오징어 게임에서 떠나라! 가라! | 창세기 11:27-12:9 | 2025.06.08 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/gpDuDnH4GOI",
+    "thumb": "https://img.youtube.com/vi/gpDuDnH4GOI/hqdefault.jpg",
+    "title": "[창세기 강해 16] 탑? 십자가? | 창세기 11:1-9 | 2025.06.01 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/RzRhqDoWPeM",
+    "thumb": "https://img.youtube.com/vi/RzRhqDoWPeM/hqdefault.jpg",
+    "title": "[창세기 강해 15] 무지개 - 십자가의 “티저” | 창세기 9:8-17 | 2025.05.25 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/A96E-pcozF8",
+    "thumb": "https://img.youtube.com/vi/A96E-pcozF8/hqdefault.jpg",
+    "title": "[창세기 강해 14] 폭싹 망했을까!? | 창세기 6:8-22 | 2025.05.18 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/hCzM5QL5rds",
+    "thumb": "https://img.youtube.com/vi/hCzM5QL5rds/hqdefault.jpg",
+    "title": "[창세기 강해 13] 그 때와 지금은 다르다!? | 창세기 6:1–8 | 2025.05.11 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/Orv0Sj7GPhg",
+    "thumb": "https://img.youtube.com/vi/Orv0Sj7GPhg/hqdefault.jpg",
+    "title": "[창세기 강해 12] 믿음은 계승되고 있다 | 창세기 5:1-32 | 2025.04.27 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/y1zHZvEH5Eg",
+    "thumb": "https://img.youtube.com/vi/y1zHZvEH5Eg/hqdefault.jpg",
+    "title": "[창세기 강해 11] 하나님께서 원하시는 예배 | 창세기 4:1-8 | 2025.04.13 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/AadHPilfcHw",
+    "thumb": "https://img.youtube.com/vi/AadHPilfcHw/hqdefault.jpg",
+    "title": "[창세기 강해 10] 하나님의 심판과 은혜 | 창세기 3:8-24 | 2025.04.06 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/n3JdeDKh-K0",
+    "thumb": "https://img.youtube.com/vi/n3JdeDKh-K0/hqdefault.jpg",
+    "title": "[창세기 강해 9] 인간의 타락과 죄의 기원 | 창세기 3:1-7 | 2025.03.30 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/R1a1jsoceOw",
+    "thumb": "https://img.youtube.com/vi/R1a1jsoceOw/hqdefault.jpg",
+    "title": "[창세기 강해 8] 하나님이 만드신 가정 | 창세기 2:18-25 | 2025.03.23 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/UgHvm5XdHKs",
+    "thumb": "https://img.youtube.com/vi/UgHvm5XdHKs/hqdefault.jpg",
+    "title": "[창세기 강해 7] 에덴동산과 인간의 삶 | 창세기 2:8-17 | 2025.03.16 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/_CMvaWJ1hkc",
+    "thumb": "https://img.youtube.com/vi/_CMvaWJ1hkc/hqdefault.jpg",
+    "title": "[창세기 강해 6] 주님, 날 빚으소서! | 창세기 2:4-7 | 2025.03.09 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
+  },
+  {
+    "url": "https://youtu.be/ePvs5JyHEUU",
+    "thumb": "https://img.youtube.com/vi/ePvs5JyHEUU/hqdefault.jpg",
+    "title": "[창세기 강해 5] 주일성수 | 창세기 2:1-3 | 2025.03.02 | 더브릿지커뮤니티교회",
+    "date": "2025.07.01",
+    "series": "창세기 강해"
   }
-] 
+]
