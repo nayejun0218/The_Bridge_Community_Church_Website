@@ -6,6 +6,7 @@
   <title>주보 보기 - The Bridge Community Church</title>
   <link rel="stylesheet" href="/style/style.css">
   <link rel="stylesheet" href="/style/page.css">
+  <link rel="stylesheet" href="/style/sermon.css">
 </head>
 <body>
   <div id="header"></div>
@@ -14,6 +15,11 @@
       <h2>주보 보기</h2>
       <div class="bulletin-content">
         <p>주간/월간 교회 주보를 PDF로 확인하실 수 있습니다.</p>
+        <div class="sermon-section-title-wrap" style="display: flex; align-items: center; justify-content: space-between;">
+          <div class="sermon-section-title">2025년 주보</div>
+          <button id="toggle-bulletin-list" style="background:none;border:none;cursor:pointer;font-size:2rem;line-height:1;outline:none;padding:0 0.5rem;" aria-label="더보기"><span id="arrow-icon">▼</span></button>
+        </div>
+        <hr class="section-divider">
         <div id="bulletin-list" class="bulletin-grid">
           <p>주보 데이터를 불러오는 중...</p>
         </div>
@@ -34,36 +40,89 @@
       .then(data => { document.getElementById('footer').innerHTML = data; });
 
     // 주보 데이터 로드 (GitHub Actions로 자동 업데이트된 JSON 사용)
-    fetch('/bulletins.json')
-      .then(res => res.json())
-      .then(bulletins => {
-        const container = document.getElementById('bulletin-list');
-        
-        if (bulletins.length === 0) {
-          container.innerHTML = '<p>등록된 주보가 없습니다.</p>';
-          return;
+    async function loadBulletinData() {
+      try {
+        const res = await fetch('/bulletins.json');
+        if (!res.ok) {
+          throw new Error(`주보 데이터 로드 실패: ${res.status}`);
         }
+        return await res.json();
+      } catch (error) {
+        console.error('주보 데이터 로드 실패:', error.message);
+        return [];
+      }
+    }
 
-        container.innerHTML = bulletins.map(bulletin => `
-          <div class="bulletin-card">
-            <div class="bulletin-date">${bulletin.date}</div>
-            <h3 class="bulletin-title">${bulletin.name}</h3>
-            <div class="bulletin-actions">
-              <a href="${bulletin.viewLink}" target="_blank" class="bulletin-btn view-btn">
-                📖 온라인으로 보기
-              </a>
-              <a href="${bulletin.downloadLink}" target="_blank" class="bulletin-btn download-btn">
-                📥 다운로드
-              </a>
-            </div>
+    loadBulletinData().then(bulletins => {
+      const grid = document.getElementById('bulletin-list');
+      
+      if (bulletins.length === 0) {
+        grid.innerHTML = '<p>등록된 주보가 없습니다.</p>';
+        return;
+      }
+
+      grid.innerHTML = bulletins.map(bulletin => `
+        <div class="bulletin-card">
+          <div class="bulletin-date">${bulletin.date}</div>
+          <h3 class="bulletin-title">${bulletin.name}</h3>
+          <div class="bulletin-actions">
+            <a href="${bulletin.viewLink}" target="_blank" class="bulletin-btn view-btn">
+              📖 온라인으로 보기
+            </a>
+            <a href="${bulletin.downloadLink}" target="_blank" class="bulletin-btn download-btn">
+              📥 다운로드
+            </a>
           </div>
-        `).join('');
-      })
-      .catch(error => {
-        console.error('주보 데이터 로드 실패:', error);
-        document.getElementById('bulletin-list').innerHTML = 
-          '<p>주보 데이터를 불러올 수 없습니다. 잠시 후 다시 시도해주세요.</p>';
-      });
+        </div>
+      `).join('');
+
+      // 더보기/슬라이드 다운 기능 (설교 페이지와 동일한 로직)
+      const cards = grid.querySelectorAll('.bulletin-card');
+      const btn = document.getElementById('toggle-bulletin-list');
+      let expanded = false;
+
+      function getCardHeight(n) {
+        if (cards.length === 0) return 0;
+        const card = cards[0];
+        const style = window.getComputedStyle(grid);
+        const gap = parseFloat(style.gap) || 0;
+        // 한 줄에 몇 개가 들어가는지 동적으로 계산
+        const cardsPerRow = Math.floor(grid.offsetWidth / card.offsetWidth) || 1;
+        const rowCount = Math.ceil(n / cardsPerRow);
+        const cardHeight = card.offsetHeight;
+        if (cardHeight === 0) {
+          return (250 + gap) * rowCount; 
+        }
+        return rowCount * cardHeight + (rowCount - 1) * gap + 20;
+      }
+
+      function updateView() {
+        if (expanded) {
+          grid.style.maxHeight = getCardHeight(cards.length) + 'px';
+        } else {
+          grid.style.maxHeight = getCardHeight(6) + 'px'; // 처음에는 6개만 보이게
+        }
+        btn.setAttribute('aria-label', expanded ? '접기' : '더보기');
+        btn.classList.toggle('open', expanded);
+      }
+
+      // 이벤트 리스너가 중복으로 등록되지 않도록 한 번만 실행
+      if (!btn.dataset.listenerAttached) {
+          btn.addEventListener('click', function() {
+            expanded = !expanded;
+            updateView();
+          });
+          window.addEventListener('resize', () => updateView());
+          btn.dataset.listenerAttached = 'true';
+      }
+      
+      // 최초 6개만 보이게 설정
+      updateView();
+    }).catch(error => {
+      console.error('주보 데이터 로드 실패:', error);
+      document.getElementById('bulletin-list').innerHTML = 
+        '<p>주보 데이터를 불러올 수 없습니다. 잠시 후 다시 시도해주세요.</p>';
+    });
   </script>
 
   <style>
@@ -72,6 +131,9 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin-top: 1.5rem;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out;
+      max-height: 600px; /* 초기 높이 설정 */
     }
 
     .bulletin-card {
@@ -132,6 +194,24 @@
 
     .download-btn:hover {
       background: #7f8c8d;
+    }
+
+    /* 설교 페이지와 동일한 더보기 버튼 스타일 */
+    #toggle-bulletin-list {
+      color: #666;
+      transition: transform 0.3s ease;
+    }
+
+    #toggle-bulletin-list:hover {
+      color: #333;
+    }
+
+    #toggle-bulletin-list.open #arrow-icon {
+      transform: rotate(180deg);
+    }
+
+    #arrow-icon {
+      transition: transform 0.3s ease;
     }
 
     @media (max-width: 768px) {
