@@ -1,4 +1,4 @@
-name: Update sermons.json weekly
+name: Update sermons and bulletins weekly
 
 on:
   schedule:
@@ -32,10 +32,14 @@ jobs:
           echo "YT_API_KEY length: ${#YT_API_KEY}"
           echo "YT_PLAYLIST_GENESIS: $YT_PLAYLIST_GENESIS"
           echo "YT_PLAYLIST_SPECIAL: $YT_PLAYLIST_SPECIAL"
+          echo "DRIVE_API_KEY length: ${#DRIVE_API_KEY}"
+          echo "DRIVE_FOLDER_ID: $DRIVE_FOLDER_ID"
         env:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
           YT_PLAYLIST_GENESIS: ${{ secrets.YT_PLAYLIST_GENESIS }}
           YT_PLAYLIST_SPECIAL: ${{ secrets.YT_PLAYLIST_SPECIAL }}
+          DRIVE_API_KEY: ${{ secrets.DRIVE_API_KEY }}
+          DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
       
       - name: Update sermons.json
         run: node scripts/update_sermons.mjs
@@ -44,14 +48,20 @@ jobs:
           YT_PLAYLIST_GENESIS: ${{ secrets.YT_PLAYLIST_GENESIS }}
           YT_PLAYLIST_SPECIAL: ${{ secrets.YT_PLAYLIST_SPECIAL }}
       
+      - name: Update bulletins.json
+        run: node scripts/update_bulletins.mjs
+        env:
+          DRIVE_API_KEY: ${{ secrets.DRIVE_API_KEY }}
+          DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
+      
       - name: Check for changes
         id: changes
         run: |
-          if git diff --quiet sermons.json; then
+          if git diff --quiet sermons.json bulletins.json; then
             echo "변경사항이 없습니다."
             echo "changed=false" >> $GITHUB_OUTPUT
           else
-            echo "sermons.json이 업데이트되었습니다."
+            echo "데이터 파일이 업데이트되었습니다."
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
       
@@ -60,16 +70,16 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sermons.json
-          git commit -m "chore: weekly update sermons.json 📺"
+          git add sermons.json bulletins.json
+          git commit -m "chore: weekly update sermons & bulletins 📺📋"
           git push origin main
       
       - name: Create summary
         run: |
-          echo "## 📺 설교 데이터 업데이트 완료" >> $GITHUB_STEP_SUMMARY
+          echo "## 📺📋 설교 & 주보 데이터 업데이트 완료" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           if [ "${{ steps.changes.outputs.changed }}" == "true" ]; then
-            echo "✅ sermons.json이 최신 YouTube 데이터로 업데이트되었습니다." >> $GITHUB_STEP_SUMMARY
+            echo "✅ sermons.json과 bulletins.json이 최신 데이터로 업데이트되었습니다." >> $GITHUB_STEP_SUMMARY
           else
             echo "ℹ️ 변경사항이 없어 업데이트를 건너뛰었습니다." >> $GITHUB_STEP_SUMMARY
           fi
