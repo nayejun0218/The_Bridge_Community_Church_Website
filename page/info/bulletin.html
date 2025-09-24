@@ -13,12 +13,13 @@
     <section class="bulletin">
       <h2>주보 보기</h2>
       <div class="bulletin-content">
-        <p>주간/월간 교회 주보를 PDF 등으로 확인하실 수 있습니다.</p>
-        <ul>
-          <li><a href="#">2024년 6월 4주 주보 (PDF)</a></li>
-          <li><a href="#">2024년 6월 3주 주보 (PDF)</a></li>
-        </ul>
-        <p>과거 주보도 아카이브로 제공할 수 있습니다.</p>
+        <p>주간/월간 교회 주보를 PDF로 확인하실 수 있습니다.</p>
+        <div id="bulletin-list" class="bulletin-grid">
+          <p>주보 데이터를 불러오는 중...</p>
+        </div>
+        <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">
+          💡 주보가 보이지 않으시면 브라우저에서 PDF 뷰어를 활성화해주세요.
+        </p>
       </div>
     </section>
   </main>
@@ -31,6 +32,121 @@
     fetch('/footer.html')
       .then(res => res.text())
       .then(data => { document.getElementById('footer').innerHTML = data; });
+
+    // 주보 데이터 로드 (GitHub Actions로 자동 업데이트된 JSON 사용)
+    fetch('/bulletins.json')
+      .then(res => res.json())
+      .then(bulletins => {
+        const container = document.getElementById('bulletin-list');
+        
+        if (bulletins.length === 0) {
+          container.innerHTML = '<p>등록된 주보가 없습니다.</p>';
+          return;
+        }
+
+        container.innerHTML = bulletins.map(bulletin => `
+          <div class="bulletin-card">
+            <div class="bulletin-date">${bulletin.date}</div>
+            <h3 class="bulletin-title">${bulletin.name}</h3>
+            <div class="bulletin-actions">
+              <a href="${bulletin.viewLink}" target="_blank" class="bulletin-btn view-btn">
+                📖 온라인으로 보기
+              </a>
+              <a href="${bulletin.downloadLink}" target="_blank" class="bulletin-btn download-btn">
+                📥 다운로드
+              </a>
+            </div>
+          </div>
+        `).join('');
+      })
+      .catch(error => {
+        console.error('주보 데이터 로드 실패:', error);
+        document.getElementById('bulletin-list').innerHTML = 
+          '<p>주보 데이터를 불러올 수 없습니다. 잠시 후 다시 시도해주세요.</p>';
+      });
   </script>
+
+  <style>
+    .bulletin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .bulletin-card {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .bulletin-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .bulletin-date {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .bulletin-title {
+      color: #2c3e50;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .bulletin-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .bulletin-btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .view-btn {
+      background: #3498db;
+      color: white;
+    }
+
+    .view-btn:hover {
+      background: #2980b9;
+    }
+
+    .download-btn {
+      background: #95a5a6;
+      color: white;
+    }
+
+    .download-btn:hover {
+      background: #7f8c8d;
+    }
+
+    @media (max-width: 768px) {
+      .bulletin-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .bulletin-actions {
+        flex-direction: column;
+      }
+      
+      .bulletin-btn {
+        text-align: center;
+      }
+    }
+  </style>
 </body>
 </html> 
