@@ -35,8 +35,6 @@ async function fetchVideoStats(videoIds) {
     data.items.forEach(item => {
       stats[item.id] = {
         viewCount: parseInt(item.statistics.viewCount || 0),
-        likeCount: parseInt(item.statistics.likeCount || 0),
-        commentCount: parseInt(item.statistics.commentCount || 0)
       };
     });
     
@@ -181,8 +179,6 @@ async function updateSermons() {
       return {
         ...item,
         viewCount: stats?.viewCount || 0,
-        likeCount: stats?.likeCount || 0,
-        commentCount: stats?.commentCount || 0
       };
     });
 
