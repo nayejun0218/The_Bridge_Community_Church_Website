@@ -106,10 +106,18 @@
     
     // 드래그 관련 변수들
     let isDragging = false;
+    let isActuallyDragging = false; // 실제 드래그 중인지 확인
     let startX = 0;
+    let startY = 0;
     let scrollLeft = 0;
     let dragStartIndex = 0;
     let currentSlider = null;
+    const DRAG_THRESHOLD = 5; // 5px 이상 움직여야 드래그로 간주
+    
+    // 스크롤 관련 변수
+    let currentScrollPosition = { sermon: 0, shorts: 0 }; // 픽셀 단위 스크롤 위치
+    const SCROLL_SENSITIVITY = 1; // 스크롤 감도 (1은 1:1 매핑)
+    let scrollEndTimeout = { sermon: null, shorts: null }; // 스크롤 종료 감지용
 
     function getCardsPerPage() {
       if (window.innerWidth <= 700) return 1;
@@ -120,14 +128,18 @@
     // 드래그 시작
     function handleDragStart(e, sliderType) {
       isDragging = true;
+      isActuallyDragging = false; // 아직 실제 드래그는 아님
       currentSlider = sliderType;
       startX = e.pageX || e.touches[0].pageX;
+      startY = e.pageY || e.touches[0].pageY;
       dragStartIndex = sliderType === 'sermon' ? currentIndex : currentShortsIndex;
       
       const slider = document.getElementById(sliderType === 'sermon' ? 'sermon-cards' : 'shorts-cards');
       slider.style.cursor = 'grabbing';
       slider.style.userSelect = 'none';
       slider.classList.add('dragging');
+      
+      // 초기에는 카드 클릭을 막지 않음 (실제 드래그가 시작되면 막을 예정)
       
       // 전환 애니메이션 비활성화
       const track = slider.querySelector('.bible-series-slider-track');
@@ -140,9 +152,31 @@
     function handleDragMove(e) {
       if (!isDragging || !currentSlider) return;
       
-      e.preventDefault();
       const currentX = e.pageX || e.touches[0].pageX;
+      const currentY = e.pageY || e.touches[0].pageY;
       const deltaX = currentX - startX;
+      const deltaY = currentY - startY;
+      
+      // 드래그 거리 계산
+      const dragDistance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+      
+      // 임계값을 넘으면 실제 드래그로 간주
+      if (!isActuallyDragging && dragDistance > DRAG_THRESHOLD) {
+        isActuallyDragging = true;
+        e.preventDefault();
+        
+        // 실제 드래그가 시작되면 카드 클릭 비활성화
+        const slider = document.getElementById(currentSlider === 'sermon' ? 'sermon-cards' : 'shorts-cards');
+        const cardLinks = slider.querySelectorAll('.sermon-card-link');
+        cardLinks.forEach(link => {
+          link.style.pointerEvents = 'none';
+        });
+      }
+      
+      // 실제 드래그 중일 때만 슬라이더 이동
+      if (!isActuallyDragging) return;
+      
+      e.preventDefault();
       
       const track = document.querySelector(currentSlider === 'sermon' ? 
         '.bible-series-slider-track:not(.shorts-slider-track)' : 
@@ -204,6 +238,21 @@
       slider.style.userSelect = 'auto';
       slider.classList.remove('dragging');
       
+      // 카드 클릭 다시 활성화 (실제 드래그했든 안했든 항상 복원)
+      const cardLinks = slider.querySelectorAll('.sermon-card-link');
+      cardLinks.forEach(link => {
+        link.style.pointerEvents = 'auto';
+      });
+      
+      // 실제로 드래그했을 때만 슬라이더 위치 업데이트
+      if (!isActuallyDragging) {
+        // 단순 클릭이었다면 슬라이더 처리 안함 (링크 이동 허용)
+        isDragging = false;
+        currentSlider = null;
+        isActuallyDragging = false;
+        return;
+      }
+      
       if (track && track.children.length > 0) {
         // 전환 애니메이션 다시 활성화 (이동 거리에 따라 애니메이션 시간 조정)
         const dragDistance = Math.abs(deltaX);
@@ -256,6 +305,119 @@
       
       isDragging = false;
       currentSlider = null;
+      isActuallyDragging = false;
+    }
+
+    // 마우스 휠 스크롤 핸들러 (실시간 스크롤)
+    function handleWheelScroll(e, sliderType) {
+      e.preventDefault(); // 페이지 스크롤 방지
+      
+      const container = document.getElementById(sliderType === 'sermon' ? 'sermon-cards' : 'shorts-cards');
+      const track = container.querySelector('.bible-series-slider-track');
+      
+      if (!track || !track.children.length) return;
+      
+      // 스크롤 방향 감지 (deltaX: 가로 스크롤, deltaY: 세로 스크롤)
+      const deltaX = e.deltaX;
+      const deltaY = e.deltaY;
+      
+      // 가로 스크롤이 더 강하면 가로 스크롤 우선, 아니면 세로 스크롤 사용
+      const scrollDelta = Math.abs(deltaX) > Math.abs(deltaY) ? deltaX : deltaY;
+      
+      // 현재 스크롤 위치 업데이트
+      const currentPos = currentScrollPosition[sliderType];
+      const newScrollPos = currentPos + (scrollDelta * SCROLL_SENSITIVITY);
+      
+      // 슬라이더 경계 계산
+      const cardWidth = track.children[0].offsetWidth;
+      const cardsPerPage = getCardsPerPage();
+      const totalCards = sliderType === 'sermon' ? 
+        cardsData.length + 1 : shortsData.length + 1; // +1 for "더 보러가기" 카드
+      const maxScrollPos = Math.max(0, (totalCards - cardsPerPage) * cardWidth);
+      
+      // 경계 내에서 스크롤 위치 제한
+      const boundedScrollPos = Math.max(0, Math.min(maxScrollPos, newScrollPos));
+      
+      // 스크롤 위치 저장
+      currentScrollPosition[sliderType] = boundedScrollPos;
+      
+      // 실시간으로 슬라이더 이동 (애니메이션 없이)
+      track.style.transition = 'none';
+      track.style.transform = `translateX(-${boundedScrollPos}px)`;
+      
+      // 카드 인덱스 업데이트 (스냅 효과를 위해)
+      const newIndex = Math.round(boundedScrollPos / cardWidth);
+      if (sliderType === 'sermon') {
+        currentIndex = newIndex;
+      } else {
+        currentShortsIndex = newIndex;
+      }
+      
+      // 버튼 상태 업데이트
+      updateSliderButtons(sliderType, newIndex, totalCards, cardsPerPage);
+      
+      // 스크롤 종료 감지 및 스냅 효과
+      if (scrollEndTimeout[sliderType]) {
+        clearTimeout(scrollEndTimeout[sliderType]);
+      }
+      
+      scrollEndTimeout[sliderType] = setTimeout(() => {
+        snapToNearestCard(sliderType);
+      }, 150); // 150ms 후 스냅
+    }
+    
+    // 가장 가까운 카드로 스냅하는 함수
+    function snapToNearestCard(sliderType) {
+      const container = document.getElementById(sliderType === 'sermon' ? 'sermon-cards' : 'shorts-cards');
+      const track = container.querySelector('.bible-series-slider-track');
+      
+      if (!track || !track.children.length) return;
+      
+      const cardWidth = track.children[0].offsetWidth;
+      const currentPos = currentScrollPosition[sliderType];
+      const nearestIndex = Math.round(currentPos / cardWidth);
+      const targetPos = nearestIndex * cardWidth;
+      
+      // 경계 확인
+      const cardsPerPage = getCardsPerPage();
+      const totalCards = sliderType === 'sermon' ? 
+        cardsData.length + 1 : shortsData.length + 1;
+      const maxIndex = Math.max(0, totalCards - cardsPerPage);
+      const boundedIndex = Math.max(0, Math.min(maxIndex, nearestIndex));
+      const boundedPos = boundedIndex * cardWidth;
+      
+      // 스냅 애니메이션
+      if (Math.abs(currentPos - boundedPos) > 1) { // 1px 이상 차이날 때만 스냅
+        currentScrollPosition[sliderType] = boundedPos;
+        
+        track.style.transition = 'transform 0.3s ease-out';
+        track.style.transform = `translateX(-${boundedPos}px)`;
+        
+        // 인덱스 업데이트
+        if (sliderType === 'sermon') {
+          currentIndex = boundedIndex;
+        } else {
+          currentShortsIndex = boundedIndex;
+        }
+        
+        // 버튼 상태 재업데이트
+        updateSliderButtons(sliderType, boundedIndex, totalCards, cardsPerPage);
+      }
+    }
+    
+    // 슬라이더 버튼 상태 업데이트 함수
+    function updateSliderButtons(sliderType, currentIdx, totalCards, cardsPerPage) {
+      if (sliderType === 'sermon') {
+        const prevBtn = document.querySelector('.slider-prev');
+        const nextBtn = document.querySelector('.slider-next');
+        if (prevBtn) prevBtn.disabled = currentIdx === 0;
+        if (nextBtn) nextBtn.disabled = currentIdx + cardsPerPage >= totalCards;
+      } else {
+        const prevBtn = document.querySelector('.slider-prev-shorts');
+        const nextBtn = document.querySelector('.slider-next-shorts');
+        if (prevBtn) prevBtn.disabled = currentIdx === 0;
+        if (nextBtn) nextBtn.disabled = currentIdx + cardsPerPage >= totalCards;
+      }
     }
 
     function setupSlider() {
@@ -265,7 +427,7 @@
       track.className = 'bible-series-slider-track';
       
       const sermonCards = cardsData.map(card => `
-        <a href="${card.url}" target="_blank" class="sermon-card-link" onclick="return !isDragging">
+        <a href="${card.url}" target="_blank" class="sermon-card-link" onclick="return !isActuallyDragging;">
           <div class="sermon-card">
             <div class="sermon-thumb-wrap">
               <img class="sermon-thumb" src="${card.thumb}" alt="썸네일" draggable="false">
@@ -282,7 +444,7 @@
       
       // "더 보러가기" 카드 추가
       const moreCard = `
-        <a href="/page/ministry/sermon.html" class="sermon-card-link more-card-link" onclick="return !isDragging">
+        <a href="/page/ministry/sermon.html" class="sermon-card-link more-card-link" onclick="return !isActuallyDragging;">
           <div class="sermon-card more-card">
             <div class="more-card-content">
               <div class="more-icon">📖</div>
@@ -302,6 +464,37 @@
       container.addEventListener('touchstart', (e) => handleDragStart(e, 'sermon'));
       container.style.cursor = 'grab';
       
+      // 마우스 휠 스크롤 이벤트 추가
+      container.addEventListener('wheel', (e) => handleWheelScroll(e, 'sermon'), { passive: false });
+      
+      // 카드 클릭 이벤트 추가
+      setTimeout(() => {
+        // 유튜브 영상 카드 클릭 이벤트
+        const sermonCardLinks = container.querySelectorAll('.sermon-card-link:not(.more-card-link)');
+        sermonCardLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            if (!isActuallyDragging) {
+              const href = link.getAttribute('href');
+              if (href) {
+                window.open(href, '_blank');
+              }
+            }
+            e.stopPropagation();
+          });
+        });
+        
+        // "더 보러가기" 카드 클릭 이벤트
+        const moreCardLink = container.querySelector('.more-card-link');
+        if (moreCardLink) {
+          moreCardLink.addEventListener('click', (e) => {
+            if (!isActuallyDragging) {
+              window.location.href = '/page/ministry/sermon.html';
+            }
+            e.stopPropagation();
+          });
+        }
+      }, 100);
+      
       updateSlider();
     }
 
@@ -312,7 +505,7 @@
       track.className = 'bible-series-slider-track shorts-slider-track';
       
       const shortsCards = shortsData.map(card => `
-        <a href="${card.url}" target="_blank" class="sermon-card-link" onclick="return !isDragging">
+        <a href="${card.url}" target="_blank" class="sermon-card-link" onclick="return !isActuallyDragging;">
           <div class="sermon-card">
             <div class="sermon-thumb-wrap">
               <img class="sermon-thumb" src="${card.thumb}" alt="썸네일" draggable="false">
@@ -329,7 +522,7 @@
       
       // "더 보러가기" 카드 추가
       const shortsMoreCard = `
-        <a href="/page/ministry/sermon.html" class="sermon-card-link more-card-link" onclick="return !isDragging">
+        <a href="/page/ministry/sermon.html" class="sermon-card-link more-card-link" onclick="return !isActuallyDragging;">
           <div class="sermon-card more-card">
             <div class="more-card-content">
               <div class="more-icon">🎬</div>
@@ -349,6 +542,37 @@
       container.addEventListener('touchstart', (e) => handleDragStart(e, 'shorts'));
       container.style.cursor = 'grab';
       
+      // 마우스 휠 스크롤 이벤트 추가
+      container.addEventListener('wheel', (e) => handleWheelScroll(e, 'shorts'), { passive: false });
+      
+      // 카드 클릭 이벤트 추가
+      setTimeout(() => {
+        // 유튜브 쇼츠 카드 클릭 이벤트
+        const shortsCardLinks = container.querySelectorAll('.sermon-card-link:not(.more-card-link)');
+        shortsCardLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            if (!isActuallyDragging) {
+              const href = link.getAttribute('href');
+              if (href) {
+                window.open(href, '_blank');
+              }
+            }
+            e.stopPropagation();
+          });
+        });
+        
+        // "더 보러가기" 카드 클릭 이벤트
+        const shortsMoreCardLink = container.querySelector('.more-card-link');
+        if (shortsMoreCardLink) {
+          shortsMoreCardLink.addEventListener('click', (e) => {
+            if (!isActuallyDragging) {
+              window.location.href = '/page/ministry/sermon.html';
+            }
+            e.stopPropagation();
+          });
+        }
+      }, 100);
+      
       updateShortsSlider();
     }
 
@@ -357,7 +581,13 @@
       if (!track || !track.children.length) return;
 
       const cardWidth = track.children[0].offsetWidth;
-      track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+      const targetPos = currentIndex * cardWidth;
+      
+      // 스크롤 위치 동기화
+      currentScrollPosition.sermon = targetPos;
+      
+      track.style.transition = 'transform 0.5s ease-in-out';
+      track.style.transform = `translateX(-${targetPos}px)`;
       
       const cardsPerPage = getCardsPerPage();
       const totalCards = cardsData.length + 1; // +1 for "더 보러가기" 카드
@@ -370,7 +600,13 @@
       if (!track || !track.children.length) return;
 
       const cardWidth = track.children[0].offsetWidth;
-      track.style.transform = `translateX(-${currentShortsIndex * cardWidth}px)`;
+      const targetPos = currentShortsIndex * cardWidth;
+      
+      // 스크롤 위치 동기화
+      currentScrollPosition.shorts = targetPos;
+      
+      track.style.transition = 'transform 0.5s ease-in-out';
+      track.style.transform = `translateX(-${targetPos}px)`;
       
       const cardsPerPage = getCardsPerPage();
       const totalShortsCards = shortsData.length + 1; // +1 for "더 보러가기" 카드
