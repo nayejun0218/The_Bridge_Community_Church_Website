@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>선교지 후원 - The Bridge Community Church</title>
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/page.css">
+</head>
+<body>
+  <div id="header"></div>
+  <main class="preview-main">
+    <!-- 1. 타이틀/소개 -->
+    <section class="preview-hero">
+      <div class="preview-hero-text">
+        <h1>선교지 후원</h1>
+      </div>
+    </section>
+
+    <!-- 2. 선교지 후원 안내 -->
+    <section class="preview-section">
+      <h2>교회가 섬기는 선교지</h2>
+      <div class="volunteer-times">
+        <div class="volunteer-item">
+          <h3>이정주 선교사</h3>
+          <p class="volunteer-location">베트남 호치민</p>
+          <p class="volunteer-desc">현지 교회 개척과 복음 전파 사역</p>
+        </div>
+        <div class="volunteer-item">
+          <h3>히 엔 선교사</h3>
+          <p class="volunteer-location">베트남 호치민</p>
+          <p class="volunteer-desc">현지인 목회자 양성과 제자 훈련</p>
+        </div>
+        <div class="volunteer-item">
+          <h3>오승욱 선교사</h3>
+          <p class="volunteer-location">캄보디아 은혜교회</p>
+          <p class="volunteer-desc">지역 교회 섬김과 청년 사역</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 후원 참여 안내 -->
+    <section class="preview-section">
+      <h2>후원 참여 안내</h2>
+      <div class="preview-twocol">
+        <div class="preview-twocol-desc">
+          <h3>🌍 선교 후원의 의미</h3>
+          <p>선교지 후원은 단순한 물질적 지원을 넘어, 하나님의 사랑을 전하는 동역의 의미입니다.</p>
+          
+          <h3>💝 후원 방법</h3>
+          <p>정기후원과 특별후원을 통해 선교사님들의 사역을 함께 지원할 수 있습니다.</p>
+          
+          <h3>🙏 기도 후원</h3>
+          <p>물질적 후원과 함께 선교사님들과 선교지를 위한 기도도 소중한 후원입니다.</p>
+        </div>
+        <div class="preview-twocol-img">
+          <div class="volunteer-welcome-box">
+            <h3>후원 참여 방법</h3>
+            <ul>
+              <li>✅ 교회 헌금 봉투에 '선교 후원' 기재</li>
+              <li>✅ 계좌 이체로 정기 후원</li>
+              <li>✅ 특별한 날 특별 후원</li>
+              <li>✅ 선교사 편지와 소식 나눔</li>
+            </ul>
+            <div class="contact-info">
+              <p><strong>📞 문의:</strong> 교회 사무실</p>
+              <p><strong>💳 후원 계좌:</strong> 별도 안내</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script>
+    fetch('/header.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('header').innerHTML = data; });
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('footer').innerHTML = data; });
+  </script>
+  <script src="/main.js"></script>
+
+  <style>
+    /* 선교지 후원 카드 그리드 */
+    .volunteer-times {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .volunteer-item {
+      background: #f8f9fa;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(44,62,80,0.07);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .volunteer-item:hover {
+      transform: translateY(-3px) scale(1.015);
+      box-shadow: 0 6px 32px rgba(44,62,80,0.13);
+      background: #e9eef2;
+    }
+
+    .volunteer-item h3 {
+      color: #2c3e50;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .volunteer-location {
+      font-size: 1.5rem !important;
+      font-weight: 700;
+      color: #27ae60;
+      margin: 1rem 0;
+    }
+
+    .volunteer-desc {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    /* 후원 안내 박스 스타일 */
+    .volunteer-welcome-box {
+      background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 25px rgba(39,174,96,0.3);
+    }
+
+    .volunteer-welcome-box h3 {
+      color: white;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    .volunteer-welcome-box ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .volunteer-welcome-box li {
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .contact-info {
+      background: rgba(255,255,255,0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    .contact-info p {
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+      .volunteer-times {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .volunteer-item {
+        padding: 1.5rem;
+      }
+      
+      .volunteer-location {
+        font-size: 1.3rem !important;
+      }
+      
+      .preview-twocol {
+        flex-direction: column;
+      }
+      
+      .volunteer-welcome-box {
+        margin-top: 1.5rem;
+      }
+    }
+  </style>
+</body>
+</html> 

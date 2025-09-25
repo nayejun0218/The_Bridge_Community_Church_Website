@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>예배시간 안내 - The Bridge Community Church</title>
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/page.css">
+</head>
+<body>
+  <div id="header"></div>
+  <main class="preview-main">
+    <!-- 1. 타이틀/소개 -->
+    <section class="preview-hero">
+      <div class="preview-hero-text">
+        <h1>예배시간 안내</h1>
+      </div>
+    </section>
+
+    <!-- 2. 예배시간 안내 -->
+    <section class="preview-section">
+      <h2>예배와 기도회 시간 안내</h2>
+      <div class="worship-times">
+        <div class="worship-item">
+          <h3>주일 예배</h3>
+          <p class="worship-time">오전 11:00</p>
+          <p class="worship-desc">매주 일요일 함께 드리는 주일예배</p>
+        </div>
+        <div class="worship-item">
+          <h3>새벽 기도회</h3>
+          <p class="worship-time">오전 6:00</p>
+          <p class="worship-desc">화요일~금요일 새벽 기도회</p>
+        </div>
+        <div class="worship-item">
+          <h3>금요 기도회</h3>
+          <p class="worship-time">오후 9:00</p>
+          <p class="worship-desc">매주 금요일 저녁 기도회</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 예배 안내 -->
+    <section class="preview-section">
+      <h2>예배 참여 안내</h2>
+      <div class="preview-twocol">
+        <div class="preview-twocol-desc">
+          <h3>🚗 오시는 길</h3>
+          <p>세종특별자치시 아름동에 위치한 저희 교회는 대중교통과 자가용 모두 편리하게 오실 수 있습니다.</p>
+          
+          <h3>👔 복장 안내</h3>
+          <p>편안한 복장으로 오시면 됩니다. 하나님 앞에 나아가는 정성된 마음이 가장 중요합니다.</p>
+          
+          <h3>👨‍👩‍👧‍👦 가족적인 예배</h3>
+          <p>모든 세대가 함께 드리는 예배로, 어린이부터 어르신까지 모두 환영합니다.</p>
+        </div>
+        <div class="preview-twocol-img">
+          <div class="worship-welcome-box">
+            <h3>처음 오시는 분들을 위해</h3>
+            <ul>
+              <li>✅ 예배 시간 10분 전 도착</li>
+              <li>✅ 입구에서 안내를 받으세요</li>
+              <li>✅ 궁금한 점은 언제든 문의</li>
+              <li>✅ 편안한 마음으로 참여</li>
+            </ul>
+            <div class="contact-info">
+              <p><strong>📞 문의:</strong> 교회 사무실</p>
+              <p><strong>📍 위치:</strong> 세종시 아름동</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script src="/main.js"></script>
+  <script>
+    fetch('/header.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('header').innerHTML = data; });
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('footer').innerHTML = data; });
+  </script>
+
+  <style>
+    /* 예배시간 카드 그리드 */
+    .worship-times {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .worship-item {
+      background: #f8f9fa;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(44,62,80,0.07);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .worship-item:hover {
+      transform: translateY(-3px) scale(1.015);
+      box-shadow: 0 6px 32px rgba(44,62,80,0.13);
+      background: #e9eef2;
+    }
+
+    .worship-item h3 {
+      color: #2c3e50;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .worship-time {
+      font-size: 1.5rem !important;
+      font-weight: 700;
+      color: #e74c3c;
+      margin: 1rem 0;
+    }
+
+    .worship-desc {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    /* 환영 박스 스타일 */
+    .worship-welcome-box {
+      background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 25px rgba(52,152,219,0.3);
+    }
+
+    .worship-welcome-box h3 {
+      color: white;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    .worship-welcome-box ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .worship-welcome-box li {
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .contact-info {
+      background: rgba(255,255,255,0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    .contact-info p {
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+      .worship-times {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .worship-item {
+        padding: 1.5rem;
+      }
+      
+      .worship-time {
+        font-size: 1.3rem !important;
+      }
+      
+      .preview-twocol {
+        flex-direction: column;
+      }
+      
+      .worship-welcome-box {
+        margin-top: 1.5rem;
+      }
+    }
+  </style>
+</body>
+</html> 

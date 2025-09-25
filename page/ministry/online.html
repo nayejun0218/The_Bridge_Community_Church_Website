@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>온라인 사역 - The Bridge Community Church</title>
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/page.css">
+</head>
+<body>
+  <div id="header"></div>
+  <main class="preview-main">
+    <!-- 1. 타이틀/소개 -->
+    <section class="preview-hero">
+      <div class="preview-hero-text">
+        <h1>온라인 사역</h1>
+      </div>
+    </section>
+
+    <!-- 2. 온라인에서 더 가까이 -->
+    <section class="preview-section">
+      <h2>온라인에서 더 가까이</h2>
+      <div class="online-ministry-cards">
+        <a href="https://www.youtube.com/@TheBridgeCommunity__Church/videos" target="_blank" class="online-card-link">
+          <div class="online-card">
+            <img src="/images/logo/youtube-logo.png" alt="유튜브" class="online-logo">
+            <h3>YouTube 채널</h3>
+            <p class="online-desc">▶ 이번 주 설교 말씀 바로가기</p>
+            <p class="online-detail">매주 업데이트되는 설교 말씀과 특별 영상을 만나보세요</p>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/thebridgecommunity__church/" target="_blank" class="online-card-link">
+          <div class="online-card">
+            <img src="/images/logo/instagram_logo.png" alt="인스타그램" class="online-logo">
+            <h3>Instagram</h3>
+            <p class="online-desc">❤️ 교회 일상/소식 보기</p>
+            <p class="online-detail">교회의 따뜻한 일상과 최신 소식을 실시간으로 확인하세요</p>
+          </div>
+        </a>
+        <a href="https://blog.naver.com/atomnkt" target="_blank" class="online-card-link">
+          <div class="online-card">
+            <img src="/images/logo/naverblog_logo.png" alt="네이버 블로그" class="online-logo">
+            <h3>네이버 블로그</h3>
+            <p class="online-desc">✍️ 교회 소식 및 칼럼</p>
+            <p class="online-detail">목회자의 깊이 있는 글과 교회 소식을 자세히 읽어보세요</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 3. 온라인 사역 안내 -->
+    <section class="preview-section">
+      <h2>온라인 사역 참여 방법</h2>
+      <div class="preview-twocol">
+        <div class="preview-twocol-desc">
+          <h3>📱 구독 및 알림 설정</h3>
+          <p>YouTube 채널 구독과 Instagram 팔로우로 새로운 콘텐츠를 가장 먼저 만나보세요.</p>
+          
+          <h3>💬 소통 참여</h3>
+          <p>댓글과 메시지를 통해 궁금한 점을 언제든 문의하고 소통할 수 있습니다.</p>
+          
+          <h3>🔗 콘텐츠 나눔</h3>
+          <p>좋은 콘텐츠를 가족, 친구들과 함께 나누어 복음을 전하는 일에 동참하세요.</p>
+        </div>
+        <div class="preview-twocol-img">
+          <div class="online-welcome-box">
+            <h3>온라인으로 함께하기</h3>
+            <ul>
+              <li>🔔 YouTube 구독 및 알림 설정</li>
+              <li>❤️ Instagram 팔로우 및 좋아요</li>
+              <li>📖 네이버 블로그 이웃 추가</li>
+              <li>📤 콘텐츠 공유 및 전도</li>
+              <li>💬 댓글로 소통 참여</li>
+            </ul>
+            <div class="contact-info">
+              <p><strong>📧 온라인 문의:</strong> 각 플랫폼 메시지</p>
+              <p><strong>⏰ 업데이트:</strong> 매주 정기 업로드</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 온라인 예배 안내 -->
+    <section class="preview-section">
+      <h2>온라인 예배 참여</h2>
+      <div class="online-worship-info">
+        <div class="online-worship-item">
+          <h3>🎥 실시간 예배</h3>
+          <p class="online-time">매주 일요일 오전 11:00</p>
+          <p class="online-platform">YouTube 실시간 스트리밍</p>
+          <p class="online-note">현장 예배와 동시에 온라인으로 참여 가능</p>
+        </div>
+        <div class="online-worship-item">
+          <h3>📺 예배 다시보기</h3>
+          <p class="online-time">예배 후 언제든</p>
+          <p class="online-platform">YouTube 채널 업로드</p>
+          <p class="online-note">놓친 예배나 은혜받은 말씀을 다시 들으실 수 있습니다</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script src="/main.js"></script>
+  <script>
+    fetch('/header.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('header').innerHTML = data; });
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(data => { document.getElementById('footer').innerHTML = data; });
+  </script>
+
+  <style>
+    /* 설명 텍스트 스타일 */
+    .section-description {
+      text-align: center;
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    /* 온라인 사역 카드 그리드 */
+    .online-ministry-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .online-card-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .online-card {
+      background: #f8f9fa;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(44,62,80,0.07);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+      height: 100%;
+    }
+
+    .online-card:hover {
+      transform: translateY(-3px) scale(1.015);
+      box-shadow: 0 6px 32px rgba(44,62,80,0.13);
+      background: #e9eef2;
+    }
+
+    .online-logo {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+
+    .online-card h3 {
+      color: #2c3e50;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .online-desc {
+      font-size: 1.2rem !important;
+      font-weight: 600;
+      color: #e74c3c;
+      margin: 1rem 0;
+    }
+
+    .online-detail {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    /* 온라인 환영 박스 스타일 */
+    .online-welcome-box {
+      background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 25px rgba(155,89,182,0.3);
+    }
+
+    .online-welcome-box h3 {
+      color: white;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    .online-welcome-box ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .online-welcome-box li {
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .contact-info {
+      background: rgba(255,255,255,0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    .contact-info p {
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    /* 온라인 예배 정보 */
+    .online-worship-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .online-worship-item {
+      background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+      color: white;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(243,156,18,0.2);
+    }
+
+    .online-worship-item h3 {
+      color: white;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .online-time {
+      font-size: 1.5rem !important;
+      font-weight: 700;
+      margin: 1rem 0;
+    }
+
+    .online-platform {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin: 0.5rem 0;
+    }
+
+    .online-note {
+      font-size: 0.95rem;
+      margin-top: 1rem;
+      opacity: 0.9;
+      line-height: 1.4;
+    }
+
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+      .online-ministry-cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .online-card {
+        padding: 1.5rem;
+      }
+      
+      .online-logo {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .online-desc {
+        font-size: 1.1rem !important;
+      }
+      
+      .preview-twocol {
+        flex-direction: column;
+      }
+      
+      .online-welcome-box {
+        margin-top: 1.5rem;
+      }
+
+      .online-worship-info {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</body>
+</html>
