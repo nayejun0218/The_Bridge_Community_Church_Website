@@ -64,6 +64,31 @@ async function fetchPlaylistItems(playlistId, series) {
         sortDate = published;
       }
 
+      // Private video나 삭제된 영상 필터링
+      const invalidTitles = [
+        'Private video',
+        'Deleted video',
+        '[Private video]',
+        '[Deleted video]',
+        'This video is unavailable',
+        'Video unavailable'
+      ];
+      
+      // 제목이 유효하지 않은 경우 null 반환 (나중에 필터링됨)
+      if (!title || title.trim() === '') {
+        console.log(`⚠️  빈 제목 영상 필터링: ${videoId}`);
+        return null;
+      }
+      
+      // 금지된 제목들과 일치하는지 확인
+      const titleLower = title.toLowerCase();
+      if (invalidTitles.some(invalidTitle => 
+        titleLower.includes(invalidTitle.toLowerCase())
+      )) {
+        console.log(`⚠️  유효하지 않은 영상 필터링: ${title} (${videoId})`);
+        return null;
+      }
+
       return {
         url: `https://youtu.be/${videoId}`,
         thumb: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
@@ -91,9 +116,10 @@ async function updateSermons() {
   try {
     const results = await Promise.all(PLAYLISTS.map(p => fetchPlaylistItems(p.id, p.series)));
     
-    // 하나의 배열로 합치고 원본 발행 시각 기준 최신순 정렬(안정적)
+    // 하나의 배열로 합치고 null 값 필터링 후 원본 발행 시각 기준 최신순 정렬(안정적)
     const all = results
       .flat()
+      .filter(item => item !== null) // null 값 제거
       .sort((a, b) => {
         const ta = Date.parse(a.publishedAt || 0) || 0;
         const tb = Date.parse(b.publishedAt || 0) || 0;
