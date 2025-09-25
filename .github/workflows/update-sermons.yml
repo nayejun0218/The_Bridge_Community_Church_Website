@@ -32,12 +32,14 @@ jobs:
           echo "YT_API_KEY length: ${#YT_API_KEY}"
           echo "YT_PLAYLIST_GENESIS: $YT_PLAYLIST_GENESIS"
           echo "YT_PLAYLIST_SPECIAL: $YT_PLAYLIST_SPECIAL"
+          echo "YT_PLAYLIST_SHORTS: $YT_PLAYLIST_SHORTS"
           echo "DRIVE_API_KEY length: ${#DRIVE_API_KEY}"
           echo "DRIVE_FOLDER_ID: $DRIVE_FOLDER_ID"
         env:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
           YT_PLAYLIST_GENESIS: ${{ secrets.YT_PLAYLIST_GENESIS }}
           YT_PLAYLIST_SPECIAL: ${{ secrets.YT_PLAYLIST_SPECIAL }}
+          YT_PLAYLIST_SHORTS: ${{ secrets.YT_PLAYLIST_SHORTS }}
           DRIVE_API_KEY: ${{ secrets.DRIVE_API_KEY }}
           DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
       
@@ -47,6 +49,7 @@ jobs:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
           YT_PLAYLIST_GENESIS: ${{ secrets.YT_PLAYLIST_GENESIS }}
           YT_PLAYLIST_SPECIAL: ${{ secrets.YT_PLAYLIST_SPECIAL }}
+          YT_PLAYLIST_SHORTS: ${{ secrets.YT_PLAYLIST_SHORTS }}
       
       - name: Update bulletins.json
         run: node scripts/update_bulletins.mjs
