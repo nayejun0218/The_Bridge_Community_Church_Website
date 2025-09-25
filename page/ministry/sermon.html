@@ -20,17 +20,17 @@
       <hr class="section-divider">
       <div class="sermon-series-grid" id="genesis-sermons"></div>
       <div class="sermon-section-title-wrap" style="display: flex; align-items: center; justify-content: space-between; margin-top:2.5rem;">
-        <div class="sermon-section-title">특별주일 설교</div>
-        <button id="toggle-special-list" style="background:none;border:none;cursor:pointer;font-size:2rem;line-height:1;outline:none;padding:0 0.5rem;" aria-label="더보기"><span id="special-arrow-icon">▼</span></button>
-      </div>
-      <hr class="section-divider">
-      <div class="sermon-series-grid" id="special-sermons"></div>
-      <div class="sermon-section-title-wrap" style="display: flex; align-items: center; justify-content: space-between; margin-top:2.5rem;">
         <div class="sermon-section-title">1분 말씀</div>
         <button id="toggle-shorts-list" style="background:none;border:none;cursor:pointer;font-size:2rem;line-height:1;outline:none;padding:0 0.5rem;" aria-label="더보기"><span id="shorts-arrow-icon">▼</span></button>
       </div>
       <hr class="section-divider">
       <div class="sermon-series-grid" id="shorts-sermons"></div>
+      <div class="sermon-section-title-wrap" style="display: flex; align-items: center; justify-content: space-between; margin-top:2.5rem;">
+        <div class="sermon-section-title">특별주일 설교</div>
+        <button id="toggle-special-list" style="background:none;border:none;cursor:pointer;font-size:2rem;line-height:1;outline:none;padding:0 0.5rem;" aria-label="더보기"><span id="special-arrow-icon">▼</span></button>
+      </div>
+      <hr class="section-divider">
+      <div class="sermon-series-grid" id="special-sermons"></div>
     </section>
   </main>
   <div id="footer"></div>
@@ -82,7 +82,7 @@
         gridId: 'shorts-sermons',
         toggleId: 'toggle-shorts-list',
         arrowId: 'shorts-arrow-icon',
-        initialCount: 6
+        initialCount: 4
       }
     ];
 
@@ -137,18 +137,6 @@
         const grid = document.getElementById(series.gridId);
         const seriesData = data.filter(card => card.series === series.name);
         
-        // 조회수를 포맷팅하는 함수
-        function formatViewCount(count) {
-          if (!count || count === 0) return '조회수 정보 없음';
-          if (count >= 1000000) {
-            return `${(count / 1000000).toFixed(1)}M회 조회`;
-          } else if (count >= 1000) {
-            return `${(count / 1000).toFixed(1)}K회 조회`;
-          } else {
-            return `${count}회 조회`;
-          }
-        }
-
         // 카드 렌더링
         grid.innerHTML = seriesData.map(card => `
           <a href="${card.url}" target="_blank" class="sermon-card-link">
@@ -160,9 +148,6 @@
               <div class="sermon-info">
                 <div class="sermon-title">${card.title}</div>
                 <div class="sermon-date">${card.date}</div>
-                <div class="sermon-stats">
-                  <span class="view-count"> ${formatViewCount(card.viewCount)}</span>
-                </div>
               </div>
               <span class="hover-text">${series.name === '1분 말씀' ? '쇼츠 바로가기' : '강해 바로가기'}</span>
             </div>

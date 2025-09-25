@@ -53,6 +53,15 @@
         <button class="slider-next">›</button>
       </div>
     </div>
+    <div class="bible-series-section" data-aos="fade-up">
+      <h2 class="bible-series-title" id="shorts-series-title">1분 말씀 시리즈</h2>
+      <hr>
+      <div class="bible-series-slider-wrapper">
+        <button class="slider-prev-shorts">‹</button>
+        <div id="shorts-cards" class="bible-series-slider"></div>
+        <button class="slider-next-shorts">›</button>
+      </div>
+    </div>
     <div class="bridge-social-section" data-aos="fade-up">
       <h2 class="bible-series-title">온라인에서 더 가까이</h2>
       <hr>
@@ -92,11 +101,161 @@
 
     let currentIndex = 0;
     let cardsData = [];
+    let currentShortsIndex = 0;
+    let shortsData = [];
+    
+    // 드래그 관련 변수들
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
+    let dragStartIndex = 0;
+    let currentSlider = null;
 
     function getCardsPerPage() {
       if (window.innerWidth <= 700) return 1;
       if (window.innerWidth <= 900) return 2;
       return 3;
+    }
+
+    // 드래그 시작
+    function handleDragStart(e, sliderType) {
+      isDragging = true;
+      currentSlider = sliderType;
+      startX = e.pageX || e.touches[0].pageX;
+      dragStartIndex = sliderType === 'sermon' ? currentIndex : currentShortsIndex;
+      
+      const slider = document.getElementById(sliderType === 'sermon' ? 'sermon-cards' : 'shorts-cards');
+      slider.style.cursor = 'grabbing';
+      slider.style.userSelect = 'none';
+      slider.classList.add('dragging');
+      
+      // 전환 애니메이션 비활성화
+      const track = slider.querySelector('.bible-series-slider-track');
+      if (track) {
+        track.style.transition = 'none';
+      }
+    }
+
+    // 드래그 중
+    function handleDragMove(e) {
+      if (!isDragging || !currentSlider) return;
+      
+      e.preventDefault();
+      const currentX = e.pageX || e.touches[0].pageX;
+      const deltaX = currentX - startX;
+      
+      const track = document.querySelector(currentSlider === 'sermon' ? 
+        '.bible-series-slider-track:not(.shorts-slider-track)' : 
+        '.shorts-slider-track');
+      
+      if (track && track.children.length > 0) {
+        // 실제 카드 너비 계산
+        const cardWidth = track.children[0].offsetWidth;
+        const currentIdx = currentSlider === 'sermon' ? currentIndex : currentShortsIndex;
+        const cardsPerPage = getCardsPerPage();
+        
+        // 총 카드 수와 최대 인덱스 계산
+        const totalCards = currentSlider === 'sermon' ? 
+          cardsData.length + 1 : shortsData.length + 1;
+        const maxIndex = Math.max(0, totalCards - cardsPerPage);
+        
+        // 드래그로 이동할 예상 칸 수 계산
+        const dragDistance = Math.abs(deltaX);
+        const cardsMoved = Math.round(dragDistance / cardWidth);
+        
+        // 예상 새 인덱스 계산
+        let projectedIndex = currentIdx;
+        if (deltaX > 0) {
+          // 오른쪽으로 드래그 (이전으로)
+          projectedIndex = Math.max(0, currentIdx - cardsMoved);
+        } else if (deltaX < 0) {
+          // 왼쪽으로 드래그 (다음으로)
+          projectedIndex = Math.min(maxIndex, currentIdx + cardsMoved);
+        }
+        
+        // 경계 처리 및 저항 효과
+        let limitedDeltaX = deltaX;
+        const beyondBoundary = (projectedIndex <= 0 && deltaX > 0) || 
+                              (projectedIndex >= maxIndex && deltaX < 0);
+        
+        if (beyondBoundary) {
+          // 경계를 넘어서면 저항 효과
+          limitedDeltaX = deltaX * 0.3;
+        }
+        
+        const baseTransform = currentIdx * cardWidth;
+        
+        // 실시간으로 마우스 움직임에 따라 슬라이더 이동
+        track.style.transform = `translateX(-${baseTransform - limitedDeltaX}px)`;
+      }
+    }
+
+    // 드래그 종료
+    function handleDragEnd(e) {
+      if (!isDragging || !currentSlider) return;
+      
+      const currentX = e.pageX || e.changedTouches[0].pageX;
+      const deltaX = currentX - startX;
+      
+      const slider = document.getElementById(currentSlider === 'sermon' ? 'sermon-cards' : 'shorts-cards');
+      const track = slider.querySelector('.bible-series-slider-track');
+      
+      slider.style.cursor = 'grab';
+      slider.style.userSelect = 'auto';
+      slider.classList.remove('dragging');
+      
+      if (track && track.children.length > 0) {
+        // 전환 애니메이션 다시 활성화 (이동 거리에 따라 애니메이션 시간 조정)
+        const dragDistance = Math.abs(deltaX);
+        const cardWidth = track.children[0].offsetWidth;
+        const cardsMoved = Math.round(dragDistance / cardWidth);
+        const animationDuration = Math.min(0.5, Math.max(0.2, cardsMoved * 0.15));
+        track.style.transition = `transform ${animationDuration}s ease-out`;
+        
+        // 카드 페이지 계산
+        const cardsPerPage = getCardsPerPage();
+        const minThreshold = cardWidth * 0.2; // 최소 20% 드래그해야 이동
+        
+        let newIndex;
+        if (currentSlider === 'sermon') {
+          newIndex = currentIndex;
+          const totalCards = cardsData.length + 1;
+          const maxIndex = Math.max(0, totalCards - cardsPerPage);
+          
+          if (dragDistance > minThreshold) {
+            if (deltaX > 0) {
+              // 오른쪽으로 드래그 (이전으로)
+              newIndex = Math.max(0, currentIndex - cardsMoved);
+            } else {
+              // 왼쪽으로 드래그 (다음으로)
+              newIndex = Math.min(maxIndex, currentIndex + cardsMoved);
+            }
+          }
+          
+          currentIndex = newIndex;
+          updateSlider();
+        } else {
+          newIndex = currentShortsIndex;
+          const totalShortsCards = shortsData.length + 1;
+          const maxIndex = Math.max(0, totalShortsCards - cardsPerPage);
+          
+          if (dragDistance > minThreshold) {
+            if (deltaX > 0) {
+              // 오른쪽으로 드래그 (이전으로)
+              newIndex = Math.max(0, currentShortsIndex - cardsMoved);
+            } else {
+              // 왼쪽으로 드래그 (다음으로)
+              newIndex = Math.min(maxIndex, currentShortsIndex + cardsMoved);
+            }
+          }
+          
+          currentShortsIndex = newIndex;
+          updateShortsSlider();
+        }
+      }
+      
+      isDragging = false;
+      currentSlider = null;
     }
 
     function setupSlider() {
@@ -105,12 +264,12 @@
       const track = document.createElement('div');
       track.className = 'bible-series-slider-track';
       
-      track.innerHTML = cardsData.map(card => `
-        <a href="${card.url}" target="_blank" class="sermon-card-link">
+      const sermonCards = cardsData.map(card => `
+        <a href="${card.url}" target="_blank" class="sermon-card-link" onclick="return !isDragging">
           <div class="sermon-card">
             <div class="sermon-thumb-wrap">
-              <img class="sermon-thumb" src="${card.thumb}" alt="썸네일">
-              <img class="youtube-logo" src="/images/logo/youtube-logo.png" alt="YouTube Logo">
+              <img class="sermon-thumb" src="${card.thumb}" alt="썸네일" draggable="false">
+              <img class="youtube-logo" src="/images/logo/youtube-logo.png" alt="YouTube Logo" draggable="false">
             </div>
             <div class="sermon-info">
               <div class="sermon-title">${card.title}</div>
@@ -121,20 +280,102 @@
         </a>
       `).join('');
       
+      // "더 보러가기" 카드 추가
+      const moreCard = `
+        <a href="/page/ministry/sermon.html" class="sermon-card-link more-card-link" onclick="return !isDragging">
+          <div class="sermon-card more-card">
+            <div class="more-card-content">
+              <div class="more-icon">📖</div>
+              <div class="more-title">창세기 강해<br>더 보러가기</div>
+              <div class="more-description">전체 설교 보기</div>
+            </div>
+          </div>
+        </a>
+      `;
+      
+      track.innerHTML = sermonCards + moreCard;
+      
       container.appendChild(track);
+      
+      // 드래그 이벤트 리스너 추가
+      container.addEventListener('mousedown', (e) => handleDragStart(e, 'sermon'));
+      container.addEventListener('touchstart', (e) => handleDragStart(e, 'sermon'));
+      container.style.cursor = 'grab';
+      
       updateSlider();
     }
 
+    function setupShortsSlider() {
+      const container = document.getElementById('shorts-cards');
+      container.innerHTML = ''; 
+      const track = document.createElement('div');
+      track.className = 'bible-series-slider-track shorts-slider-track';
+      
+      const shortsCards = shortsData.map(card => `
+        <a href="${card.url}" target="_blank" class="sermon-card-link" onclick="return !isDragging">
+          <div class="sermon-card">
+            <div class="sermon-thumb-wrap">
+              <img class="sermon-thumb" src="${card.thumb}" alt="썸네일" draggable="false">
+              <img class="youtube-logo" src="/images/logo/youtube-logo.png" alt="YouTube Logo" draggable="false">
+            </div>
+            <div class="sermon-info">
+              <div class="sermon-title">${card.title}</div>
+              <div class="sermon-date">${card.date}</div>
+            </div>
+            <span class="hover-text">쇼츠 바로가기</span>
+          </div>
+        </a>
+      `).join('');
+      
+      // "더 보러가기" 카드 추가
+      const shortsMoreCard = `
+        <a href="/page/ministry/sermon.html" class="sermon-card-link more-card-link" onclick="return !isDragging">
+          <div class="sermon-card more-card">
+            <div class="more-card-content">
+              <div class="more-icon">🎬</div>
+              <div class="more-title">1분 말씀<br>더 보러가기</div>
+              <div class="more-description">전체 쇼츠 보기</div>
+            </div>
+          </div>
+        </a>
+      `;
+      
+      track.innerHTML = shortsCards + shortsMoreCard;
+      
+      container.appendChild(track);
+      
+      // 드래그 이벤트 리스너 추가
+      container.addEventListener('mousedown', (e) => handleDragStart(e, 'shorts'));
+      container.addEventListener('touchstart', (e) => handleDragStart(e, 'shorts'));
+      container.style.cursor = 'grab';
+      
+      updateShortsSlider();
+    }
+
     function updateSlider() {
-      const track = document.querySelector('.bible-series-slider-track');
+      const track = document.querySelector('.bible-series-slider-track:not(.shorts-slider-track)');
       if (!track || !track.children.length) return;
 
       const cardWidth = track.children[0].offsetWidth;
       track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
       
       const cardsPerPage = getCardsPerPage();
+      const totalCards = cardsData.length + 1; // +1 for "더 보러가기" 카드
       document.querySelector('.slider-prev').disabled = currentIndex === 0;
-      document.querySelector('.slider-next').disabled = currentIndex + cardsPerPage >= cardsData.length;
+      document.querySelector('.slider-next').disabled = currentIndex + cardsPerPage >= totalCards;
+    }
+
+    function updateShortsSlider() {
+      const track = document.querySelector('.shorts-slider-track');
+      if (!track || !track.children.length) return;
+
+      const cardWidth = track.children[0].offsetWidth;
+      track.style.transform = `translateX(-${currentShortsIndex * cardWidth}px)`;
+      
+      const cardsPerPage = getCardsPerPage();
+      const totalShortsCards = shortsData.length + 1; // +1 for "더 보러가기" 카드
+      document.querySelector('.slider-prev-shorts').disabled = currentShortsIndex === 0;
+      document.querySelector('.slider-next-shorts').disabled = currentShortsIndex + cardsPerPage >= totalShortsCards;
     }
 
     // 홈 성경 강해 카드: GitHub Actions로 주간 업데이트된 JSON 사용
@@ -144,10 +385,27 @@
         // 시리즈 필터 및 최신순 상위 일부만 노출
         cardsData = data.filter(card => card.series === '창세기 강해').slice(0, 12);
         setupSlider();
+        
+        // 1분 말씀 시리즈 데이터
+        shortsData = data.filter(card => card.series === '1분 말씀').slice(0, 12);
+        setupShortsSlider();
       })
       .catch(err => console.error('홈 설교 카드 로드 실패:', err));
 
     document.addEventListener('DOMContentLoaded', () => {
+      // 전역 드래그 이벤트 리스너
+      document.addEventListener('mousemove', handleDragMove);
+      document.addEventListener('mouseup', handleDragEnd);
+      document.addEventListener('touchmove', handleDragMove);
+      document.addEventListener('touchend', handleDragEnd);
+      
+      // 드래그 중 페이지 스크롤 방지
+      document.addEventListener('touchmove', (e) => {
+        if (isDragging) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+      
       document.querySelector('.slider-prev').addEventListener('click', () => {
         if (currentIndex > 0) {
           currentIndex--;
@@ -157,15 +415,35 @@
 
       document.querySelector('.slider-next').addEventListener('click', () => {
         const cardsPerPage = getCardsPerPage();
-        if (currentIndex + cardsPerPage < cardsData.length) {
+        const totalCards = cardsData.length + 1; // +1 for "더 보러가기" 카드
+        if (currentIndex + cardsPerPage < totalCards) {
           currentIndex++;
           updateSlider();
         }
       });
 
+      // 1분 말씀 슬라이더 이벤트 리스너
+      document.querySelector('.slider-prev-shorts').addEventListener('click', () => {
+        if (currentShortsIndex > 0) {
+          currentShortsIndex--;
+          updateShortsSlider();
+        }
+      });
+
+      document.querySelector('.slider-next-shorts').addEventListener('click', () => {
+        const cardsPerPage = getCardsPerPage();
+        const totalShortsCards = shortsData.length + 1; // +1 for "더 보러가기" 카드
+        if (currentShortsIndex + cardsPerPage < totalShortsCards) {
+          currentShortsIndex++;
+          updateShortsSlider();
+        }
+      });
+
       window.addEventListener('resize', () => {
         // 창 크기 변경 시 애니메이션 없이 즉시 위치 조정
-        const track = document.querySelector('.bible-series-slider-track');
+        const track = document.querySelector('.bible-series-slider-track:not(.shorts-slider-track)');
+        const shortsTrack = document.querySelector('.shorts-slider-track');
+        
         if(track) {
             track.style.transition = 'none';
             updateSlider();
@@ -174,11 +452,27 @@
                 track.style.transition = 'transform 0.5s ease-in-out';
             }, 50);
         }
+        
+        if(shortsTrack) {
+            shortsTrack.style.transition = 'none';
+            updateShortsSlider();
+            // 약간의 딜레이 후 애니메이션 다시 활성화
+            setTimeout(() => {
+                shortsTrack.style.transition = 'transform 0.5s ease-in-out';
+            }, 50);
+        }
       });
       
       const title = document.getElementById('bible-series-title');
       if(title) {
         title.addEventListener('click', () => {
+            window.location.href = '/page/ministry/sermon.html';
+        });
+      }
+      
+      const shortsTitle = document.getElementById('shorts-series-title');
+      if(shortsTitle) {
+        shortsTitle.addEventListener('click', () => {
             window.location.href = '/page/ministry/sermon.html';
         });
       }

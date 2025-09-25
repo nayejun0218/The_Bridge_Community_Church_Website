@@ -16,6 +16,12 @@
   .bible-series-slider {
     position: relative;
     overflow: hidden;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .bible-series-slider:active {
+    cursor: grabbing;
   }
   
   .bible-series-slider-track {
@@ -24,9 +30,11 @@
   }
   
   .bible-series-slider .sermon-card-link {
-    flex: 0 0 calc(100% / 3);
-    padding: 0 1rem;
-    box-sizing: border-box;
+    flex: 0 0 calc(100% / 3) !important;
+    padding: 0 1rem !important;
+    box-sizing: border-box !important;
+    min-width: 260px !important;
+    max-width: 320px !important;
   }
   
   .bible-series-card {
@@ -181,8 +189,10 @@
     align-items: stretch;
     transition: box-shadow 0.2s, background 0.2s, border 0.3s;
     border: 1.5px solid #f0f2f4;
-    min-width: 200px;
-    min-height: 220px;
+    min-width: 200px !important;
+    min-height: 220px !important;
+    height: 280px !important;
+    width: 100% !important;
   }
   
   .sermon-card:hover {
@@ -239,7 +249,7 @@
   
   .sermon-thumb-wrap {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 9 !important;
     overflow: hidden;
     background: #e9ecef;
     position: relative;
@@ -256,13 +266,136 @@
   }
   
   .sermon-thumb {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
     border-radius: 10px;
     transition: border 0.2s, transform 0.2s;
     transform: scale(1.08);
     border: none !important;
+  }
+
+  /* 1분 말씀 시리즈(Shorts)도 동일한 크기로 표시 */
+  .shorts-slider-track .sermon-card {
+    height: 280px !important;
+    width: 100% !important;
+    min-height: 220px !important;
+  }
+
+  .shorts-slider-track .sermon-thumb-wrap {
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  .shorts-slider-track .sermon-thumb {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* 더 보러가기 카드 스타일 */
+  .more-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border: 2px solid #667eea !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .more-card:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%) !important;
+    border: 2px solid #5a6fd8 !important;
+    transform: translateY(-3px) scale(1.02);
+  }
+
+  .more-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 2rem 1rem;
+    text-align: center;
+    color: white;
+  }
+
+  .more-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  }
+
+  .more-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .more-description {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  }
+
+  .more-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .more-card:hover::before {
+    transform: translateX(100%);
+  }
+
+  .more-card-link .hover-text {
+    background: rgba(255,255,255,0.2) !important;
+    color: white !important;
+    backdrop-filter: blur(10px);
+  }
+
+  /* 드래그 중일 때 포인터 이벤트 비활성화 */
+  .bible-series-slider.dragging * {
+    pointer-events: none;
+  }
+
+  /* 드래그 가능 영역 표시 */
+  .bible-series-slider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* 슬라이더 트랙 스무스 전환 */
+  .bible-series-slider-track {
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* 드래그 중일 때는 애니메이션 비활성화 */
+  .bible-series-slider.dragging .bible-series-slider-track {
+    transition: none !important;
+  }
+
+  /* 이미지 드래그 방지 */
+  .bible-series-slider img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
   }
   
   .sermon-card:hover .sermon-thumb {
@@ -373,7 +506,7 @@
     width: 100%;
   }
   
-  .slider-prev, .slider-next {
+  .slider-prev, .slider-next, .slider-prev-shorts, .slider-next-shorts {
     width: 44px;
     height: 44px;
     border-radius: 10px;
@@ -392,14 +525,14 @@
     align-self: center;
   }
   
-  .slider-prev:hover, .slider-next:hover {
+  .slider-prev:hover, .slider-next:hover, .slider-prev-shorts:hover, .slider-next-shorts:hover {
     background: #00022688;
     color: #fff;
     box-shadow: 0 4px 16px rgba(44,62,80,0.18);
     transform: scale(1.08);
   }
   
-  .slider-prev:disabled, .slider-next:disabled {
+  .slider-prev:disabled, .slider-next:disabled, .slider-prev-shorts:disabled, .slider-next-shorts:disabled {
     opacity: 0.4;
     cursor: not-allowed;
     background: #f0f2f4;
@@ -706,7 +839,7 @@
       font-size: 1.6rem;
     }
     
-    .slider-prev, .slider-next {
+    .slider-prev, .slider-next, .slider-prev-shorts, .slider-next-shorts {
       width: 40px;
       height: 40px;
       font-size: 2.2rem;
@@ -795,7 +928,7 @@
       font-size: 1.4rem;
     }
     
-    .slider-prev, .slider-next {
+    .slider-prev, .slider-next, .slider-prev-shorts, .slider-next-shorts {
       width: 36px;
       height: 36px;
       font-size: 2rem;
@@ -911,7 +1044,7 @@
       font-size: 1.3rem;
     }
     
-    .slider-prev, .slider-next {
+    .slider-prev, .slider-next, .slider-prev-shorts, .slider-next-shorts {
       width: 32px;
       height: 32px;
       font-size: 1.8rem;
@@ -1028,7 +1161,7 @@
       font-size: 1.2rem;
     }
     
-    .slider-prev, .slider-next {
+    .slider-prev, .slider-next, .slider-prev-shorts, .slider-next-shorts {
       width: 30px;
       height: 30px;
       font-size: 1.6rem;
@@ -1150,7 +1283,7 @@
       font-size: 1.1rem;
     }
     
-    .slider-prev, .slider-next {
+    .slider-prev, .slider-next, .slider-prev-shorts, .slider-next-shorts {
       width: 28px;
       height: 28px;
       font-size: 1.4rem;

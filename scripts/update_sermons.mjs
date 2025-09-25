@@ -9,41 +9,6 @@ const PLAYLISTS = [
 
 const YT_KEY = process.env.YT_API_KEY;
 
-// 비디오 통계 정보 (조회수 등) 가져오기
-async function fetchVideoStats(videoIds) {
-  if (!videoIds.length || !YT_KEY) {
-    return {};
-  }
-
-  const url = new URL('https://www.googleapis.com/youtube/v3/videos');
-  url.searchParams.set('part', 'statistics');
-  url.searchParams.set('id', videoIds.join(','));
-  url.searchParams.set('key', YT_KEY);
-
-  try {
-    const res = await fetch(url);
-    
-    if (!res.ok) {
-      const errorData = await res.json().catch(() => ({}));
-      console.warn(`⚠️  비디오 통계 가져오기 실패: ${errorData?.error?.message || res.statusText}`);
-      return {};
-    }
-    
-    const data = await res.json();
-    const stats = {};
-    
-    data.items.forEach(item => {
-      stats[item.id] = {
-        viewCount: parseInt(item.statistics.viewCount || 0),
-      };
-    });
-    
-    return stats;
-  } catch (error) {
-    console.warn(`⚠️  비디오 통계 가져오기 오류:`, error.message);
-    return {};
-  }
-}
 
 async function fetchPlaylistItems(playlistId, series) {
   if (!playlistId || !YT_KEY) {
@@ -162,28 +127,8 @@ async function updateSermons() {
         return tb - ta; // 최신 우선
       });
 
-    // 비디오 ID 추출하여 조회수 정보 가져오기
-    const videoIds = all.map(item => {
-      const match = item.url.match(/youtu\.be\/([^?]+)/);
-      return match ? match[1] : null;
-    }).filter(Boolean);
-
-    console.log(`📊 ${videoIds.length}개 영상의 조회수 정보를 가져오는 중...`);
-    const videoStats = await fetchVideoStats(videoIds);
-
-    // 조회수 정보를 설교 데이터에 합치기
-    const allWithStats = all.map(item => {
-      const videoId = item.url.match(/youtu\.be\/([^?]+)/)?.[1];
-      const stats = videoStats[videoId];
-      
-      return {
-        ...item,
-        viewCount: stats?.viewCount || 0,
-      };
-    });
-
     // publishedAt 필드 제거 (프론트엔드에서 불필요)
-    const cleanedData = allWithStats.map(({ publishedAt, ...rest }) => rest);
+    const cleanedData = all.map(({ publishedAt, ...rest }) => rest);
 
     writeFileSync('sermons.json', JSON.stringify(cleanedData, null, 2));
     

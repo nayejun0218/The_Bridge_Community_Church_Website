@@ -12,7 +12,7 @@
   <div id="header"></div>
   <main>
     <section class="bulletin">
-      <h2>주보 보기</h2>
+      <h2>주보 안내</h2>
       <div class="bulletin-content">
         <div class="sermon-section-title-wrap" style="display: flex; align-items: center; justify-content: space-between;">
           <div class="sermon-section-title">2025년 주보</div>
@@ -61,13 +61,45 @@
         return;
       }
 
+      // 날짜순으로 정렬 (최신순, 내림차순)
+      bulletins.sort((a, b) => {
+        // date 필드 기준으로 정렬 (더 정확함)
+        try {
+          // date 필드가 "2025.09.21" 형식이므로 Date 객체로 변환하여 비교
+          const dateA = new Date(a.date.replace(/\./g, '-'));
+          const dateB = new Date(b.date.replace(/\./g, '-'));
+          
+          // 날짜가 유효한지 확인
+          if (isNaN(dateA.getTime()) || isNaN(dateB.getTime())) {
+            // 날짜가 유효하지 않으면 createdTime으로 폴백
+            return new Date(b.createdTime) - new Date(a.createdTime);
+          }
+          
+          // 날짜가 같으면 createdTime으로 세부 정렬
+          if (dateA.getTime() === dateB.getTime() && a.createdTime && b.createdTime) {
+            return new Date(b.createdTime) - new Date(a.createdTime);
+          }
+          
+          return dateB - dateA; // 내림차순 (최신 → 과거)
+        } catch (error) {
+          console.warn('날짜 정렬 중 오류:', error);
+          // 오류 발생 시 createdTime으로 폴백
+          return new Date(b.createdTime) - new Date(a.createdTime);
+        }
+      });
+
+      console.log('정렬된 주보 순서:');
+      bulletins.slice(0, 5).forEach((bulletin, index) => {
+        console.log(`${index + 1}. ${bulletin.date} - ${bulletin.name}`);
+      });
+
       grid.innerHTML = bulletins.map(bulletin => `
         <div class="bulletin-card">
           <div class="bulletin-date">${bulletin.date}</div>
           <h3 class="bulletin-title">${bulletin.name}</h3>
           <div class="bulletin-actions">
             <a href="${bulletin.viewLink}" target="_blank" class="bulletin-btn view-btn">
-              📖 온라인으로 보기
+              📖 보기
             </a>
             <a href="${bulletin.downloadLink}" target="_blank" class="bulletin-btn download-btn">
               📥 다운로드
@@ -100,7 +132,7 @@
         if (expanded) {
           grid.style.maxHeight = getCardHeight(cards.length) + 'px';
         } else {
-          grid.style.maxHeight = getCardHeight(6) + 'px'; // 처음에는 6개만 보이게
+          grid.style.maxHeight = getCardHeight(4) + 'px'; // 처음에는 6개만 보이게
         }
         btn.setAttribute('aria-label', expanded ? '접기' : '더보기');
         btn.classList.toggle('open', expanded);
@@ -128,8 +160,8 @@
   <style>
     .bulletin-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
       margin-top: 1.5rem;
       overflow: hidden;
       transition: max-height 0.4s ease-in-out;
@@ -214,9 +246,16 @@
       transition: transform 0.3s ease;
     }
 
+    @media (max-width: 1200px) {
+      .bulletin-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+    }
+
     @media (max-width: 768px) {
       .bulletin-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
       }
       
       .bulletin-actions {
@@ -225,6 +264,12 @@
       
       .bulletin-btn {
         text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .bulletin-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>

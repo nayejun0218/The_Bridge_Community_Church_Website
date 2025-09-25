@@ -63,8 +63,19 @@ async function updateBulletins() {
   try {
     const bulletins = await fetchBulletins();
     
-    // 최신순 정렬
-    bulletins.sort((a, b) => new Date(b.createdTime) - new Date(a.createdTime));
+    // 날짜순 정렬 (date 필드 기준, 최신순)
+    bulletins.sort((a, b) => {
+      // date 필드를 Date 객체로 변환하여 비교
+      const dateA = new Date(a.date.replace(/\./g, '-'));
+      const dateB = new Date(b.date.replace(/\./g, '-'));
+      
+      // 날짜가 같으면 createdTime으로 비교
+      if (dateA.getTime() === dateB.getTime()) {
+        return new Date(b.createdTime) - new Date(a.createdTime);
+      }
+      
+      return dateB - dateA; // 내림차순 (최신 → 과거)
+    });
     
     writeFileSync('bulletins.json', JSON.stringify(bulletins, null, 2));
     
