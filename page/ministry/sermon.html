@@ -137,6 +137,18 @@
         const grid = document.getElementById(series.gridId);
         const seriesData = data.filter(card => card.series === series.name);
         
+        // 조회수를 포맷팅하는 함수
+        function formatViewCount(count) {
+          if (!count || count === 0) return '조회수 정보 없음';
+          if (count >= 1000000) {
+            return `${(count / 1000000).toFixed(1)}M회 조회`;
+          } else if (count >= 1000) {
+            return `${(count / 1000).toFixed(1)}K회 조회`;
+          } else {
+            return `${count}회 조회`;
+          }
+        }
+
         // 카드 렌더링
         grid.innerHTML = seriesData.map(card => `
           <a href="${card.url}" target="_blank" class="sermon-card-link">
@@ -148,6 +160,9 @@
               <div class="sermon-info">
                 <div class="sermon-title">${card.title}</div>
                 <div class="sermon-date">${card.date}</div>
+                <div class="sermon-stats">
+                  <span class="view-count"> ${formatViewCount(card.viewCount)}</span>
+                </div>
               </div>
               <span class="hover-text">${series.name === '1분 말씀' ? '쇼츠 바로가기' : '강해 바로가기'}</span>
             </div>
