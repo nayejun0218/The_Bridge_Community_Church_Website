@@ -663,3 +663,106 @@
   color: #6ca77a;
   font-style: normal;
 }
+
+/* 목사님 약력 타임라인 스타일 */
+.career-timeline {
+  position: relative;
+  padding-left: 30px;
+  margin-top: 2rem;
+}
+
+.career-timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #3498db, #2980b9);
+}
+
+.career-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding-left: 25px;
+}
+
+.career-item::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #3498db;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 2px #3498db;
+}
+
+.career-item.highlight::before {
+  background: #e74c3c;
+  box-shadow: 0 0 0 2px #e74c3c;
+  width: 16px;
+  height: 16px;
+  left: -10px;
+  top: 3px;
+}
+
+.career-year {
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.career-item.highlight .career-year {
+  color: #e74c3c;
+  font-size: 1.2rem;
+}
+
+.career-content {
+  color: #34495e;
+  line-height: 1.6;
+}
+
+.career-content strong {
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.career-content ul {
+  margin: 0.8rem 0 0 1.2rem;
+  padding: 0;
+}
+
+.career-content li {
+  margin-bottom: 0.3rem;
+  color: #5a6c7d;
+  font-size: 0.95rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .career-timeline {
+    padding-left: 20px;
+  }
+  
+  .career-item {
+    padding-left: 20px;
+  }
+  
+  .career-year {
+    font-size: 1rem;
+  }
+  
+  .career-item.highlight .career-year {
+    font-size: 1.1rem;
+  }
+  
+  .career-content strong {
+    font-size: 1rem;
+  }
+}

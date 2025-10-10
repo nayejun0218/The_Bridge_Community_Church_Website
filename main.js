@@ -201,22 +201,7 @@ if (window.AOS) {
   });
 }
 
-// 배너 슬라이드
-(function() {
-  const banners = document.querySelectorAll('.banner-img');
-  const dots = document.querySelectorAll('.banner-dots .dot');
-  let idx = 0;
-  function showBanner(i) {
-    banners.forEach((img, n) => img.classList.toggle('active', n === i));
-    dots.forEach((dot, n) => dot.classList.toggle('active', n === i));
-    idx = i;
-  }
-  function nextBanner() { showBanner((idx+1)%banners.length); }
-  let timer = setInterval(nextBanner, 4000);
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => { showBanner(i); clearInterval(timer); timer = setInterval(nextBanner, 4000); });
-  });
-})();
+// 기존 배너 슬라이드 코드 제거됨 (새로운 hero-banner-slider로 대체)
 
 // 탭/아코디언
 (function() {

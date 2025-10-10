@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Bridge Community Church</title>
   <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/banner.css">
   <link rel="stylesheet" href="/style/home_sermon.css">
   <link rel="stylesheet" href="/style/page.css">
+  <!-- Font Awesome 아이콘 라이브러리 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- AOS 애니메이션 라이브러리 -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 </head>
@@ -14,13 +17,147 @@
   <div id="scroll-progress"></div>
   <div id="header"></div>
   <main>
-    <div class="banner-slider">
-      <img src="/images/major_banner.png" class="banner-img active" alt="배너1">
-      <div class="banner-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
+    <div class="hero-banner-slider">
+      <!-- 첫 번째 배너 -->
+      <div class="hero-banner active" data-banner="1">
+        <div class="hero-content">
+          <div class="hero-background">
+            <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
+          </div>
+          <div class="hero-text-container">
+            <div class="hero-main-text">
+              <h1 class="hero-title">
+                <span class="hero-title-main">더브릿지커뮤니티교회</span>
+                <span class="hero-title-sub">The Bridge Community Church</span>
+              </h1>
+              <!-- <p class="hero-subtitle">대한예수교장로회</p> -->
+              <div class="hero-motto">
+                <span class="motto-text">하나님과 사람을 잇는 교회</span>
+                <div class="motto-underline"></div>
+              </div>
+            </div>
+            <div class="hero-info">
+              <div class="hero-info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>세종특별자치시 아름동 1089 B1호</span>
+              </div>
+              <div class="hero-info-item">
+                <i class="fas fa-clock"></i>
+                <span>주일예배 오전 11:00</span>
+              </div>
+              <div class="hero-info-item">
+                <i class="fas fa-phone"></i>
+                <span>042-364-5877</span>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <a href="/page/church-intro/preview.html" class="hero-btn primary">
+                <i class="fas fa-heart"></i>
+                처음 오셨나요?
+              </a>
+              <a href="/page/ministry/worship.html" class="hero-btn secondary">
+                <i class="fas fa-calendar-alt"></i>
+                예배시간 안내
+              </a>
+            </div>
+          </div>
+          <div class="hero-decoration">
+            <div class="bridge-icon">
+              <svg viewBox="0 0 200 100" class="bridge-svg">
+                <!-- 다리 기둥 (왼쪽) -->
+                <rect x="18" y="75" width="4" height="20" fill="rgba(255,255,255,0.4)" rx="1"/>
+                <!-- 다리 기둥 (오른쪽) -->
+                <rect x="178" y="75" width="4" height="20" fill="rgba(255,255,255,0.4)" rx="1"/>
+                <!-- 중앙 지지대 -->
+                <rect x="98" y="45" width="4" height="25" fill="rgba(255,255,255,0.5)" rx="1"/>
+                
+                <!-- 메인 다리 아치 -->
+                <path d="M20 80 Q100 20 180 80" stroke="rgba(255,255,255,0.6)" stroke-width="4" fill="none"/>
+                <!-- 다리 바닥 -->
+                <path d="M20 82 L180 82" stroke="rgba(255,255,255,0.5)" stroke-width="3"/>
+                
+                <!-- 케이블 (왼쪽에서 중앙으로) -->
+                <path d="M100 47 L60 75" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                <path d="M100 47 L80 75" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                <path d="M100 47 L120 75" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                <path d="M100 47 L140 75" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                
+                <!-- 다리 난간 -->
+                <path d="M25 78 L175 78" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+                
+                <!-- 장식적 요소 (다리 위 조명) -->
+                <circle cx="50" cy="76" r="1.5" fill="rgba(255,255,255,0.7)"/>
+                <circle cx="100" cy="76" r="1.5" fill="rgba(255,255,255,0.8)"/>
+                <circle cx="150" cy="76" r="1.5" fill="rgba(255,255,255,0.7)"/>
+                
+                <!-- 물결 효과 (다리 아래) -->
+                <path d="M10 90 Q30 88 50 90 T90 90 T130 90 T170 90 T190 90" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+                <path d="M15 93 Q35 91 55 93 T95 93 T135 93 T175 93 T195 93" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 두 번째 배너 -->
+      <div class="hero-banner" data-banner="2">
+        <div class="hero-content">
+          <div class="hero-background banner-2">
+            <div class="hero-gradient-2"></div>
+            <div class="hero-pattern-2"></div>
+          </div>
+          <div class="hero-text-container">
+            <div class="hero-main-text">
+              <h1 class="hero-title">
+                <span class="hero-title-main">하나님과 사람을 잇는 교회</span>
+                <!-- <span class="hero-title-sub">Connecting God and People</span> -->
+              </h1>
+              <!-- <p class="hero-subtitle">더브릿지커뮤니티교회</p> -->
+              <div class="hero-motto">
+                <span class="motto-text">
+                  모든 것이 하나님께로서 났으며 그가 그리스도로 말미암아 우리를 자기와 화목하게 하시고 또 우리에게 화목하게 하는 직분을 주셨으니<br>
+                  곧 하나님께서 그리스도 안에 계시사 세상을 자기와 화목하게 하시며 그들의 죄를 그들에게 돌리지 아니하시고 화목하게 하는 말씀을 우리에게 부탁하셨느니라<br>
+                  - 고린도후서 5:18-19 -
+                </span>
+                <div class="motto-underline"></div>
+              </div>
+              <!-- <div class="bible-verse">
+                <p>"그들의 죄를 그들에게 돌리지 아니하시고 화목하게 하는 말씀을 우리에게 부탁하셨느니라"</p>
+                <span class="verse-reference">- 고린도후서 5:18-19 -</span>
+              </div> -->
+            </div>
+            <div class="hero-actions">
+              <a href="https://www.youtube.com/@TheBridgeCommunity__Church/videos" target="_blank" class="hero-btn primary">
+                <i class="fab fa-youtube"></i>
+                설교 말씀 보기
+              </a>
+              <a href="/page/notice/location.html" class="hero-btn secondary">
+                <i class="fas fa-map-marker-alt"></i>
+                찾아오시는 길
+              </a>
+            </div>
+          </div>
+          <div class="hero-decoration">
+            <div class="cross-icon">
+              <svg viewBox="0 0 200 200" class="cross-svg">
+                <path d="M100 20 L100 180 M40 75 L160 75" stroke="rgba(255,255,255,0.4)" stroke-width="8" stroke-linecap="round"/>
+                <path d="M100 25 L100 175 M45 75 L155 75" stroke="rgba(255,255,255,0.6)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="100" cy="75" r="12" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                <circle cx="100" cy="75" r="6" fill="rgba(255,255,255,0.5)"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 네비게이션 점들 -->
+      <div class="hero-nav-dots">
+        <span class="nav-dot active" data-slide="0"></span>
+        <span class="nav-dot" data-slide="1"></span>
       </div>
     </div>
+
     <section class="welcome-section" data-aos="fade-up">
       <div class="welcome-text">
         <h2 id="main-typing-text">행복한 삶, 화목한 교회로<br>당신을 초대합니다.</h2>
@@ -628,7 +765,78 @@
       })
       .catch(err => console.error('홈 설교 카드 로드 실패:', err));
 
+    // 배너 슬라이더 기능
+    let currentBannerIndex = 0;
+    let bannerInterval = null;
+    let bannerInitialized = false;
+
+    function initBannerSlider() {
+      if (bannerInitialized) return; // 중복 초기화 방지
+      
+      const banners = document.querySelectorAll('.hero-banner');
+      const navDots = document.querySelectorAll('.nav-dot');
+      
+      if (banners.length === 0 || navDots.length === 0) return;
+
+      function showBanner(index) {
+        // 모든 배너 숨기기
+        banners.forEach(banner => banner.classList.remove('active'));
+        navDots.forEach(dot => dot.classList.remove('active'));
+        
+        // 선택된 배너와 점 활성화
+        if (banners[index]) {
+          banners[index].classList.add('active');
+        }
+        if (navDots[index]) {
+          navDots[index].classList.add('active');
+        }
+      }
+
+      function nextBanner() {
+        currentBannerIndex = (currentBannerIndex + 1) % banners.length;
+        showBanner(currentBannerIndex);
+      }
+
+      function startBannerSlider() {
+        if (bannerInterval) {
+          clearInterval(bannerInterval);
+        }
+        bannerInterval = setInterval(nextBanner, 7000); // 7초마다 변경
+      }
+
+      function stopBannerSlider() {
+        if (bannerInterval) {
+          clearInterval(bannerInterval);
+          bannerInterval = null;
+        }
+      }
+
+      // 네비게이션 점 클릭 이벤트
+      navDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentBannerIndex = index;
+          showBanner(currentBannerIndex);
+          stopBannerSlider();
+          startBannerSlider(); // 클릭 후 다시 자동 슬라이더 시작
+        });
+      });
+
+      // 마우스 호버 시 자동 슬라이더 일시정지
+      const bannerSlider = document.querySelector('.hero-banner-slider');
+      if (bannerSlider) {
+        bannerSlider.addEventListener('mouseenter', stopBannerSlider);
+        bannerSlider.addEventListener('mouseleave', startBannerSlider);
+      }
+
+      // 배너 슬라이더 시작
+      startBannerSlider();
+      bannerInitialized = true;
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+      // 배너 슬라이더 초기화
+      initBannerSlider();
+      
       // 전역 드래그 이벤트 리스너
       document.addEventListener('mousemove', handleDragMove);
       document.addEventListener('mouseup', handleDragEnd);

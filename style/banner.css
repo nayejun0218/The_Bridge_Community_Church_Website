@@ -1,0 +1,509 @@
+/* ===== HERO BANNER STYLES ===== */
+
+/* 배너 슬라이더 컨테이너 */
+.hero-banner-slider {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.hero-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-banner.active {
+  opacity: 1;
+}
+
+.hero-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* 첫 번째 배너 배경 */
+.hero-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(135deg, 
+    #399e37 0%, 
+    #4bd74d 25%, 
+    #2a951e 50%, 
+    #37982d 75%, 
+    #296722 100%); */
+    background: linear-gradient(135deg, 
+    #f0cf91 0%, 
+    #d7ad76 25%, 
+    #d78d42 50%, 
+    #b25a32 75%, 
+    #9d4e16 100%);
+  opacity: 0.95;
+}
+
+.hero-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 50px 50px, 30px 30px;
+  animation: patternMove 20s linear infinite;
+}
+
+@keyframes patternMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* 두 번째 배너 배경 */
+.hero-gradient-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(135deg, 
+    #f0cf91 0%, 
+    #d7ad76 25%, 
+    #d78d42 50%, 
+    #b25a32 75%, 
+    #9d4e16 100%); */
+  background: linear-gradient(135deg, 
+    #399e37 0%, 
+    #4bd74d 25%,    
+    #2a951e 50%, 
+    #37982d 75%, 
+    #296722 100%);
+  opacity: 0.9;
+}
+
+.hero-pattern-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 30% 40%, rgba(255,255,255,0.15) 2px, transparent 2px),
+    radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 60px 60px, 40px 40px;
+  animation: patternMove2 25s linear infinite;
+}
+
+@keyframes patternMove2 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(60px, 60px) rotate(360deg); }
+}
+
+/* 텍스트 컨테이너 */
+.hero-text-container {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero-title {
+  margin-bottom: 20px;
+}
+
+.hero-title-main {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.5), 1px 1px 2px rgba(0,0,0,0.8);
+  letter-spacing: -0.5px;
+}
+
+.hero-title-sub {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 300;
+  /* font-style: italic; */
+  color: rgba(255,255,255,0.9);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.hero-motto {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.motto-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #091a46;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.motto-underline {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #091a46, transparent);
+  border-radius: 2px;
+}
+
+/* 성경 구절 스타일 */
+.bible-verse {
+  margin-top: 25px;
+  padding: 20px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  border-left: 4px solid #091a46;
+  backdrop-filter: blur(10px);
+}
+
+.bible-verse p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.verse-reference {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+  font-weight: 600;
+  display: block;
+  text-align: right;
+}
+
+/* 정보 아이템들 */
+.hero-info {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 35px;
+  flex-wrap: wrap;
+}
+
+.hero-info-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.1);
+  padding: 12px 18px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+  text-align: center;
+  min-height: 20px;
+  box-sizing: border-box;
+}
+
+.hero-info-item:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+.hero-info-item i {
+  color: #3498db;
+  font-size: 1rem;
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 액션 버튼들 */
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  min-height: 24px;
+  box-sizing: border-box;
+}
+
+.hero-btn i {
+  font-size: 1rem;
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.hero-btn:hover::before {
+  left: 100%;
+}
+
+.hero-btn.primary {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  color: white;
+  box-shadow: 0 5px 15px rgba(231,76,60,0.4);
+}
+
+.hero-btn.primary:hover {
+  background: linear-gradient(45deg, #c0392b, #a93226);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(231,76,60,0.6);
+}
+
+.hero-btn.secondary {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: 2px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+}
+
+.hero-btn.secondary:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* 장식 요소들 */
+.hero-decoration {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+  z-index: 2;
+  opacity: 0.6;
+}
+
+.bridge-icon {
+  width: 200px;
+  height: 100px;
+}
+
+.bridge-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+  animation: bridgeGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes bridgeGlow {
+  0% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); }
+  100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.5)); }
+}
+
+.cross-icon {
+  width: 200px;
+  height: 200px;
+}
+
+.cross-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 15px rgba(255,255,255,0.4));
+  animation: crossGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes crossGlow {
+  0% { filter: drop-shadow(0 0 15px rgba(255,255,255,0.4)); }
+  100% { filter: drop-shadow(0 0 25px rgba(255,255,255,0.7)); }
+}
+
+/* 네비게이션 점들 */
+.hero-nav-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255,255,255,0.6);
+}
+
+.nav-dot:hover {
+  background: rgba(255,255,255,0.7);
+  transform: scale(1.2);
+}
+
+.nav-dot.active {
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* 태블릿 */
+@media (max-width: 768px) {
+  .hero-banner-slider {
+    height: 450px;
+  }
+
+  .hero-title-main {
+    font-size: 2.5rem;
+  }
+
+  .hero-title-sub {
+    font-size: 1.4rem;
+  }
+
+  .hero-info {
+    gap: 15px;
+  }
+
+  .hero-info-item {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .hero-actions {
+    gap: 15px;
+  }
+
+  .hero-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  .hero-decoration {
+    display: none;
+  }
+
+  .bible-verse {
+    padding: 15px;
+    margin-top: 20px;
+  }
+
+  .bible-verse p {
+    font-size: 1rem;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 480px) {
+  .hero-banner-slider {
+    height: 400px;
+  }
+
+  .hero-title-main {
+    font-size: 2rem;
+  }
+
+  .hero-title-sub {
+    font-size: 1.2rem;
+  }
+
+  .motto-text {
+    font-size: 1.3rem;
+  }
+
+  .hero-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+
+  .bible-verse {
+    padding: 12px;
+    margin-top: 15px;
+  }
+
+  .bible-verse p {
+    font-size: 0.95rem;
+  }
+
+  .verse-reference {
+    font-size: 0.8rem;
+  }
+}
