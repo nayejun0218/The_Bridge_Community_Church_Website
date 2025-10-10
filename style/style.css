@@ -1450,7 +1450,7 @@ h2.no-margin-top {
 }
 
 .guide-card {
-  background: #f8f9fa;
+  background: rgb(60, 128, 51);
   border-radius: 18px;
   box-shadow: 0 2px 16px rgba(44,62,80,0.07);
   overflow: hidden;
@@ -1463,13 +1463,13 @@ h2.no-margin-top {
   padding: 1.2em 0.5em;
   font-size: 1rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: #fff;
   transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
 }
 
 .guide-card:hover {
   box-shadow: 0 6px 32px rgba(44,62,80,0.13);
-  background: #e9eef2;
+  background: #296722;
   transform: translateY(-3px) scale(1.015);
 }
 
@@ -2212,27 +2212,27 @@ h2.no-margin-top {
 }
 
 .contact-btn.primary {
-  background: #3498db;
+  background: #296722;
   color: white;
 }
 
 .contact-btn.primary:hover {
-  background: #2980b9;
+  background: #296722;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  box-shadow: 0 4px 12px rgba(41, 103, 34, 0.3);
 }
 
 .contact-btn.secondary {
   background: white;
-  color: #3498db;
-  border: 2px solid #3498db;
+  color: #296722;
+  border: 2px solid #296722;
 }
 
 .contact-btn.secondary:hover {
-  background: #3498db;
+  background: #296722;
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  box-shadow: 0 4px 12px rgba(41, 103, 34, 0.3);
 }
 
 /* 반응형 디자인 */

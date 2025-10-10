@@ -678,7 +678,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, #3498db, #2980b9);
+  background: linear-gradient(to bottom, #296722, #296722);
 }
 
 .career-item {
@@ -695,9 +695,9 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #3498db;
+  background: #296722;
   border: 3px solid #ffffff;
-  box-shadow: 0 0 0 2px #3498db;
+  box-shadow: 0 0 0 2px #296722;
 }
 
 .career-item.highlight::before {
