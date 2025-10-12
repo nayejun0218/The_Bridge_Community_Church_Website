@@ -408,10 +408,63 @@
 
 /* ===== RESPONSIVE DESIGN ===== */
 
+/* 대형 태블릿 */
+@media (max-width: 1024px) {
+  .hero-banner-slider {
+    height: 80vh;
+    min-height: 450px;
+    max-height: 600px;
+  }
+
+  .hero-title-main {
+    font-size: 3rem;
+  }
+
+  .hero-title-sub {
+    font-size: 1.6rem;
+  }
+
+  .motto-text {
+    font-size: 1.4rem;
+  }
+
+  .hero-info {
+    gap: 20px;
+  }
+
+  .hero-info-item {
+    font-size: 0.95rem;
+    padding: 10px 15px;
+  }
+
+  .hero-actions {
+    gap: 18px;
+  }
+
+  .hero-btn {
+    padding: 13px 28px;
+    font-size: 1.05rem;
+  }
+}
+
+/* iPhone Pro Max 및 큰 모바일 */
+@media (max-width: 896px) {
+  .hero-info {
+    gap: 25px;
+  }
+
+  .hero-info-item {
+    padding: 12px 18px;
+    margin-bottom: 8px;
+  }
+}
+
 /* 태블릿 */
 @media (max-width: 768px) {
   .hero-banner-slider {
-    height: 450px;
+    height: 70vh;
+    min-height: 400px;
+    max-height: 500px;
   }
 
   .hero-title-main {
@@ -422,13 +475,18 @@
     font-size: 1.4rem;
   }
 
+  .motto-text {
+    font-size: 1.3rem;
+  }
+
   .hero-info {
-    gap: 15px;
+    gap: 18px;
   }
 
   .hero-info-item {
     font-size: 0.9rem;
-    padding: 8px 12px;
+    padding: 10px 15px;
+    margin-bottom: 6px;
   }
 
   .hero-actions {
@@ -454,51 +512,294 @@
   }
 }
 
-/* 모바일 */
-@media (max-width: 480px) {
+/* 소형 태블릿 */
+@media (max-width: 600px) {
   .hero-banner-slider {
-    height: 400px;
+    height: 60vh;
+    min-height: 350px;
+    max-height: 450px;
   }
 
   .hero-title-main {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .hero-title-sub {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .motto-text {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+  }
+
+  .hero-info {
+    gap: 15px;
+  }
+
+  .hero-info-item {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    margin-bottom: 5px;
+  }
+
+  .hero-actions {
+    gap: 12px;
+  }
+
+  .hero-btn {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 480px) {
+  .hero-banner-slider {
+    height: 50vh;
+    min-height: 300px;
+    max-height: 400px;
+  }
+
+  .hero-text-container {
+    padding: 15px 15px;
+  }
+
+  .hero-title-main {
+    font-size: 1.7rem;
+    padding-bottom: 10px;
+  }
+
+  .hero-title-sub {
+    font-size: 1.0rem;
+  }
+
+  .motto-text {
+    font-size: 0.8rem;
+    line-height: 1.2;
+    padding: 0 5px;
+    margin-bottom: 15px;
   }
 
   .hero-info {
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    margin-bottom: 15px;
   }
 
-  .hero-actions {
-    flex-direction: column;
+  .hero-info-item {
+    font-size: 0.6rem;
+    padding: 6px 8px;
+    margin-bottom: 4px;
+  }
+
+  .hero-info-item i {
+    color: #ffffff;
+    font-size: 0.6rem;
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0;
+    display: inline-flex;
     align-items: center;
-  }
-
-  .hero-btn {
-    width: 100%;
-    max-width: 280px;
     justify-content: center;
   }
 
+  .hero-actions {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .hero-actions i {
+    font-size: 0.6rem;
+    width: 12px;
+    text-align: center;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-btn {
+    flex: 1;
+    max-width: 150px;
+    justify-content: center;
+    padding: 5px 8px;
+    font-size: 0.6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .bible-verse {
-    padding: 12px;
-    margin-top: 15px;
+    padding: 10px;
+    margin-top: 12px;
   }
 
   .bible-verse p {
-    font-size: 0.95rem;
+    font-size: 0.6rem;
+    line-height: 1.5;
   }
 
   .verse-reference {
+    font-size: 0.6rem;
+  }
+
+  .hero-btn.primary {
+    background: linear-gradient(45deg, #565ab1, #222567);
+    color: white;
+    box-shadow: 0 5px 15px rgba(86,90,177,0.4);
+  }
+  
+  .hero-btn.primary:hover {
+    background: linear-gradient(45deg, #222567, #565ab1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(34,37,103,0.6);
+  }
+  
+  .hero-btn.secondary {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(10px);
+  }
+  
+  .hero-btn.secondary:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+}
+
+/* 모바일 */
+@media (max-width: 370px) {
+  .hero-banner-slider {
+    height: 50vh;
+    min-height: 300px;
+    max-height: 400px;
+  }
+
+  .hero-text-container {
+    padding: 15px 15px;
+  }
+
+  .hero-motto {
+    margin-bottom: 20px;
+    margin-top: -10px;
+  }
+
+  .hero-title-main {
+    font-size: 1.2rem;
+    padding-bottom: 10px;
+  }
+
+  .hero-title-sub {
     font-size: 0.8rem;
+  }
+
+  .motto-text {
+    font-size: 0.6rem;
+    line-height: 1.2;
+    padding: 0 5px;
+    margin-bottom: 15px;
+  }
+
+  .hero-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .hero-info-item {
+    font-size: 0.4rem;
+    padding: 6px 8px;
+    margin-bottom: 4px;
+    font-size: 0.6rem;
+  }
+
+  .hero-info-item i {
+    color: #ffffff;
+    font-size: 0.5rem;
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-actions {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .hero-actions i {
+    font-size: 0.5rem;
+    width: 12px;
+    text-align: center;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-btn {
+    flex: 1;
+    max-width: 150px;
+    justify-content: center;
+    padding: 5px 8px;
+    font-size: 0.4rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .bible-verse {
+    padding: 10px;
+    margin-top: 12px;
+  }
+
+  .bible-verse p {
+    font-size: 0.4rem;
+    line-height: 1.5;
+  }
+
+  .verse-reference {
+    font-size: 0.4rem;
+  }
+
+  .hero-btn.primary {
+    background: linear-gradient(45deg, #565ab1, #222567);
+    color: white;
+    box-shadow: 0 5px 15px rgba(86,90,177,0.4);
+    font-size: 0.6rem;
+  }
+  
+  .hero-btn.primary:hover {
+    background: linear-gradient(45deg, #222567, #565ab1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(34,37,103,0.6);
+    font-size: 0.6rem;
+  }
+  
+  .hero-btn.secondary {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(10px);
+    font-size: 0.6rem;
+  }
+  
+  .hero-btn.secondary:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    font-size: 0.6rem;
   }
 }

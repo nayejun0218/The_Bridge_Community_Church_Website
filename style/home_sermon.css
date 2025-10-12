@@ -30,11 +30,9 @@
   }
   
   .bible-series-slider .sermon-card-link {
-    flex: 0 0 calc(100% / 3) !important;
-    padding: 0 1rem !important;
-    box-sizing: border-box !important;
-    min-width: 260px !important;
-    max-width: 320px !important;
+    flex: 0 0 calc(100% / 3);
+    padding: 0 1rem;
+    box-sizing: border-box;
   }
   
   .bible-series-card {
@@ -189,15 +187,24 @@
     align-items: stretch;
     transition: box-shadow 0.2s, background 0.2s, border 0.3s;
     border: 1.5px solid #f0f2f4;
-    min-width: 200px !important;
-    min-height: 220px !important;
-    height: 280px !important;
-    width: 100% !important;
+    min-width: 200px; 
+    min-height: 220px;
+  }
+
+  @media (max-width: 600px) {
+    .sermon-card {
+      min-height: auto !important;
+      min-width: auto !important;
+    }
   }
   
   .sermon-card:hover {
     border: 2.5px solid #e3e8ee;
     background: #d9e2fb;
+    color: #000000;
+  }
+
+  .sermon-card:hover .hover-text {
     color: #000000;
   }
   
@@ -247,6 +254,16 @@
   .sermon-card:hover .sermon-info {
     opacity: 0;
   }
+
+  @media (max-width: 600px) {
+    .sermon-card .sermon-info {
+      padding: 0.3rem 0.5rem 0.3rem 0.5rem !important;
+    }
+  }
+
+  .sermon-card:hover .sermon-info {
+    opacity: 0;
+  }
   
   .sermon-thumb-wrap {
     width: 100%;
@@ -261,44 +278,53 @@
     border: 0 solid transparent;
     transition: border 0.2s;
   }
+
+  @media (max-width: 600px) {
+    .sermon-thumb-wrap {
+      aspect-ratio: 16/9 !important;
+      height: auto !important;
+    }
+
+    .sermon-card {
+      min-height: auto !important;
+      min-width: auto !important;
+    }
+
+    .more-card {
+      min-height: auto !important;
+      min-width: auto !important;
+    }
+
+    /* 모바일에서 슬라이더 버튼 숨기기 */
+    .slider-prev, .slider-next, .slider-prev-shorts, .slider-next-shorts {
+      display: none !important;
+    }
+  }
   
   .sermon-card:hover .sermon-thumb-wrap {
     border: 2px solid #ff0000;
   }
   
   .sermon-thumb {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 10px;
     transition: border 0.2s, transform 0.2s;
     transform: scale(1.08);
     border: none !important;
   }
 
-  /* 1분 말씀 시리즈(Shorts)도 동일한 크기로 표시 */
-  .shorts-slider-track .sermon-card {
-    height: 280px !important;
-    width: 100% !important;
-    min-height: 220px !important;
-  }
+  /* 1분 말씀 시리즈(Shorts)도 동일한 크기로 표시 - 통합된 스타일 사용 */
 
-  .shorts-slider-track .sermon-thumb-wrap {
-    aspect-ratio: 16 / 9 !important;
-  }
-
-  .shorts-slider-track .sermon-thumb {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-  }
-
-  /* 더 보러가기 카드 스타일 */
+  /* 더 보러가기 카드 스타일 - 통합된 크기 사용 */
   .more-card {
     background: linear-gradient(135deg, #565ab1 0%, #222567 100%) !important;
     border: 2px solid #565ab1 !important;
     position: relative;
     overflow: hidden;
+    min-width: 200px; 
+    min-height: 220px;
   }
 
   .more-card:hover {
@@ -758,22 +784,14 @@
     }
   }
   
-  @media (max-width: 900px) {
-    .bible-series-slider .sermon-card-link {
-      width: calc((100% - 1 * 2.2rem) / 2);
-    }
-    
-    .bible-series-image-wrap { 
-      height: 180px; 
-    }
-    
+  @media (max-width: 480px) {
     .bible-series-title {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
     
     .sermon-section-title {
-      font-size: 1.5rem;
-      margin: 1.5rem 0 1rem 0;
+      font-size: 1.2rem;
+      margin: 0.8rem 0 0.5rem 0;
     }
     
     .sermon-series-grid {
@@ -782,549 +800,98 @@
     }
     
     .bible-series-card {
-      min-width: 200px;
-      max-width: 260px;
-    }
-    
-    .bible-series-card-body {
-      padding: 1.1rem 1.2rem 1.2rem 1.2rem;
-    }
-    
-    .bible-series-meta {
-      font-size: 0.9rem;
-    }
-    
-    .bible-series-title-main {
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-    
-    .bible-series-btn {
-      font-size: 0.9rem;
-      padding: 0.5em 1.1em;
-    }
-    
-    .bible-series-label {
-      font-size: 0.9rem;
-      padding: 0.4em 1em;
-    }
-    
-    .bible-series-title-overlay {
-      width: 260px;
-      height: 70px;
-    }
-    
-    .bible-series-title-overlay-text {
-      font-size: 1.5rem;
-    }
-    
-    .all-sermons-link {
-      font-size: 0.9rem;
-      padding: 0.5em 1.1em 0.5em 0.8em;
-      gap: 0.9em;
-    }
-    
-    .all-sermons-icon-bg {
-      width: 38px;
-      height: 38px;
-    }
-    
-    .all-sermons-youtube-icon {
-      width: 24px;
-      height: 24px;
-    }
-    
-    .all-sermons-text {
-      font-size: 0.9rem;
-    }
-    
-    #toggle-sermon-list {
-      font-size: 1.6rem;
-    }
-    
-    .slider-prev, .slider-next, .slider-prev-shorts, .slider-next-shorts {
-      width: 40px;
-      height: 40px;
-      font-size: 2.2rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .bible-series-title {
-      font-size: 1.3rem;
-    }
-    
-    .sermon-section-title {
-      font-size: 1.3rem;
-      margin: 1.2rem 0 0.8rem 0;
-    }
-    
-    .sermon-series-grid {
-      grid-template-columns: 1fr;
-      gap: 1.2rem;
-    }
-    
-    .bible-series-card {
-      min-width: 180px;
-      max-width: 100%;
+      min-width: 220px;
+      max-width: 280px;
     }
     
     .bible-series-image-wrap {
-      height: 160px;
+      height: 190px;
     }
     
     .bible-series-card-body {
-      padding: 1rem 1.1rem 1.1rem 1.1rem;
-    }
-    
-    .bible-series-meta {
-      font-size: 0.85rem;
+      padding: 1.2rem 1.3rem 1.3rem 1.3rem;
     }
     
     .bible-series-title-main {
-      font-size: 0.9rem;
-      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
     }
     
     .bible-series-btn {
-      font-size: 0.85rem;
-      padding: 0.4em 1em;
-    }
-    
-    .bible-series-label {
-      font-size: 0.85rem;
-      padding: 0.35em 0.9em;
-      left: 1rem;
-      bottom: 1rem;
-    }
-    
-    .bible-series-title-overlay {
-      width: 240px;
-      height: 65px;
-    }
-    
-    .bible-series-title-overlay-text {
-      font-size: 1.3rem;
-    }
-    
-    .all-sermons-link {
-      font-size: 0.85rem;
-      padding: 0.4em 1em 0.4em 0.7em;
-      gap: 0.8em;
-    }
-    
-    .all-sermons-icon-bg {
-      width: 34px;
-      height: 34px;
-    }
-    
-    .all-sermons-youtube-icon {
-      width: 22px;
-      height: 22px;
-    }
-    
-    .all-sermons-text {
-      font-size: 0.85rem;
-    }
-    
-    #toggle-sermon-list {
-      font-size: 1.4rem;
-    }
-    
-    .slider-prev, .slider-next, .slider-prev-shorts, .slider-next-shorts {
-      width: 36px;
-      height: 36px;
-      font-size: 2rem;
-    }
-    
-    .sermon-card {
-      min-height: 200px;
-    }
-    
-    .sermon-title {
-      font-size: 0.95rem;
-      margin-bottom: 0.8rem;
-    }
-    
-    .sermon-btn {
-      font-size: 0.9rem;
-      padding: 0.6em 1.4em;
-    }
-    
-    .sermon-label {
-      font-size: 0.8rem;
-      padding: 0.35em 1em;
-      left: 0.8rem;
-      bottom: 0.8rem;
-    }
-    
-    .sermon-date {
-      font-size: 0.9rem;
-    }
-    
-    .sermon-card .hover-text {
-      font-size: 1rem;
-    }
-  }
-  
-  @media (max-width: 700px) {
-    .bible-series-slider .sermon-card-link {
-      width: 100%;
-    }
-    
-    .bible-series-title {
       font-size: 1.2rem;
-    }
-    
-    .sermon-section-title {
-      font-size: 1.2rem;
-      margin: 1rem 0 0.6rem 0;
-    }
-    
-    .bible-series-card {
-      min-width: 160px;
-    }
-    
-    .bible-series-image-wrap {
-      height: 150px;
-    }
-    
-    .bible-series-card-body {
-      padding: 0.9rem 1rem 1rem 1rem;
-    }
-    
-    .bible-series-meta {
-      font-size: 0.8rem;
-    }
-    
-    .bible-series-title-main {
-      font-size: 0.85rem;
-      margin-bottom: 0.7rem;
-    }
-    
-    .bible-series-btn {
-      font-size: 0.8rem;
-      padding: 0.35em 0.9em;
-    }
-    
-    .bible-series-label {
-      font-size: 0.8rem;
-      padding: 0.3em 0.8em;
-      left: 0.9rem;
-      bottom: 0.9rem;
-    }
-    
-    .bible-series-title-overlay {
-      width: 220px;
-      height: 60px;
-    }
-    
-    .bible-series-title-overlay-text {
-      font-size: 1.2rem;
-    }
-    
-    .all-sermons-link {
-      font-size: 0.8rem;
-      padding: 0.35em 0.9em 0.35em 0.6em;
-      gap: 0.7em;
-    }
-    
-    .all-sermons-icon-bg {
-      width: 30px;
-      height: 30px;
-    }
-    
-    .all-sermons-youtube-icon {
-      width: 20px;
-      height: 20px;
-    }
-    
-    .all-sermons-text {
-      font-size: 0.8rem;
-    }
-    
-    #toggle-sermon-list {
-      font-size: 1.3rem;
-    }
-    
-    .slider-prev, .slider-next, .slider-prev-shorts, .slider-next-shorts {
-      width: 32px;
-      height: 32px;
-      font-size: 1.8rem;
-    }
-    
-    .sermon-card {
-      min-height: 180px;
-    }
-    
-    .sermon-title {
-      font-size: 0.9rem;
-      margin-bottom: 0.7rem;
-    }
-    
-    .sermon-btn {
-      font-size: 0.85rem;
       padding: 0.5em 1.2em;
     }
     
-    .sermon-label {
-      font-size: 0.75rem;
-      padding: 0.3em 0.9em;
-      left: 0.8rem;
-      bottom: 0.8rem;
-    }
-    
-    .sermon-date {
-      font-size: 0.85rem;
-    }
-    
-    .sermon-thumb-wrap .youtube-logo {
-      width: 40px;
-      height: 40px;
-    }
-    
-    .sermon-card .hover-text {
-      font-size: 0.95rem;
-    }
-  }
-  
-  @media (max-width: 600px) {
-    .bible-series-title {
-      font-size: 1.1rem;
-    }
-    
-    .sermon-section-title {
-      font-size: 1.1rem;
-      margin: 0.8rem 0 0.5rem 0;
-    }
-    
-    .bible-series-card {
-      min-width: 140px;
-    }
-    
-    .bible-series-image-wrap {
-      height: 140px;
-    }
-    
-    .bible-series-card-body {
-      padding: 0.8rem 0.9rem 0.9rem 0.9rem;
-    }
-    
-    .bible-series-meta {
-      font-size: 0.75rem;
-    }
-    
-    .bible-series-title-main {
-      font-size: 0.8rem;
-      margin-bottom: 0.6rem;
-    }
-    
-    .bible-series-btn {
-      font-size: 0.75rem;
-      padding: 0.3em 0.8em;
-    }
-    
-    .bible-series-label {
-      font-size: 0.75rem;
-      padding: 0.25em 0.7em;
-      left: 0.8rem;
-      bottom: 0.8rem;
-    }
-    
     .bible-series-title-overlay {
-      width: 200px;
-      height: 55px;
+      width: 280px;
+      height: 75px;
     }
     
     .bible-series-title-overlay-text {
-      font-size: 1.1rem;
-    }
-    
-    .all-sermons-link {
-      font-size: 0.75rem;
-      padding: 0.3em 0.8em 0.3em 0.5em;
-      gap: 0.6em;
-    }
-    
-    .all-sermons-icon-bg {
-      width: 28px;
-      height: 28px;
-    }
-    
-    .all-sermons-youtube-icon {
-      width: 18px;
-      height: 18px;
-    }
-    
-    .all-sermons-text {
-      font-size: 0.75rem;
-    }
-    
-    #toggle-sermon-list {
       font-size: 1.2rem;
     }
     
-    .slider-prev, .slider-next, .slider-prev-shorts, .slider-next-shorts {
-      width: 30px;
-      height: 30px;
-      font-size: 1.6rem;
-    }
-    
-    .sermon-card {
-      min-height: 160px !important;
-    }
-    
-    .sermon-title {
-      font-size: 0.85rem;
-      margin-bottom: 0.6rem;
-    }
-    
-    .sermon-btn {
-      font-size: 0.8rem;
-      padding: 0.4em 1em;
-    }
-    
-    .sermon-label {
-      font-size: 0.7rem;
-      padding: 0.25em 0.8em;
-      left: 0.7rem;
-      bottom: 0.7rem;
-    }
-    
-    .sermon-date {
-      font-size: 0.8rem;
-    }
-    
-    .sermon-thumb-wrap .youtube-logo {
-      width: 36px;
-      height: 36px;
-    }
-    
-    .sermon-card .hover-text {
-      font-size: 0.9rem;
-      min-height: 40px;
-    }
-  
-    .sermon h2 {
-      font-size: 1.5rem !important;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .bible-series-title {
-      font-size: 1rem;
-    }
-    
-    .sermon-section-title {
-      font-size: 1.2rem !important;
-      margin: 0.6rem 0 0.4rem 0;
-    }
-    
-    .bible-series-card {
-      min-width: 120px;
-    }
-    
-    .bible-series-image-wrap {
-      height: 120px;
-    }
-    
-    .bible-series-card-body {
-      padding: 0.7rem 0.8rem 0.8rem 0.8rem;
-    }
-    
-    .bible-series-meta {
-      font-size: 0.7rem;
-    }
-    
-    .bible-series-title-main {
-      font-size: 0.75rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .bible-series-btn {
-      font-size: 0.7rem;
-      padding: 0.25em 0.7em;
-    }
-    
-    .bible-series-label {
-      font-size: 0.7rem;
-      padding: 0.2em 0.6em;
-      left: 0.7rem;
-      bottom: 0.7rem;
-    }
-    
-    .bible-series-title-overlay {
-      width: 180px;
-      height: 50px;
-    }
-    
-    .bible-series-title-overlay-text {
-      font-size: 1rem;
-    }
-    
     .all-sermons-link {
-      font-size: 0.7rem;
-      padding: 0.25em 0.7em 0.25em 0.4em;
-      gap: 0.5em;
+      font-size: 0.95rem;
+      padding: 0.5em 1.2em 0.5em 0.9em;
     }
     
     .all-sermons-icon-bg {
-      width: 24px;
-      height: 24px;
+      width: 42px;
+      height: 42px;
     }
     
     .all-sermons-youtube-icon {
-      width: 16px;
-      height: 16px;
+      width: 28px;
+      height: 28px;
     }
     
     .all-sermons-text {
-      font-size: 0.7rem;
+      font-size: 0.5rem;
     }
     
     #toggle-sermon-list {
-      font-size: 1.1rem;
+      font-size: 1.8rem;
     }
-    
-    .slider-prev, .slider-next, .slider-prev-shorts, .slider-next-shorts {
-      width: 28px;
-      height: 28px;
-      font-size: 1.4rem;
-    }
-    
-    .sermon-card {
-      min-height: 140px;
-    }
-    
+  
     .sermon-title {
-      font-size: 0.8rem;
-      margin-bottom: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #000000;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      height: 2.6em;
+      line-height: 1.3;
+      text-overflow: ellipsis;
     }
-    
-    .sermon-btn {
-      font-size: 0.75rem;
-      padding: 0.35em 0.9em;
-    }
-    
-    .sermon-label {
-      font-size: 0.65rem;
-      padding: 0.2em 0.7em;
-      left: 0.6rem;
-      bottom: 0.6rem;
-    }
-    
+  
     .sermon-date {
-      font-size: 0.75rem;
+      font-size: 0.6rem;
+      color: #7a8a99;
+      margin-bottom: -4rem;
+      margin-top: -1rem;
+      font-weight: 500;
     }
-    
-    .sermon-thumb-wrap .youtube-logo {
-      width: 32px;
-      height: 32px;
-    }
-    
+  
     .sermon-card .hover-text {
-      font-size: 0.85rem;
-      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000000;
+      font-size: 0.7rem;
+      font-weight: 700;
+      min-height: 30px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      background: none;
+      position: static;
+      border-radius: 0;
+      margin-top: 0.5rem;
+      width: 100%;
+      text-align: center;
     }
   }
   
