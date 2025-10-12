@@ -678,7 +678,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, #296722, #296722);
+  background: linear-gradient(to bottom, #565ab1, #222567);
 }
 
 .career-item {
@@ -695,14 +695,14 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #296722;
+  background: #565ab1;
   border: 3px solid #ffffff;
   box-shadow: 0 0 0 2px #296722;
 }
 
 .career-item.highlight::before {
-  background: #e74c3c;
-  box-shadow: 0 0 0 2px #e74c3c;
+  background: #222567;
+  box-shadow: 0 0 0 2px #222567;
   width: 16px;
   height: 16px;
   left: -10px;
@@ -717,7 +717,7 @@
 }
 
 .career-item.highlight .career-year {
-  color: #e74c3c;
+  color: #222567;
   font-size: 1.2rem;
 }
 
