@@ -19,13 +19,11 @@
       <section class="preview-section">
         <h2>전화 문의</h2>
           <p>안내: 주일이나 예배시간에는 통화가 어려울 수 있습니다. 평일 시간에 연락 주시거나, 문자를 남겨주시면 확인 후 꼭 연락드리겠습니다.</p>
-          <div class="contact-info-cards">
-            <div class="contact-info-card">
-              <div class="bridge-social-card">
-                <img src="/images/logo/Call.png" alt="전화 아이콘" class="bridge-social-logo">
-                <div class="contact-info-content">
-                  <span class="contact-info-text">042-364-5877</span>
-                </div>
+          <div class="contact-card-container">
+            <div class="bridge-social-card phone-card">
+              <img src="/images/logo/Call.png" alt="전화 아이콘" class="bridge-social-logo">
+              <div class="contact-info-content">
+                <span class="contact-info-text">042-364-5877</span>
               </div>
             </div>
           </div>
@@ -34,13 +32,11 @@
       <section class="preview-section">
         <h2>이메일 문의</h2>
           <p>안내: 보내주신 메일은 담당자가 꼼꼼히 확인하여 1~2일 내에 정성껏 답변해 드리겠습니다.</p>
-          <div class="contact-info-cards">
-            <div class="contact-info-card">
-              <div class="bridge-social-card">
-                <img src="/images/logo/naverMail.png" alt="네이버 메일 아이콘" class="bridge-social-logo">
-                <div class="contact-info-content">
-                  <span class="contact-info-text">tbcc230709@naver.com</span>
-                </div>
+          <div class="contact-card-container">
+            <div class="bridge-social-card email-card">
+              <img src="/images/logo/naverMail.png" alt="네이버 메일 아이콘" class="bridge-social-logo">
+              <div class="contact-info-content">
+                <span class="contact-info-text">tbcc230709@naver.com</span>
               </div>
             </div>
           </div>
@@ -49,13 +45,11 @@
       <section class="preview-section">
         <h2>인스타그램 DM</h2>
           <p>안내: 예배 시간 확인 등 간단한 질문은 인스타그램 다이렉트 메시지(DM)를 통해서도 빠르게 소통할 수 있습니다.</p>
-          <div class="contact-info-cards">
-            <div class="contact-info-card">
-              <div class="bridge-social-card">
-                <img src="/images/logo/instagram_logo.png" alt="인스타그램 아이콘" class="bridge-social-logo">
-                <div class="contact-info-content">
-                  <span class="contact-info-text">@thebridgecommunity__church</span>
-                </div>
+          <div class="contact-card-container">
+            <div class="bridge-social-card instagram-card">
+              <img src="/images/logo/instagram_logo.png" alt="인스타그램 아이콘" class="bridge-social-logo">
+              <div class="contact-info-content">
+                <span class="contact-info-text">@thebridgecommunity__church</span>
               </div>
             </div>
           </div>
@@ -72,5 +66,98 @@
       .then(data => { document.getElementById('footer').innerHTML = data; });
   </script>
   <script src="/main.js"></script>
+  
+  <style>
+    /* 각 카드가 독립적인 컨테이너를 가지도록 설정 */
+    .contact-card-container {
+      display: flex;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+    
+    /* 전화 카드 - 짧은 텍스트에 맞는 크기 */
+    .phone-card {
+      width: auto;
+      min-width: 280px;
+      max-width: 350px;
+      flex-shrink: 0;
+    }
+    
+    /* 이메일 카드 - 중간 길이 텍스트에 맞는 크기 */
+    .email-card {
+      width: auto;
+      min-width: 320px;
+      max-width: 400px;
+      flex-shrink: 0;
+    }
+    
+    /* 인스타그램 카드 - 긴 텍스트에 맞는 크기 */
+    .instagram-card {
+      width: auto;
+      min-width: 380px;
+      max-width: 500px;
+      flex-shrink: 0;
+    }
+    
+    .contact-info-content {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .contact-info-text {
+      word-break: break-all;
+      white-space: nowrap;
+      overflow: visible;
+      text-overflow: clip;
+    }
+    
+    /* 태블릿 최적화 */
+    @media (max-width: 768px) {
+      .phone-card {
+        min-width: 260px;
+        max-width: 100%;
+      }
+      
+      .email-card {
+        min-width: 300px;
+        max-width: 100%;
+      }
+      
+      .instagram-card {
+        min-width: 350px;
+        max-width: 100%;
+      }
+      
+      .contact-info-text {
+        font-size: 0.9rem;
+        white-space: normal;
+        word-break: break-word;
+      }
+    }
+    
+    /* 모바일 최적화 */
+    @media (max-width: 480px) {
+      .phone-card,
+      .email-card,
+      .instagram-card {
+        min-width: 250px;
+        max-width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+      }
+      
+      .contact-info-content {
+        margin-left: 0;
+        margin-top: 0.5rem;
+      }
+      
+      .contact-info-text {
+        font-size: 0.85rem;
+        white-space: normal;
+        word-break: break-word;
+      }
+    }
+  </style>
 </body>
 </html> 

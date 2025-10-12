@@ -52,17 +52,17 @@
   width: 100%;
   height: 100%;
   /* background: linear-gradient(135deg, 
-    #399e37 0%, 
-    #4bd74d 25%, 
-    #2a951e 50%, 
-    #37982d 75%, 
-    #296722 100%); */
+    #222567 0%, 
+    #94A2D4 25%, 
+    #BCC4F1 50%, 
+    #CED7FF 75%, 
+    #DAE1FF 100%); */
     background: linear-gradient(135deg, 
-    #f0cf91 0%, 
-    #d7ad76 25%, 
-    #d78d42 50%, 
-    #b25a32 75%, 
-    #9d4e16 100%);
+    #2a2d63 0%, 
+    #7175b5 25%, 
+    #94A2D4 50%, 
+    #565ab1 75%, 
+    #222567 100%);
   opacity: 0.95;
 }
 
@@ -91,18 +91,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* background: linear-gradient(135deg, 
-    #f0cf91 0%, 
-    #d7ad76 25%, 
-    #d78d42 50%, 
-    #b25a32 75%, 
-    #9d4e16 100%); */
   background: linear-gradient(135deg, 
-    #399e37 0%, 
-    #4bd74d 25%,    
-    #2a951e 50%, 
-    #37982d 75%, 
-    #296722 100%);
+    #8293d2 0%, 
+    #6469ab 25%, 
+    #464991 50%, 
+    #6065b7 75%, 
+    #7988bf 100%);
   opacity: 0.9;
 }
 
@@ -196,7 +190,7 @@
   padding: 20px;
   background: rgba(255,255,255,0.1);
   border-radius: 15px;
-  border-left: 4px solid #091a46;
+  border-left: 4px solid #222567;
   backdrop-filter: blur(10px);
 }
 
@@ -312,15 +306,15 @@
 }
 
 .hero-btn.primary {
-  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  background: linear-gradient(45deg, #565ab1, #222567);
   color: white;
-  box-shadow: 0 5px 15px rgba(231,76,60,0.4);
+  box-shadow: 0 5px 15px rgba(86,90,177,0.4);
 }
 
 .hero-btn.primary:hover {
-  background: linear-gradient(45deg, #c0392b, #a93226);
+  background: linear-gradient(45deg, #222567, #565ab1);
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(231,76,60,0.6);
+  box-shadow: 0 8px 25px rgba(34,37,103,0.6);
 }
 
 .hero-btn.secondary {

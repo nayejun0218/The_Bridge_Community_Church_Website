@@ -654,7 +654,7 @@ footer a:hover {
   .bridge-social-section .bible-series-title,
   h2 {
     font-size: 1.5rem !important;
-    padding-left: 0.5em !important;
+    padding-left: 10px !important; /* 모바일에서도 간격 조정 */
   }
 
   /* 제목 아래 밑줄 간격 줄이기 */
@@ -1246,6 +1246,20 @@ body, p, li {
   margin-bottom: 0.7em;
   font-weight: 700;
   letter-spacing: -1px;
+  position: relative;
+  padding-left: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.guide-section .bible-series-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(135deg, #565ab1 0%, #222567 100%);
+  border-radius: 2px;
 }
 
 .guide-section hr {
@@ -1275,6 +1289,20 @@ body, p, li {
   font-weight: 700;
   letter-spacing: -1px;
   cursor: pointer;
+  position: relative;
+  padding-left: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.bible-series-section .bible-series-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(135deg, #565ab1 0%, #222567 100%);
+  border-radius: 2px;
 }
 
 .bible-series-section hr {
@@ -1312,6 +1340,20 @@ body, p, li {
   margin-bottom: 0.7em;
   font-weight: 700;
   letter-spacing: -1px;
+  position: relative;
+  padding-left: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.bridge-social-section .bible-series-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(135deg, #565ab1 0%, #222567 100%);
+  border-radius: 2px;
 }
 
 .bridge-social-section hr {
@@ -1450,7 +1492,7 @@ h2.no-margin-top {
 }
 
 .guide-card {
-  background: rgb(60, 128, 51);
+  background: #f0f4ff;
   border-radius: 18px;
   box-shadow: 0 2px 16px rgba(44,62,80,0.07);
   overflow: hidden;
@@ -1463,13 +1505,14 @@ h2.no-margin-top {
   padding: 1.2em 0.5em;
   font-size: 1rem;
   font-weight: 600;
-  color: #fff;
+  color: #000000;
   transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
 }
 
 .guide-card:hover {
   box-shadow: 0 6px 32px rgba(44,62,80,0.13);
-  background: #296722;
+  background: #565ab1;
+  color: #ffffff;
   transform: translateY(-3px) scale(1.015);
 }
 
@@ -1487,7 +1530,7 @@ h2.no-margin-top {
 }
 
 .bridge-social-card {
-  background: #f8f9fa;
+  background: #f0f4ff;
   border-radius: 18px;
   box-shadow: 0 2px 16px rgba(44,62,80,0.07);
   overflow: hidden;
@@ -1506,8 +1549,17 @@ h2.no-margin-top {
 
 .bridge-social-card:hover {
   box-shadow: 0 6px 32px rgba(44,62,80,0.13);
-  background: #e9eef2;
+  background: #565ab1;
+  color: #ffffff;
   transform: translateY(-3px) scale(1.015);
+}
+
+.bridge-social-card:hover .bridge-social-text {
+  color: #ffffff;
+}
+
+.bridge-social-card:hover .bridge-social-logo img {
+  filter: brightness(0) invert(1);
 }
 
 .bridge-social-logo {
@@ -1515,8 +1567,7 @@ h2.no-margin-top {
   height: 50px;
   border-radius: 12px;
   object-fit: contain;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(44,62,80,0.06);
+  background: #f0f4ff;
   padding: 6px;
 }
 
@@ -1536,7 +1587,7 @@ h2.no-margin-top {
   display: block;
   border-radius: 16px;
   box-shadow: 0 2px 16px rgba(44,62,80,0.07);
-  background: #fff;
+  background: #f0f4ff;
   margin: 0 auto;
   transition: box-shadow 0.2s, transform 0.2s;
   text-align: left;
@@ -1545,6 +1596,8 @@ h2.no-margin-top {
 .social-card-link:hover {
   box-shadow: 0 6px 24px rgba(44,62,80,0.13);
   transform: translateY(-2px) scale(1.025);
+  background: #565ab1;
+  color: #ffffff;
 }
 
 .social-card {
@@ -1559,7 +1612,7 @@ h2.no-margin-top {
   height: 44px;
   border-radius: 12px;
   object-fit: contain;
-  background: #fff;
+  background: #f0f4ff;
   box-shadow: 0 1px 4px rgba(44,62,80,0.06);
   padding: 6px;
 }
@@ -1587,7 +1640,7 @@ h2.no-margin-top {
 }
 
 .bridge-summary-card {
-  background: #f8f9fa;
+  background: #f0f4ff;
   border-radius: 20px;
   box-shadow: 0 4px 24px rgba(44, 62, 80, 0.06);
   padding: 2.2rem 2.5rem 2rem 2.5rem;
@@ -1986,7 +2039,7 @@ h2.no-margin-top {
 
 /* FAQ 페이지 스타일 */
 .faq-hero {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  background: linear-gradient(135deg, #565ab1 0%, #222567 100%);
   color: white;
   padding: 6rem 5% 4rem 5%;
   margin-top: 80px;
@@ -2029,7 +2082,7 @@ h2.no-margin-top {
 }
 
 .faq-category-title {
-  background: linear-gradient(135deg, #296722 0%, #195013 100%);
+  background: linear-gradient(135deg, #565ab1 0%, #222567 100%);
   color: white;
   padding: 1.5rem 2rem;
   margin: 0;
@@ -2068,7 +2121,7 @@ h2.no-margin-top {
 }
 
 .question-number {
-  background:#296722;
+  background:#565ab1;
   color: white;
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
@@ -2088,7 +2141,7 @@ h2.no-margin-top {
 .faq-toggle {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #296722;
+  color: #565ab1;
   transition: transform 0.3s ease;
   flex-shrink: 0;
   width: 30px;
@@ -2133,7 +2186,7 @@ h2.no-margin-top {
   background: white;
   padding: 1.5rem;
   border-radius: 12px;
-  border-left: 4px solid #3498db;
+  border-left: 4px solid #565ab1;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
@@ -2212,27 +2265,27 @@ h2.no-margin-top {
 }
 
 .contact-btn.primary {
-  background: #296722;
+  background: #565ab1;
   color: white;
 }
 
 .contact-btn.primary:hover {
-  background: #296722;
+  background: #222567;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(41, 103, 34, 0.3);
+  box-shadow: 0 4px 12px rgba(86, 89, 177, 0.3);
 }
 
 .contact-btn.secondary {
   background: white;
-  color: #296722;
-  border: 2px solid #296722;
+  color: #565ab1;
+  border: 2px solid #565ab1;
 }
 
 .contact-btn.secondary:hover {
-  background: #296722;
+  background: #565ab1;
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(41, 103, 34, 0.3);
+  box-shadow: 0 4px 12px rgba(86, 89, 177, 0.3);
 }
 
 /* 반응형 디자인 */

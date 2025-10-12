@@ -1,5 +1,422 @@
-<footer>
-  <p>교회유튜브 : <a href="https://www.youtube.com/@TheBridgeCommunity__Church/videos" target="_blank">https://www.youtube.com/@TheBridgeCommunity__Church/videos</a></p>
-  <p>온라인 헌금 계좌 : 하나은행 551-910004-61705 더브릿지커뮤니티 교회</p>
-  <p>&copy; 2024 The Bridge Community Church. All rights reserved.</p>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="church-title">
+                    <img src="/images/logo/대한예수교장로회_합동_로고.png" alt="대한예수교장로회 합동" class="denomination-logo">
+                    <h3>더브릿지커뮤니티교회</h3>
+                </div>
+                <p>하나님과 사람을 잇는 교회</p>
+                <p>대한예수교장로회</p><br>
+                <!-- <div class="footer-contact">
+                    <h4>예배 시간</h4>
+                    <p>주일예배: 오전 11:00</p>
+                    <p>수요예배: 오후 7:30</p>
+                </div> -->
+            </div>
+            <div class="footer-contact">
+                <h4>연락처/정보</h4>
+                <p><i class="fas fa-map-marker-alt"></i> 세종특별자치시 아름동 1089 B1호</p>
+                <p><i class="fas fa-phone"></i> 042-364-5877</p>
+                <p><i class="fas fa-envelope"></i> tbcc230709@naver.com</p>
+                <p><i class="fas fa-university"></i> 하나은행 551-910004-61705</p>
+                <p>더브릿지커뮤니티 교회</p>
+            </div>
+            <!-- <div class="footer-links">
+                <h4>빠른 링크</h4>
+                <ul>
+                    <li><a href="page/church-intro/pastor.html">담임목사</a></li>
+                    <li><a href="page/church-intro/vision.html">교회비전</a></li>
+                    <li><a href="page/ministry/worship.html">예배안내</a></li>
+                    <li><a href="page/ministry/sermon.html">설교</a></li>
+                    <li><a href="page/contact/welcome.html">신자등록</a></li>
+                    <li><a href="page/notice/location.html">오시는 길</a></li>
+                </ul>
+            </div> -->
+            <div class="footer-social">
+                <h4>소셜 미디어</h4>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@TheBridgeCommunity__Church/videos" class="social-link youtube" target="_blank" rel="noopener">
+                        <i class="fab fa-youtube"></i>
+                        <span>유튜브</span>
+                    </a>
+                    <a href="https://www.instagram.com/thebridgecommunity__church/" class="social-link instagram" target="_blank" rel="noopener">
+                        <i class="fab fa-instagram"></i>
+                        <span>인스타그램</span>
+                    </a>
+                    <a href="https://blog.naver.com/atomnkt" class="social-link naver" target="_blank" rel="noopener">
+                        <i class="fas fa-blog"></i>
+                        <span>네이버 블로그</span>
+                    </a>
+                </div>
+                <!-- <div class="youtube-channel">
+                    <p><i class="fab fa-youtube"></i> 교회 유튜브 채널</p>
+                    <a href="https://www.youtube.com/@TheBridgeCommunity__Church/videos" target="_blank" rel="noopener">
+                        @TheBridgeCommunity__Church
+                    </a>
+                </div> -->
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2024 더브릿지커뮤니티교회. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="page/contact/faq.html">자주 묻는 질문</a>
+                    <a href="page/notice/bulletin.html">공지사항</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer> 
+
+<style>
+    .footer {
+        background: linear-gradient(135deg, #222567 0%, #2a2d7a 100%);
+        color: white;
+        padding: 60px 0 20px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 20px;
+    }
+
+    .footer-info h3 {
+        color: #fff;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .church-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 1rem;
+    }
+
+    .church-title h3 {
+        margin-bottom: 0;
+        align-items: center;
+    }
+
+    .denomination-logo {
+        height: 40px;
+        width: auto;
+        opacity: 0.9;
+        transition: opacity 0.3s ease;
+    }
+
+    .denomination-logo:hover {
+        opacity: 1;
+    }
+
+    .footer-info {
+        text-align: center;
+    }
+
+    .footer-info p {
+        color: #e0e6ed;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    .church-hours {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        border-left: 4px solid #ffd700;
+    }
+
+    .church-hours h5 {
+        color: #ffd700;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .church-hours p {
+        color: #e0e6ed;
+        margin-bottom: 0.3rem;
+        font-size: 0.9rem;
+    }
+
+    .footer-contact h4,
+    .footer-social h4,
+    .footer-links h4 {
+        color: #fff;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .footer-contact p {
+        color: #e0e6ed;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.95rem;
+    }
+
+    .offering-info {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        border-left: 4px solid #4CAF50;
+    }
+
+    .offering-info h5 {
+        color: #4CAF50;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .offering-info p {
+        color: #e0e6ed;
+        margin-bottom: 0.3rem;
+        font-size: 0.9rem;
+    }
+
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+        color: #e0e6ed;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .footer-links a:hover {
+        color: #ffd700;
+    }
+
+    .footer-links a::before {
+        content: '▶';
+        font-size: 0.8rem;
+        color: #ffd700;
+    }
+
+    .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 1.5rem;
+    }
+
+    .social-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        text-decoration: none;
+        color: #e0e6ed;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+    }
+
+    .social-link:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(5px);
+    }
+
+    .social-link.youtube:hover {
+        background: rgba(255, 0, 0, 0.2);
+        color: #ff4444;
+    }
+
+    .social-link.instagram:hover {
+        background: rgba(225, 48, 108, 0.2);
+        color: #e1306c;
+    }
+
+    .social-link.naver:hover {
+        background: rgba(3, 199, 90, 0.2);
+        color: #03c75a;
+    }
+
+    .social-link i {
+        font-size: 1.2rem;
+        width: 20px;
+        text-align: center;
+    }
+
+    .youtube-channel {
+        padding: 1rem;
+        background: rgba(255, 0, 0, 0.1);
+        border-radius: 8px;
+        border-left: 4px solid #ff4444;
+    }
+
+    .youtube-channel p {
+        color: #ff4444;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    .youtube-channel a {
+        color: #e0e6ed;
+        text-decoration: none;
+        font-size: 0.9rem;
+        word-break: break-all;
+    }
+
+    .youtube-channel a:hover {
+        color: #ffd700;
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding-top: 20px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .footer-bottom-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .footer-bottom p {
+        color: #ccc;
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+    .footer-bottom-links {
+        display: flex;
+        gap: 20px;
+    }
+
+    .footer-bottom-links a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+    }
+
+    .footer-bottom-links a:hover {
+        color: #ffd700;
+    }
+
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+        .footer {
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            grid-template-columns: 1fr;
+            gap: 30px;
+            padding: 0 15px;
+        }
+
+        .footer-bottom {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .footer-bottom-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .footer-bottom-links {
+            justify-content: center;
+        }
+
+        .social-links {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            flex: 1;
+            min-width: 120px;
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .footer-content {
+            gap: 25px;
+            padding: 0 10px;
+        }
+
+        .footer-bottom {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .church-hours,
+        .offering-info,
+        .youtube-channel {
+            padding: 0.8rem;
+        }
+
+        .social-links {
+            flex-direction: column;
+        }
+
+        .social-link {
+            min-width: auto;
+        }
+
+        .church-title {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .denomination-logo {
+            height: 35px;
+        }
+    }
+</style>
+
