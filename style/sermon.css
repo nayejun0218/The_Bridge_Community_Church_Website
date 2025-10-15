@@ -148,7 +148,10 @@
   transition: transform 0.3s;
 }
 
-#toggle-sermon-list.open #arrow-icon, #toggle-special-list.open #special-arrow-icon, #toggle-shorts-list.open #shorts-arrow-icon #toggle-faq-list.open #faq-arrow-icon {
+#toggle-sermon-list.open #arrow-icon,
+#toggle-special-list.open #special-arrow-icon,
+#toggle-shorts-list.open #shorts-arrow-icon,
+#toggle-faq-list.open #faq-arrow-icon {
   transform: rotate(180deg);
 }
 

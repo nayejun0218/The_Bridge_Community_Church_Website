@@ -19,7 +19,7 @@
                 <p><i class="fas fa-phone"></i> 042-364-5877</p>
                 <p><i class="fas fa-envelope"></i> tbcc230709@naver.com</p>
                 <p><i class="fas fa-university"></i> 하나은행 551-910004-61705</p>
-                <p>더브릿지커뮤니티 교회</p>
+                <p class="bank-holder">더브릿지커뮤니티 교회</p>
             </div>
             <!-- <div class="footer-links">
                 <h4>빠른 링크</h4>
@@ -177,6 +177,18 @@
         gap: 10px;
         font-size: 0.95rem;
         text-align: center;
+    }
+
+    /* 아이콘의 고정 폭을 주어 다음 줄과 시작점을 맞출 수 있도록 함 */
+    .footer-contact p i {
+        width: 20px;
+        text-align: center;
+    }
+
+    /* 위 줄의 아이콘(20px) + gap(10px) 만큼 들여쓰기 */
+    .footer-contact .bank-holder {
+        padding-left: 30px;
+        margin-top: -10px; /* 위쪽 간격 살짝 줄여 계좌명과 더 가깝게 */
     }
 
     .offering-info {

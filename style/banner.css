@@ -278,6 +278,8 @@
   text-align: center;
   min-height: 24px;
   box-sizing: border-box;
+  background-clip: padding-box; /* prevent background from painting under transparent border */
+  clip-path: inset(0 round 50px); /* enforce perfectly rounded clipping across engines */
 }
 
 .hero-btn i {
@@ -294,15 +296,20 @@
   content: '';
   position: absolute;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s ease;
+  transition: transform 0.5s ease;
+  border-radius: inherit; /* match parent's rounded corners */
+  clip-path: inset(0 round 50px);
+  transform: translateX(-120%); /* keep shine fully off-screen initially */
+  pointer-events: none;
+  will-change: transform;
 }
 
 .hero-btn:hover::before {
-  left: 100%;
+  transform: translateX(120%);
 }
 
 .hero-btn.primary {
