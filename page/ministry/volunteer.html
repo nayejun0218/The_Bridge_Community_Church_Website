@@ -23,24 +23,30 @@
       <div class="volunteer-times">
         <div class="volunteer-item">
           <h3>베트남</h3>
-          <p class="volunteer-location">이○○ 선교사님</p>
-          <!-- <p class="volunteer-desc">현지 교회 개척과 복음 전파 사역</p> -->
+          <div class="volunteer-location-desc">
+            <p class="volunteer-location">이○○ 선교사님</p>
+            <!-- <p class="volunteer-desc">현지 교회 개척과 복음 전파 사역</p> -->
+          </div>
         </div>
         <div class="volunteer-item">
           <h3>베트남</h3>
-          <p class="volunteer-location">히○ 선교사님</p>
-          <!-- <p class="volunteer-desc">현지인 목회자 양성과 제자 훈련</p> -->
+          <div class="volunteer-location-desc">
+            <p class="volunteer-location">히○ 선교사님</p>
+            <!-- <p class="volunteer-desc">현지인 목회자 양성과 제자 훈련</p> -->
+          </div>
         </div>
         <div class="volunteer-item">
           <h3>캄보디아</h3>
-          <p class="volunteer-location">오○○ 선교사님</p>
-          <!-- <p class="volunteer-desc">지역 교회 섬김과 청년 사역</p> -->
+          <div class="volunteer-location-desc">
+            <p class="volunteer-location">오○○ 선교사님</p>
+            <!-- <p class="volunteer-desc">지역 교회 섬김과 청년 사역</p> -->
+          </div>
         </div>
       </div>
-      <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">
+      <!-- <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">
         💡 더브릿지커뮤니티교회는 선교사님들에게 매달 10만원씩 재정적으로 후원하며 섬기고 있습니다. <br>
         💡 도움이 필요한 선교지가 있다면 문의 해주세요. 
-      </p>
+      </p> -->
     </section>
 
     <!-- 3. 후원 참여 안내 -->
@@ -178,9 +184,9 @@
     }
 
     /* 반응형 디자인 */
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       .volunteer-times {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
       }
       
@@ -188,16 +194,184 @@
         padding: 1.5rem;
       }
       
+      .volunteer-item h3 {
+        font-size: 1.2rem;
+      }
+      
       .volunteer-location {
         font-size: 1.3rem !important;
       }
       
-      .preview-twocol {
-        flex-direction: column;
+      .volunteer-desc {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .volunteer-times {
+        grid-template-columns: 1fr;
+        gap: 1rem;
       }
       
-      .volunteer-welcome-box {
-        margin-top: 1.5rem;
+      .volunteer-item {
+        padding: 1rem;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      
+      .volunteer-item h3 {
+        font-size: 1rem;
+        margin-bottom: 0;
+        flex-shrink: 0;
+        width: 80px;
+        text-align: center;
+      }
+      
+      .volunteer-location-desc {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      
+      .volunteer-location {
+        font-size: 1rem !important;
+        margin: 0;
+        text-align: center;
+        font-weight: 700;
+      }
+      
+      .volunteer-desc {
+        font-size: 0.8rem;
+        margin: 0;
+        text-align: center;
+      }
+      
+      .preview-twocol {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+      }
+      
+      .preview-twocol-desc {
+        order: 1 !important;
+        width: 100% !important;
+        max-width: none !important;
+        padding-left: 0 !important;
+        margin: 0 !important;
+      }
+      
+      .preview-twocol-img {
+        order: 2 !important;
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      
+      .preview-twocol-img .volunteer-welcome-box {
+        margin-top: 1.5rem !important;
+        padding: 1.5rem 1rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      
+      .volunteer-welcome-box h3 {
+        font-size: 1.1rem;
+        padding-left: 1rem;
+      }
+      
+      .volunteer-welcome-box ul {
+        padding-left: 1rem;
+      }
+      
+      .volunteer-welcome-box li {
+        font-size: 0.9rem;
+      }
+      
+      .contact-info p {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .volunteer-times {
+        gap: 0.8rem;
+      }
+      
+      .volunteer-item {
+        padding: 0.8rem;
+        gap: 0.8rem;
+      }
+      
+      .volunteer-item h3 {
+        font-size: 0.9rem;
+        width: 70px;
+        text-align: center;
+      }
+      
+      .volunteer-location-desc {
+        gap: 0.2rem;
+      }
+      
+      .volunteer-location {
+        font-size: 0.9rem !important;
+        text-align: center;
+      }
+      
+      .volunteer-desc {
+        font-size: 0.75rem;
+        text-align: center;
+      }
+      
+      .preview-twocol {
+        gap: 1.2rem !important;
+      }
+      
+      .preview-twocol-desc {
+        width: 100% !important;
+        max-width: none !important;
+        padding-left: 0 !important;
+      }
+      
+      .preview-twocol-img {
+        width: 100% !important;
+        max-width: none !important;
+      }
+      
+      .preview-twocol-img .volunteer-welcome-box {
+        padding: 1.2rem 0.8rem !important;
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      
+      .volunteer-welcome-box h3 {
+        font-size: 1rem;
+        padding-left: 1rem;
+      }
+      
+      .volunteer-welcome-box ul {
+        padding-left: 1rem;
+      }
+      
+      .volunteer-welcome-box li {
+        font-size: 0.85rem;
+      }
+      
+      .contact-info {
+        padding: 0.8rem;
+      }
+      
+      .contact-info p {
+        font-size: 0.8rem;
       }
     }
   </style>

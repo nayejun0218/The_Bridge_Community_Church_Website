@@ -592,13 +592,13 @@
   }
   
   .preview-section h2 {
-    font-size: 1rem;
+    font-size: 1.2rem !important;
     margin-bottom: 0.3em;
     margin-top: -0.5rem;
   }
   
   .preview-section p {
-    font-size: 0.8rem;
+    font-size: 0.8rem !important;
   }
   
   .preview-flex {
@@ -606,7 +606,7 @@
   }
   
   .preview-desc {
-    font-size: 0.7rem;
+    font-size: 0.7rem !important;
   }
   
   .preview-img-set {

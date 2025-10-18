@@ -23,26 +23,38 @@
       <div class="online-ministry-cards">
         <a href="https://www.youtube.com/@TheBridgeCommunity__Church/videos" target="_blank" class="online-card-link">
           <div class="online-card">
-            <img src="/images/logo/youtube-logo.png" alt="유튜브" class="online-logo">
-            <h3>YouTube 채널</h3>
-            <p class="online-desc">▶ 이번 주 설교 말씀 바로가기</p>
-            <p class="online-detail">매주 업데이트되는 설교 말씀과 특별 영상을 만나보세요</p>
+            <div class="online-logo-title">
+              <img src="/images/logo/youtube-logo.png" alt="유튜브" class="online-logo">
+              <h3>YouTube 채널</h3>
+            </div>
+            <div class="online-desc-detail">
+              <p class="online-desc">▶ 이번 주 설교 말씀 바로가기</p>
+              <p class="online-detail">매주 업데이트되는 설교 말씀과 특별 영상을 만나보세요</p>
+            </div>
           </div>
         </a>
         <a href="https://www.instagram.com/thebridgecommunity__church/" target="_blank" class="online-card-link">
           <div class="online-card">
-            <img src="/images/logo/instagram_logo.png" alt="인스타그램" class="online-logo">
-            <h3>Instagram</h3>
-            <p class="online-desc">❤️ 교회 일상/소식 보기</p>
-            <p class="online-detail">교회의 따뜻한 일상과 최신 소식을 실시간으로 확인하세요</p>
+            <div class="online-logo-title">
+              <img src="/images/logo/instagram_logo.png" alt="인스타그램" class="online-logo">
+              <h3>Instagram</h3>
+            </div>
+            <div class="online-desc-detail">
+              <p class="online-desc">❤️ 교회 일상/소식 보기</p>
+              <p class="online-detail">교회의 따뜻한 일상과 최신 소식을 실시간으로 확인하세요</p>
+            </div>
           </div>
         </a>
         <a href="https://blog.naver.com/atomnkt" target="_blank" class="online-card-link">
           <div class="online-card">
-            <img src="/images/logo/naverblog_logo.png" alt="네이버 블로그" class="online-logo">
-            <h3>네이버 블로그</h3>
-            <p class="online-desc">✍️ 교회 소식 및 칼럼</p>
-            <p class="online-detail">목회자의 깊이 있는 설교와 교회 소식을 자세히 읽어보세요</p>
+            <div class="online-logo-title">
+              <img src="/images/logo/naverblog_logo.png" alt="네이버 블로그" class="online-logo">
+              <h3>네이버 블로그</h3>
+            </div>
+            <div class="online-desc-detail">
+              <p class="online-desc">✍️ 교회 소식 및 칼럼</p>
+              <p class="online-detail">목회자의 깊이 있는 설교와 교회 소식을 자세히 읽어보세요</p>
+            </div>
           </div>
         </a>
       </div>
@@ -269,9 +281,9 @@
     }
 
     /* 반응형 디자인 */
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       .online-ministry-cards {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
       }
       
@@ -279,25 +291,211 @@
         padding: 1.5rem;
       }
       
-      .online-logo {
-        width: 60px;
-        height: 60px;
+      .online-card h3 {
+        font-size: 1.2rem;
       }
       
       .online-desc {
         font-size: 1.1rem !important;
       }
       
-      .preview-twocol {
-        flex-direction: column;
+      .online-detail {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .online-ministry-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
       }
       
-      .online-welcome-box {
-        margin-top: 1.5rem;
+      .online-card {
+        padding: 1rem;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      
+      .online-logo-title {
+        flex-shrink: 0;
+        width: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      
+      .online-logo {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+      
+      .online-card h3 {
+        font-size: 0.7rem;
+        margin: 0;
+        text-align: center;
+        font-weight: 600;
+      }
+      
+      .online-desc-detail {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      
+      .online-desc {
+        font-size: 1rem !important;
+        margin: 0;
+        text-align: center;
+        font-weight: 700;
+      }
+      
+      .online-detail {
+        font-size: 0.8rem;
+        margin: 0;
+        text-align: center;
+      }
+      
+      .preview-twocol {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+      }
+      
+      .preview-twocol-desc {
+        order: 1 !important;
+        width: 100% !important;
+        max-width: none !important;
+        padding-left: 0 !important;
+        margin: 0 !important;
+      }
+      
+      .preview-twocol-img {
+        order: 2 !important;
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      
+      .preview-twocol-img .online-welcome-box {
+        margin-top: 1.5rem !important;
+        padding: 1.5rem 1rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      
+      .online-welcome-box h3 {
+        font-size: 1.1rem;
+        padding-left: 1rem;
+      }
+      
+      .online-welcome-box ul {
+        padding-left: 1rem;
+      }
+      
+      .online-welcome-box li {
+        font-size: 0.9rem;
+      }
+      
+      .contact-info p {
+        font-size: 0.85rem;
       }
 
       .online-worship-info {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .online-ministry-cards {
+        gap: 0.8rem;
+      }
+      
+      .online-card {
+        padding: 0.8rem;
+        gap: 0.8rem;
+      }
+      
+      .online-logo-title {
+        width: 70px;
+        gap: 0.2rem;
+      }
+      
+      .online-logo-title h3 {
+        font-size: 0.65rem !important;
+      }
+      .online-logo {
+        width: 35px;
+        height: 35px;
+      }
+      
+      .online-card h3 {
+        font-size: 0.65rem;
+      }
+      
+      .online-desc-detail {
+        gap: 0.2rem;
+      }
+      
+      .online-desc {
+        font-size: 0.7rem !important;
+      }
+      
+      .online-detail {
+        font-size: 0.6rem !important;
+      }
+      
+      .preview-twocol {
+        gap: 1.2rem !important;
+      }
+      
+      .preview-twocol-desc {
+        width: 100% !important;
+        max-width: none !important;
+        padding-left: 0 !important;
+      }
+      
+      .preview-twocol-img {
+        width: 100% !important;
+        max-width: none !important;
+      }
+      
+      .preview-twocol-img .online-welcome-box {
+        padding: 1.2rem 0.8rem !important;
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      
+      .online-welcome-box h3 {
+        font-size: 1rem;
+        padding-left: 1rem;
+      }
+      
+      .online-welcome-box ul {
+        padding-left: 1rem;
+      }
+      
+      .online-welcome-box li {
+        font-size: 0.85rem;
+      }
+      
+      .contact-info {
+        padding: 0.8rem;
+      }
+      
+      .contact-info p {
+        font-size: 0.8rem;
       }
     }
   </style>

@@ -23,18 +23,24 @@
       <div class="worship-times">
         <div class="worship-item">
           <h3>주일 예배</h3>
-          <p class="worship-time">오전 11:00</p>
-          <p class="worship-desc">매주 일요일 함께 드리는 주일예배</p>
+          <div class="worship-time-desc">
+            <p class="worship-time">오전 11:00</p>
+            <p class="worship-desc">매주 일요일 함께 드리는 주일예배</p>
+          </div>
         </div>
         <div class="worship-item">
           <h3>새벽 기도회</h3>
-          <p class="worship-time">오전 6:00</p>
-          <p class="worship-desc">화요일~금요일 새벽 기도회</p>
+          <div class="worship-time-desc">
+            <p class="worship-time">오전 6:00</p>
+            <p class="worship-desc">화요일~금요일 새벽 기도회</p>
+          </div>
         </div>
         <div class="worship-item">
           <h3>금요 기도회</h3>
-          <p class="worship-time">오후 9:00</p>
-          <p class="worship-desc">매주 금요일 저녁 기도회</p>
+          <div class="worship-time-desc">
+            <p class="worship-time">오후 9:00</p>
+            <p class="worship-desc">매주 금요일 저녁 기도회</p>
+          </div>
         </div>
       </div>
     </section>
@@ -174,9 +180,9 @@
     }
 
     /* 반응형 디자인 */
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       .worship-times {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
       }
       
@@ -184,16 +190,184 @@
         padding: 1.5rem;
       }
       
+      .worship-item h3 {
+        font-size: 1.2rem;
+      }
+      
       .worship-time {
         font-size: 1.3rem !important;
       }
       
-      .preview-twocol {
-        flex-direction: column;
+      .worship-desc {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .worship-times {
+        grid-template-columns: 1fr;
+        gap: 1rem;
       }
       
-      .worship-welcome-box {
-        margin-top: 1.5rem;
+      .worship-item {
+        padding: 1rem;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      
+      .worship-item h3 {
+        font-size: 1rem;
+        margin-bottom: 0;
+        flex-shrink: 0;
+        width: 80px;
+        text-align: center;
+      }
+      
+      .worship-time-desc {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      
+      .worship-time {
+        font-size: 1rem !important;
+        margin: 0;
+        text-align: center;
+        font-weight: 700;
+      }
+      
+      .worship-desc {
+        font-size: 0.8rem;
+        margin: 0;
+        text-align: center;
+      }
+      
+      .preview-twocol {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+      }
+      
+      .preview-twocol-desc {
+        order: 1 !important;
+        width: 100% !important;
+        max-width: none !important;
+        padding-left: 0 !important;
+        margin: 0 !important;
+      }
+      
+      .preview-twocol-img {
+        order: 2 !important;
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      
+      .preview-twocol-img .worship-welcome-box {
+        margin-top: 1.5rem !important;
+        padding: 1.5rem 1rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      
+      .worship-welcome-box h3 {
+        font-size: 1.1rem;
+        padding-left: 1rem;
+      }
+      
+      .worship-welcome-box ul {
+        padding-left: 1rem;
+      }
+      
+      .worship-welcome-box li {
+        font-size: 0.9rem;
+      }
+      
+      .contact-info p {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .worship-times {
+        gap: 0.8rem;
+      }
+      
+      .worship-item {
+        padding: 0.8rem;
+        gap: 0.8rem;
+      }
+      
+      .worship-item h3 {
+        font-size: 0.9rem;
+        width: 70px;
+        text-align: center;
+      }
+      
+      .worship-time-desc {
+        gap: 0.2rem;
+      }
+      
+      .worship-time {
+        font-size: 0.9rem !important;
+        text-align: center;
+      }
+      
+      .worship-desc {
+        font-size: 0.75rem;
+        text-align: center;
+      }
+      
+      .preview-twocol {
+        gap: 1.2rem !important;
+      }
+      
+      .preview-twocol-desc {
+        width: 100% !important;
+        max-width: none !important;
+        padding-left: 0 !important;
+      }
+      
+      .preview-twocol-img {
+        width: 100% !important;
+        max-width: none !important;
+      }
+      
+      .preview-twocol-img .worship-welcome-box {
+        padding: 1.2rem 0.8rem !important;
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      
+      .worship-welcome-box h3 {
+        font-size: 1rem;
+        padding-left: 1rem;
+      }
+      
+      .worship-welcome-box ul {
+        padding-left: 1rem;
+      }
+      
+      .worship-welcome-box li {
+        font-size: 0.85rem;
+      }
+      
+      .contact-info {
+        padding: 0.8rem;
+      }
+      
+      .contact-info p {
+        font-size: 0.8rem;
       }
     }
   </style>

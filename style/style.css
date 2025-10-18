@@ -2165,6 +2165,10 @@ h2.no-margin-top {
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.4s ease;
   background: #f8f9fa;
+  border-radius: 0 0 12px 12px;
+  border-left: 4px solid #565ab1;
+  border-right: 4px solid #565ab1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .faq-item.active .faq-answer {
@@ -2173,21 +2177,40 @@ h2.no-margin-top {
 }
 
 .faq-answer p {
-  color: #34495e;
-  line-height: 1.7;
-  margin-bottom: 1rem;
-  font-size: 1rem;
+  color: #2c3e50;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+  word-break: keep-all;
+  max-width: 100%;
 }
 
 .faq-answer p:last-child {
   margin-bottom: 0;
 }
 
+.faq-answer h4 {
+  color: #222567;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 1.8rem 0 1rem 0;
+  line-height: 1.4;
+}
+
+.faq-answer h4:first-child {
+  margin-top: 0;
+}
+
+.faq-answer strong {
+  color: #222567;
+  font-weight: 700;
+}
+
 .bridge-types {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
-  margin-top: 1rem;
+  margin: 1.5rem 0;
 }
 
 .bridge-type {
@@ -2196,27 +2219,42 @@ h2.no-margin-top {
   border-radius: 12px;
   border-left: 4px solid #565ab1;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bridge-type:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
 
 .bridge-type strong {
-  color: #2c3e50;
+  color: #222567;
   font-size: 1.1rem;
+  font-weight: 700;
   display: block;
   margin-bottom: 0.8rem;
 }
 
 .bridge-type p {
-  color: #5a6c7d;
+  color: #2c3e50;
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.timeline-section {
+  margin: 0;
 }
 
 .timeline-section h4 {
-  color: #2c3e50;
-  font-size: 1.05rem;
-  margin-bottom: 0.8rem;
-  margin-top: 1.5rem;
-  line-height: 1.5;
+  background: #565ab1;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  margin: 1.8rem 0 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 .timeline-section h4:first-child {
@@ -2224,9 +2262,11 @@ h2.no-margin-top {
 }
 
 .timeline-section p {
-  margin-left: 1rem;
-  color: #5a6c7d;
-  font-size: 0.95rem;
+  margin-left: 0;
+  color: #2c3e50;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
 }
 
 .faq-contact {
@@ -2343,8 +2383,8 @@ h2.no-margin-top {
   
   .faq-question {
     padding: 1.2rem 1.5rem;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     gap: 0.8rem;
   }
   
@@ -2356,6 +2396,16 @@ h2.no-margin-top {
     padding: 1.5rem;
   }
   
+  .faq-answer p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  .faq-answer h4 {
+    font-size: 1.05rem;
+    padding: 0.6rem 1rem;
+  }
+  
   .bridge-types {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -2363,6 +2413,18 @@ h2.no-margin-top {
   
   .bridge-type {
     padding: 1.2rem;
+  }
+  
+  .bridge-type strong {
+    font-size: 1rem;
+  }
+  
+  .bridge-type p {
+    font-size: 0.95rem;
+  }
+  
+  .timeline-section p {
+    font-size: 0.95rem;
   }
   
   .contact-card {
@@ -2423,7 +2485,13 @@ h2.no-margin-top {
   }
   
   .faq-answer p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .faq-answer h4 {
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
   }
   
   .bridge-type {
@@ -2431,11 +2499,17 @@ h2.no-margin-top {
   }
   
   .bridge-type strong {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
   
   .bridge-type p {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .timeline-section p {
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
   
   .contact-card {

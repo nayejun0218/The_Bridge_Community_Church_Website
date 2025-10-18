@@ -273,6 +273,115 @@
         grid-template-columns: 1fr;
       }
     }
+    
+    /* sermon.css와 동일한 모바일 반응형 스타일 추가 */
+    @media (max-width: 1024px) {
+      .sermon-section-title {
+        font-size: 1.6rem;
+        margin: 1.8rem 0 1rem 0;
+      }
+      
+      .bulletin-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.8rem;
+      }
+      
+      .bulletin-card {
+        padding: 1.2rem;
+      }
+      
+      .bulletin-title {
+        font-size: 1rem;
+      }
+      
+      .bulletin-btn {
+        font-size: 0.95rem;
+        padding: 0.5em 1.2em;
+      }
+      
+      #toggle-bulletin-list {
+        font-size: 1.5rem;
+      }
+      
+      .bulletin-content p {
+        font-size: 0.8rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .bulletin-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      
+      .bulletin-card {
+        padding: 1rem;
+        min-height: auto !important;
+        min-width: auto !important;
+      }
+      
+      .bulletin-title {
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+      }
+      
+      .bulletin-date {
+        font-size: 0.8rem;
+      }
+      
+      .bulletin-btn {
+        font-size: 0.85rem;
+        padding: 0.4em 0.8em;
+      }
+      
+      #toggle-bulletin-list {
+        font-size: 1.8rem;
+      }
+      
+      .bulletin-content p {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 370px) {
+      .sermon-section-title {
+        font-size: 1.1rem;
+        margin: 0.8rem 0 0.5rem 0;
+      }
+      
+      .bulletin-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.3rem;
+      }
+      
+      .bulletin-card {
+        padding: 0.5rem;
+        min-height: auto !important;
+        min-width: auto !important;
+      }
+      
+      .bulletin-title {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .bulletin-date {
+        font-size: 0.7rem;
+      }
+      
+      .bulletin-btn {
+        font-size: 0.75rem;
+        padding: 0.3em 0.6em;
+      }
+      
+      #toggle-bulletin-list {
+        font-size: 1.6rem !important;
+      }
+      
+      .bulletin-content p {
+        font-size: 0.7rem !important;
+      }
+    }
   </style>
 </body>
 </html> 

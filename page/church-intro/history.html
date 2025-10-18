@@ -74,7 +74,7 @@
       </div>
     </section>
     <section class="preview-section">
-      <h2>2025.03.02 - 온라인 사역의 시작</h2>
+      <h2>2025.03.02 - 온라인 사역 시작</h2>
       <div class="preview-twocol">
         <div class="preview-twocol-img">
           <img src="/images/history/new_start1.jpg" alt="성경말씀" class="preview-img-set">
@@ -105,5 +105,80 @@
       .then(res => res.text())
       .then(data => { document.getElementById('footer').innerHTML = data; });
   </script>
+  
+  <style>
+    /* 교회 역사 페이지 전용 모바일 스타일 */
+    @media (max-width: 900px) {
+      .preview-twocol {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+      }
+      
+      .preview-twocol-img {
+        order: 1 !important; /* 이미지를 위로 */
+        display: flex !important;
+        flex-direction: row !important; /* 사진 2장을 좌우로 나란히 */
+        gap: 0.5rem !important;
+        justify-content: center !important;
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+      
+      .preview-twocol-desc {
+        order: 2 !important; /* 설명을 아래로 */
+        padding-left: 0 !important;
+        text-align: left !important;
+        font-size: 0.9rem !important;
+        width: 100% !important;
+      }
+      
+      .preview-img-set {
+        flex: 1 !important; /* 각 사진이 동일한 크기로 */
+        max-width: calc(50% - 0.25rem) !important;
+        max-height: 200px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .preview-twocol {
+        gap: 0.8rem !important;
+      }
+      
+      .preview-twocol-img {
+        gap: 0.4rem !important;
+      }
+      
+      .preview-twocol-desc {
+        font-size: 0.85rem !important;
+        line-height: 1.6 !important;
+      }
+      
+      .preview-img-set {
+        max-height: 180px !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .preview-twocol {
+        gap: 0.6rem !important;
+      }
+      
+      .preview-twocol-img {
+        gap: 0.3rem !important;
+      }
+      
+      .preview-twocol-desc {
+        font-size: 0.8rem !important;
+        line-height: 1.5 !important;
+      }
+      
+      .preview-img-set {
+        max-height: 160px !important;
+      }
+    }
+  </style>
 </body>
 </html> 

@@ -33,6 +33,9 @@
     flex: 0 0 calc(100% / 3);
     padding: 0 1rem;
     box-sizing: border-box;
+    width: auto;
+    height: auto;
+    display: inline-block;
   }
   
   .bible-series-card {
@@ -192,6 +195,11 @@
   }
 
   @media (max-width: 600px) {
+    .sermon-card-link {
+      width: fit-content;
+      height: fit-content;
+    }
+    
     .sermon-card {
       min-height: auto !important;
       min-width: auto !important;
@@ -298,6 +306,12 @@
     /* 모바일에서 슬라이더 버튼 숨기기 */
     .slider-prev, .slider-next, .slider-prev-shorts, .slider-next-shorts {
       display: none !important;
+    }
+    
+    .bible-series-slider .sermon-card-link {
+      width: auto;
+      height: auto;
+      display: inline-block;
     }
   }
   
@@ -509,6 +523,8 @@
     color: inherit;
     display: block;
     cursor: pointer;
+    width: fit-content;
+    height: fit-content;
   }
   
   .sermon-card-link:visited {
@@ -892,6 +908,43 @@
       margin-top: 0.5rem;
       width: 100%;
       text-align: center;
+    }
+
+    .sermon-card-link {
+      width: fit-content;
+      height: fit-content;
+    }
+
+    .bible-series-slider .sermon-card-link {
+      width: auto;
+      height: auto;
+      display: inline-block;
+    }
+
+    .more-card {
+      min-height: auto !important;
+      min-width: auto !important;
+    }
+
+    .more-card-content {
+      padding: 1rem 0.5rem !important;
+    }
+
+    .more-icon {
+      font-size: 2rem !important;
+    }
+
+    .more-title {
+      font-size: 1rem !important;
+    }
+
+    .more-description {
+      font-size: 0.8rem !important;
+    }
+
+    .more-card-link {
+      width: fit-content;
+      height: fit-content;
     }
   }
   
