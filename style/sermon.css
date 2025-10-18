@@ -188,6 +188,16 @@
   min-height: 220px;
 }
 
+.sermon-card:hover {
+  border: 2.5px solid #f0f4ff;
+  background: #d9e2fb;
+  color: #000000;
+}
+
+.sermon-card:hover .hover-text {
+  color: #000000;
+}
+
 @media (max-width: 600px) {
   .sermon-card {
     min-height: auto !important;
@@ -387,7 +397,7 @@
 
 .sermon-card-link:hover .sermon-card {
   box-shadow: 0 8px 32px rgba(44,62,80,0.13);
-  background: #565ab1;
+  background: #d9e2fb;
   color: #000000;
 }
 
