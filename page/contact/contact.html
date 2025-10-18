@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
   <title>연락처 - The Bridge Community Church</title>
   <link rel="stylesheet" href="/style/style.css">
   <link rel="stylesheet" href="/style/page.css">
@@ -109,6 +110,17 @@
       white-space: nowrap;
       overflow: visible;
       text-overflow: clip;
+      /* 전화번호 자동 링크 스타일 방지 */
+      color: inherit !important;
+      text-decoration: none !important;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* 전화번호 자동 링크 방지 */
+    a[href^="tel:"] {
+      color: inherit !important;
+      text-decoration: none !important;
+      -webkit-tap-highlight-color: transparent;
     }
     
     /* 태블릿 최적화 */

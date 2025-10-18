@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
     <title>온라인 헌금 안내 - The Bridge Community Church</title>
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/page.css">
@@ -20,11 +21,11 @@
         <h2>온라인 헌금 방법 안내</h2>
           <p style="margin-bottom:2.5rem;"> 보내시는 분 이름과 헌금 종류를 함께 기입해주시면 재정 관리에 큰 도움이 됩니다. (예: 홍길동주일, 홍길동십일조, 홍길동감사, 홍길동선교) </p>
           <div class="bridge-social-cards" style="display:grid; grid-template-columns:1fr; gap:2.2rem; max-width:480px; margin:2.5rem auto 2rem auto;">
-            <div class="bridge-social-card-link" style="pointer-events:none; cursor:default;">
+            <div class="bridge-social-card-link" onclick="copyAccountNumber()" style="cursor:pointer;">
               <div class="bridge-social-card">
                 <img src="/images/logo/offering.png" alt="은행 아이콘" class="bridge-social-logo">
                 <div style="display:flex; flex-direction:column; gap:0.2rem; margin-left:1.2rem;">
-                  <span class="bridge-social-text">하나은행 551-910004-61705</span>
+                  <span class="bridge-social-text account-number">하나은행 551-910004-61705</span>
                   <span class="bridge-social-text">예금주: 더브릿지커뮤니티 교회</span>
                 </div>
               </div>
@@ -52,6 +53,53 @@
       fetch('/footer.html')
         .then(res => res.text())
         .then(data => { document.getElementById('footer').innerHTML = data; });
+      
+      // 계좌번호 복사 함수
+      function copyAccountNumber() {
+        const accountNumber = '551-910004-61705';
+        navigator.clipboard.writeText(accountNumber).then(function() {
+          // 복사 성공 시 피드백
+          const accountElement = document.querySelector('.account-number');
+          const originalText = accountElement.textContent;
+          accountElement.textContent = '복사되었습니다!';
+          accountElement.style.color = '#4CAF50';
+          
+          setTimeout(function() {
+            accountElement.textContent = originalText;
+            accountElement.style.color = '';
+          }, 2000);
+        }).catch(function(err) {
+          console.error('복사 실패:', err);
+          alert('계좌번호: ' + accountNumber);
+        });
+      }
     </script>
+    
+    <style>
+      /* 계좌번호 자동 링크 방지 */
+      .account-number {
+        color: inherit !important;
+        text-decoration: none !important;
+        -webkit-tap-highlight-color: transparent;
+        transition: color 0.3s ease;
+      }
+      
+      .bridge-social-card-link:hover .account-number {
+        color: #4CAF50 !important;
+      }
+      
+      /* 전화번호 자동 링크 방지 */
+      p {
+        color: inherit !important;
+        text-decoration: none !important;
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      a[href^="tel:"], a[href^="sms:"] {
+        color: inherit !important;
+        text-decoration: none !important;
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
   </body>
   </html> 

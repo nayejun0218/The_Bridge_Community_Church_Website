@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
   <title>선교지 후원 - The Bridge Community Church</title>
   <link rel="stylesheet" href="/style/style.css">
   <link rel="stylesheet" href="/style/page.css">
@@ -93,6 +94,19 @@
   <script src="/main.js"></script>
 
   <style>
+    /* 전화번호/계좌번호 자동 링크 방지 */
+    .contact-info p {
+      color: inherit !important;
+      text-decoration: none !important;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    a[href^="tel:"], a[href^="sms:"] {
+      color: inherit !important;
+      text-decoration: none !important;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
     /* 선교지 후원 카드 그리드 */
     .volunteer-times {
       display: grid;
