@@ -134,7 +134,7 @@
 
 .hero-title-main {
   display: block;
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 800;
   margin-bottom: -10px;
   color: #ffffff;
@@ -144,7 +144,7 @@
 
 .hero-title-sub {
   display: block;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 300;
   /* font-style: italic; */
   color: rgba(255,255,255,0.9);
@@ -165,7 +165,7 @@
 }
 
 .motto-text {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: #ffffff;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
@@ -424,15 +424,15 @@
   }
 
   .hero-title-main {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .hero-title-sub {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 
   .motto-text {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .hero-info {
@@ -475,15 +475,15 @@
   }
 
   .hero-title-main {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .hero-title-sub {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
   .motto-text {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   .hero-info {
@@ -528,15 +528,15 @@
   }
 
   .hero-title-main {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
 
   .hero-title-sub {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   .motto-text {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .hero-info {
@@ -572,16 +572,16 @@
   }
 
   .hero-title-main {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     padding-bottom: 10px;
   }
 
   .hero-title-sub {
-    font-size: 1.0rem;
+    font-size: 0.9rem;
   }
 
   .motto-text {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     line-height: 1.2;
     padding: 0 5px;
     margin-bottom: 15px;
@@ -698,12 +698,12 @@
   }
 
   .hero-title-main {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding-bottom: 10px;
   }
 
   .hero-title-sub {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .motto-text {
