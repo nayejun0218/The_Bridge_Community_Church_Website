@@ -30,6 +30,14 @@
   ],
   "rewrites": [
     {
+      "source": "/sitemap.xml",
+      "destination": "/public/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/public/robots.txt"
+    },
+    {
       "source": "/sermon",
       "destination": "/page/sermon/sermon.html"
     },
