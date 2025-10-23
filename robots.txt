@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # 주요 페이지들
-Sitemap: https://tbcc.or.kr/sitemap.xml
+Sitemap: https://www.tbcc.or.kr/sitemap.xml
 
 # 크롤링 지연 (서버 부하 방지)
 Crawl-delay: 1
