@@ -66,9 +66,9 @@ Disallow: /package-lock.json`;
 
 // 파일 생성
 try {
-  fs.writeFileSync('public/sitemap.xml', generateSitemap());
-  fs.writeFileSync('public/robots.txt', generateRobotsTxt());
-  console.log('✅ public/sitemap.xml과 public/robots.txt가 성공적으로 생성되었습니다!');
+  fs.writeFileSync('sitemap.xml', generateSitemap());
+  fs.writeFileSync('robots.txt', generateRobotsTxt());
+  console.log('✅ sitemap.xml과 robots.txt가 성공적으로 생성되었습니다!');
 } catch (error) {
   console.error('❌ 파일 생성 중 오류 발생:', error);
 }
