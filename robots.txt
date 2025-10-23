@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# 주요 페이지들
+Sitemap: https://tbcc.or.kr/sitemap.xml
+
+# 크롤링 지연 (서버 부하 방지)
+Crawl-delay: 1
+
+# 특정 파일 제외
+Disallow: /node_modules/
+Disallow: /scripts/
+Disallow: /*.json$
+Disallow: /server_simple.js
+Disallow: /package.json
+Disallow: /package-lock.json
