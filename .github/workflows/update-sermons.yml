@@ -50,6 +50,7 @@ jobs:
           YT_PLAYLIST_GENESIS: ${{ secrets.YT_PLAYLIST_GENESIS }}
           YT_PLAYLIST_SPECIAL: ${{ secrets.YT_PLAYLIST_SPECIAL }}
           YT_PLAYLIST_SHORTS: ${{ secrets.YT_PLAYLIST_SHORTS }}
+          YT_PLAYLIST_Matthew: ${{ secrets.YT_PLAYLIST_Matthew }}
       
       - name: Update bulletins.json
         run: node scripts/update_bulletins.mjs
