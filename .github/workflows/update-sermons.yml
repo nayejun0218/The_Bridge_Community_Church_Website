@@ -31,6 +31,7 @@ jobs:
         run: |
           echo "YT_API_KEY length: ${#YT_API_KEY}"
           echo "YT_PLAYLIST_GENESIS: $YT_PLAYLIST_GENESIS"
+          echo "YT_PLAYLIST_MATTHEW: $YT_PLAYLIST_MATTHEW"
           echo "YT_PLAYLIST_SPECIAL: $YT_PLAYLIST_SPECIAL"
           echo "YT_PLAYLIST_SHORTS: $YT_PLAYLIST_SHORTS"
           echo "DRIVE_API_KEY length: ${#DRIVE_API_KEY}"
@@ -38,6 +39,7 @@ jobs:
         env:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
           YT_PLAYLIST_GENESIS: ${{ secrets.YT_PLAYLIST_GENESIS }}
+          YT_PLAYLIST_MATTHEW: ${{ secrets.YT_PLAYLIST_MATTHEW }}
           YT_PLAYLIST_SPECIAL: ${{ secrets.YT_PLAYLIST_SPECIAL }}
           YT_PLAYLIST_SHORTS: ${{ secrets.YT_PLAYLIST_SHORTS }}
           DRIVE_API_KEY: ${{ secrets.DRIVE_API_KEY }}
@@ -48,6 +50,7 @@ jobs:
         env:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
           YT_PLAYLIST_GENESIS: ${{ secrets.YT_PLAYLIST_GENESIS }}
+          YT_PLAYLIST_MATTHEW: ${{ secrets.YT_PLAYLIST_MATTHEW }}
           YT_PLAYLIST_SPECIAL: ${{ secrets.YT_PLAYLIST_SPECIAL }}
           YT_PLAYLIST_SHORTS: ${{ secrets.YT_PLAYLIST_SHORTS }}
       
