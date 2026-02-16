@@ -31,6 +31,12 @@
       <hr class="section-divider">
       <div class="sermon-series-grid" id="genesis-sermons"></div>
       <div class="sermon-section-title-wrap" style="display: flex; align-items: center; justify-content: space-between; margin-top:2.5rem;">
+        <div class="sermon-section-title">마태복음 강해</div>
+        <button id="toggle-matthew-list" style="background:none;border:none;cursor:pointer;font-size:2rem;line-height:1;outline:none;padding:0 0.5rem;" aria-label="더보기"><span id="matthew-arrow-icon">▼</span></button>
+      </div>
+      <hr class="section-divider">
+      <div class="sermon-series-grid" id="matthew-sermons"></div>
+      <div class="sermon-section-title-wrap" style="display: flex; align-items: center; justify-content: space-between; margin-top:2.5rem;">
         <div class="sermon-section-title">1분 말씀</div>
         <button id="toggle-shorts-list" style="background:none;border:none;cursor:pointer;font-size:2rem;line-height:1;outline:none;padding:0 0.5rem;" aria-label="더보기"><span id="shorts-arrow-icon">▼</span></button>
       </div>
@@ -79,6 +85,13 @@
         gridId: 'genesis-sermons',
         toggleId: 'toggle-sermon-list',
         arrowId: 'arrow-icon',
+        initialCount: 4
+      },
+      {
+        name: '마태복음 강해',
+        gridId: 'matthew-sermons',
+        toggleId: 'toggle-matthew-list',
+        arrowId: 'matthew-arrow-icon',
         initialCount: 4
       },
       {

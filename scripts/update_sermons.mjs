@@ -3,6 +3,7 @@ import { writeFileSync } from 'fs';
 
 const PLAYLISTS = [
   { id: process.env.YT_PLAYLIST_GENESIS, series: '창세기 강해' },
+  { id: process.env.YT_PLAYLIST_MATTHEW, series: '마태복음 강해' },
   { id: process.env.YT_PLAYLIST_SPECIAL, series: '특별주일 설교' },
   { id: process.env.YT_PLAYLIST_SHORTS, series: '1분 말씀' },
 ];
