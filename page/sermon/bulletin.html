@@ -14,148 +14,206 @@
     <section class="bulletin">
       <h2>교회 주보</h2>
       <div class="bulletin-content">
-        <div class="sermon-section-title-wrap" style="display: flex; align-items: center; justify-content: space-between;">
-          <div class="sermon-section-title">2025년 주보</div>
-          <button id="toggle-bulletin-list" style="background:none;border:none;cursor:pointer;font-size:2rem;line-height:1;outline:none;padding:0 0.5rem;" aria-label="더보기"><span id="arrow-icon">▼</span></button>
-        </div>
-        <hr class="section-divider">
-        <div id="bulletin-list" class="bulletin-grid">
+        <!-- 연도별 섹션들이 자동으로 여기에 생성됩니다 -->
+        <div id="bulletin-years">
           <p>주보 데이터를 불러오는 중...</p>
         </div>
+
         <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">
           💡 주간/월간 교회 주보를 PDF로 확인하실 수 있습니다. <br>
           💡 주보가 보이지 않으시면 브라우저에서 PDF 뷰어를 활성화해주세요.
         </p>
       </div>
-    </section>
-  </main>
-  <div id="footer"></div>
-  <script src="/main.js"></script>
-  <script>
-    fetch('/header.html')
-      .then(res => res.text())
-      .then(data => { document.getElementById('header').innerHTML = data; });
-    fetch('/footer.html')
-      .then(res => res.text())
-      .then(data => { document.getElementById('footer').innerHTML = data; });
 
-    // 주보 데이터 로드 (GitHub Actions로 자동 업데이트된 JSON 사용)
-    async function loadBulletinData() {
-      try {
-        const res = await fetch('/bulletins.json');
-        if (!res.ok) {
-          throw new Error(`주보 데이터 로드 실패: ${res.status}`);
-        }
-        return await res.json();
-      } catch (error) {
-        console.error('주보 데이터 로드 실패:', error.message);
-        return [];
-      }
-    }
+      <script>
+        fetch('/header.html')
+          .then(res => res.text())
+          .then(data => { document.getElementById('header').innerHTML = data; });
+        fetch('/footer.html')
+          .then(res => res.text())
+          .then(data => { document.getElementById('footer').innerHTML = data; });
 
-    loadBulletinData().then(bulletins => {
-      const grid = document.getElementById('bulletin-list');
-      
-      if (bulletins.length === 0) {
-        grid.innerHTML = '<p>등록된 주보가 없습니다.</p>';
-        return;
-      }
-
-      // 날짜순으로 정렬 (최신순, 내림차순)
-      bulletins.sort((a, b) => {
-        // date 필드 기준으로 정렬 (더 정확함)
-        try {
-          // date 필드가 "2025.09.21" 형식이므로 Date 객체로 변환하여 비교
-          const dateA = new Date(a.date.replace(/\./g, '-'));
-          const dateB = new Date(b.date.replace(/\./g, '-'));
-          
-          // 날짜가 유효한지 확인
-          if (isNaN(dateA.getTime()) || isNaN(dateB.getTime())) {
-            // 날짜가 유효하지 않으면 createdTime으로 폴백
-            return new Date(b.createdTime) - new Date(a.createdTime);
+        // 주보 데이터 로드 (GitHub Actions로 자동 업데이트된 JSON 사용)
+        async function loadBulletinData() {
+          try {
+            const res = await fetch('/bulletins.json');
+            if (!res.ok) {
+              throw new Error(`주보 데이터 로드 실패: ${res.status}`);
+            }
+            return await res.json();
+          } catch (error) {
+            console.error('주보 데이터 로드 실패:', error.message);
+            return [];
           }
-          
-          // 날짜가 같으면 createdTime으로 세부 정렬
-          if (dateA.getTime() === dateB.getTime() && a.createdTime && b.createdTime) {
-            return new Date(b.createdTime) - new Date(a.createdTime);
+        }
+
+        // "YYYY.MM.DD" → Date
+        function toDateSafe(dateStr, fallbackCreatedTime) {
+          try {
+            const d = new Date((dateStr || '').replace(/\./g, '-'));
+            if (!isNaN(d.getTime())) return d;
+          } catch (e) {}
+          return new Date(fallbackCreatedTime || 0);
+        }
+
+        // bulletin.date에서 연도 추출
+        function getYear(bulletin) {
+          // date가 "2026.02.15" 형태라서 앞 4자리면 충분
+          const y = (bulletin?.date || '').slice(0, 4);
+          return /^\d{4}$/.test(y) ? y : '기타';
+        }
+
+        function bulletinCardHTML(bulletin) {
+          return `
+            <div class="bulletin-card">
+              <div class="bulletin-date">${bulletin.date}</div>
+              <h3 class="bulletin-title">${bulletin.name}</h3>
+              <div class="bulletin-actions">
+                <a href="${bulletin.viewLink}" target="_blank" class="bulletin-btn view-btn">📖 보기</a>
+                <a href="${bulletin.downloadLink}" target="_blank" class="bulletin-btn download-btn">📥 다운로드</a>
+              </div>
+            </div>
+          `;
+        }
+
+        function attachToggleBehavior(grid, btn) {
+          const cards = grid.querySelectorAll('.bulletin-card');
+          let expanded = false;
+
+          function getCardHeight(n) {
+            if (cards.length === 0) return 0;
+            const card = cards[0];
+            const style = window.getComputedStyle(grid);
+            const gap = parseFloat(style.gap) || 0;
+
+            const cardsPerRow = Math.floor(grid.offsetWidth / card.offsetWidth) || 1;
+            const rowCount = Math.ceil(n / cardsPerRow);
+
+            const cardHeight = card.offsetHeight || 250;
+            return rowCount * cardHeight + (rowCount - 1) * gap + 20;
           }
-          
-          return dateB - dateA; // 내림차순 (최신 → 과거)
-        } catch (error) {
-          console.warn('날짜 정렬 중 오류:', error);
-          // 오류 발생 시 createdTime으로 폴백
-          return new Date(b.createdTime) - new Date(a.createdTime);
-        }
-      });
 
-      console.log('정렬된 주보 순서:');
-      bulletins.slice(0, 5).forEach((bulletin, index) => {
-        console.log(`${index + 1}. ${bulletin.date} - ${bulletin.name}`);
-      });
+          function updateView() {
+            if (expanded) {
+              grid.style.maxHeight = getCardHeight(cards.length) + 'px';
+            } else {
+              grid.style.maxHeight = getCardHeight(4) + 'px'; // 기본 4개만
+            }
+            btn.setAttribute('aria-label', expanded ? '접기' : '더보기');
+            btn.classList.toggle('open', expanded);
+          }
 
-      grid.innerHTML = bulletins.map(bulletin => `
-        <div class="bulletin-card">
-          <div class="bulletin-date">${bulletin.date}</div>
-          <h3 class="bulletin-title">${bulletin.name}</h3>
-          <div class="bulletin-actions">
-            <a href="${bulletin.viewLink}" target="_blank" class="bulletin-btn view-btn">
-              📖 보기
-            </a>
-            <a href="${bulletin.downloadLink}" target="_blank" class="bulletin-btn download-btn">
-              📥 다운로드
-            </a>
-          </div>
-        </div>
-      `).join('');
-
-      // 더보기/슬라이드 다운 기능 (설교 페이지와 동일한 로직)
-      const cards = grid.querySelectorAll('.bulletin-card');
-      const btn = document.getElementById('toggle-bulletin-list');
-      let expanded = false;
-
-      function getCardHeight(n) {
-        if (cards.length === 0) return 0;
-        const card = cards[0];
-        const style = window.getComputedStyle(grid);
-        const gap = parseFloat(style.gap) || 0;
-        // 한 줄에 몇 개가 들어가는지 동적으로 계산
-        const cardsPerRow = Math.floor(grid.offsetWidth / card.offsetWidth) || 1;
-        const rowCount = Math.ceil(n / cardsPerRow);
-        const cardHeight = card.offsetHeight;
-        if (cardHeight === 0) {
-          return (250 + gap) * rowCount; 
-        }
-        return rowCount * cardHeight + (rowCount - 1) * gap + 20;
-      }
-
-      function updateView() {
-        if (expanded) {
-          grid.style.maxHeight = getCardHeight(cards.length) + 'px';
-        } else {
-          grid.style.maxHeight = getCardHeight(4) + 'px'; // 처음에는 6개만 보이게
-        }
-        btn.setAttribute('aria-label', expanded ? '접기' : '더보기');
-        btn.classList.toggle('open', expanded);
-      }
-
-      // 이벤트 리스너가 중복으로 등록되지 않도록 한 번만 실행
-      if (!btn.dataset.listenerAttached) {
-          btn.addEventListener('click', function() {
+          btn.addEventListener('click', () => {
             expanded = !expanded;
             updateView();
           });
-          window.addEventListener('resize', () => updateView());
-          btn.dataset.listenerAttached = 'true';
-      }
-      
-      // 최초 6개만 보이게 설정
-      updateView();
-    }).catch(error => {
-      console.error('주보 데이터 로드 실패:', error);
-      document.getElementById('bulletin-list').innerHTML = 
-        '<p>주보 데이터를 불러올 수 없습니다. 잠시 후 다시 시도해주세요.</p>';
-    });
-  </script>
+
+          window.addEventListener('resize', updateView);
+
+          // 카드가 4개 이하면 버튼 숨김
+          if (cards.length <= 4) {
+            btn.style.display = 'none';
+            grid.style.maxHeight = 'none';
+            return;
+          }
+
+          updateView();
+        }
+
+        loadBulletinData().then(bulletins => {
+          const container = document.getElementById('bulletin-years');
+
+          if (!bulletins || bulletins.length === 0) {
+            container.innerHTML = '<p>등록된 주보가 없습니다.</p>';
+            return;
+          }
+
+          // 전체 최신순 정렬 (기존 로직 유지)
+          bulletins.sort((a, b) => {
+            const dateA = toDateSafe(a.date, a.createdTime);
+            const dateB = toDateSafe(b.date, b.createdTime);
+
+            if (dateA.getTime() === dateB.getTime() && a.createdTime && b.createdTime) {
+              return new Date(b.createdTime) - new Date(a.createdTime);
+            }
+            return dateB - dateA;
+          });
+
+          // 연도별 그룹핑
+          const byYear = new Map();
+          for (const b of bulletins) {
+            const y = getYear(b);
+            if (!byYear.has(y)) byYear.set(y, []);
+            byYear.get(y).push(b);
+          }
+
+          // 연도 정렬: 최신 연도(큰 숫자)부터, '기타'는 마지막
+          const years = Array.from(byYear.keys()).sort((a, b) => {
+            if (a === '기타') return 1;
+            if (b === '기타') return -1;
+            return Number(b) - Number(a);
+          });
+
+          // 섹션 HTML 생성
+          container.innerHTML = years.map(year => {
+            const safeYear = String(year).replace(/[^\w가-힣-]/g, '');
+            const sectionId = `bulletin-section-${safeYear}`;
+            const gridId = `bulletin-list-${safeYear}`;
+            const btnId = `toggle-bulletin-${safeYear}`;
+            const arrowId = `arrow-${safeYear}`;
+
+            return `
+              <div id="${sectionId}" class="bulletin-year-section">
+                <div class="sermon-section-title-wrap" style="display:flex;align-items:center;justify-content:space-between;">
+                  <div class="sermon-section-title">${year}년 주보</div>
+                  <button id="${btnId}" class="bulletin-toggle-btn" style="background:none;border:none;cursor:pointer;font-size:2rem;line-height:1;outline:none;padding:0 0.5rem;" aria-label="더보기">
+                    <span id="${arrowId}" class="bulletin-arrow-icon">▼</span>
+                  </button>
+                </div>
+                <hr class="section-divider">
+                <div id="${gridId}" class="bulletin-grid"></div>
+              </div>
+            `;
+          }).join('');
+
+          // 각 섹션에 카드 렌더링 + 토글 기능 연결
+          for (const year of years) {
+            const safeYear = String(year).replace(/[^\w가-힣-]/g, '');
+            const grid = document.getElementById(`bulletin-list-${safeYear}`);
+            const btn = document.getElementById(`toggle-bulletin-${safeYear}`);
+
+            const list = byYear.get(year) || [];
+            grid.innerHTML = list.map(bulletinCardHTML).join('');
+
+            attachToggleBehavior(grid, btn);
+          }
+
+        }).catch(error => {
+          console.error('주보 데이터 로드 실패:', error);
+          document.getElementById('bulletin-years').innerHTML =
+            '<p>주보 데이터를 불러올 수 없습니다. 잠시 후 다시 시도해주세요.</p>';
+        });
+      </script>
+
+      <style>
+        /* 기존 bulletin-grid 등 스타일은 그대로 두되, 더보기 버튼/화살표는 "클래스 기반"으로 수정 */
+
+        .bulletin-toggle-btn {
+          color: #666;
+          transition: transform 0.3s ease, color 0.2s ease;
+        }
+        .bulletin-toggle-btn:hover { color: #333; }
+
+        .bulletin-arrow-icon {
+          display: inline-block;
+          transition: transform 0.3s ease;
+        }
+
+        /* 버튼에 open 붙으면 안의 화살표 회전 */
+        .bulletin-toggle-btn.open .bulletin-arrow-icon {
+          transform: rotate(180deg);
+        }
+      </style>
 
   <style>
     .bulletin-grid {
