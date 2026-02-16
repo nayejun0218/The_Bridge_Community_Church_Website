@@ -192,7 +192,7 @@
             <div class="hero-info">
               <div class="hero-info-item">
                 <i class="fas fa-book-open"></i>
-                <span>창세기 강해 진행중</span>
+                <span>마태복음 강해 진행중</span>
               </div>
               <div class="hero-info-item">
                 <i class="fas fa-play-circle"></i>
@@ -712,7 +712,7 @@
       
       // "더 보러가기" 카드 추가
       const moreCard = `
-        <a href="/page/ministry/sermon.html" class="sermon-card-link more-card-link" onclick="return !isActuallyDragging;">
+        <a href="/page/sermon/sermon.html" class="sermon-card-link more-card-link" onclick="return !isActuallyDragging;">
           <div class="sermon-card more-card">
             <div class="more-card-content">
               <div class="more-icon">📖</div>
@@ -756,7 +756,7 @@
         if (moreCardLink) {
           moreCardLink.addEventListener('click', (e) => {
             if (!isActuallyDragging) {
-              window.location.href = '/page/ministry/sermon.html';
+              window.location.href = '/page/sermon/sermon.html';
             }
             e.stopPropagation();
           });
@@ -790,7 +790,7 @@
       
       // "더 보러가기" 카드 추가
       const shortsMoreCard = `
-        <a href="/page/ministry/sermon.html" class="sermon-card-link more-card-link" onclick="return !isActuallyDragging;">
+        <a href="/page/sermon/sermon.html" class="sermon-card-link more-card-link" onclick="return !isActuallyDragging;">
           <div class="sermon-card more-card">
             <div class="more-card-content">
               <div class="more-icon">🎬</div>
@@ -834,7 +834,7 @@
         if (shortsMoreCardLink) {
           shortsMoreCardLink.addEventListener('click', (e) => {
             if (!isActuallyDragging) {
-              window.location.href = '/page/ministry/sermon.html';
+              window.location.href = '/page/sermon/sermon.html';
             }
             e.stopPropagation();
           });
@@ -1041,14 +1041,14 @@
       const title = document.getElementById('bible-series-title');
       if(title) {
         title.addEventListener('click', () => {
-            window.location.href = '/page/ministry/sermon.html';
+            window.location.href = '/page/sermon/sermon.html';
         });
       }
       
       const shortsTitle = document.getElementById('shorts-series-title');
       if(shortsTitle) {
         shortsTitle.addEventListener('click', () => {
-            window.location.href = '/page/ministry/sermon.html';
+            window.location.href = '/page/sermon/sermon.html';
         });
       }
     });
