@@ -139,11 +139,11 @@
   transition: color 0.2s;
 }
 
-#toggle-sermon-list:hover {
+/* #toggle-sermon-list:hover {
   color: #565ab1;
-}
+} */
 
-#arrow-icon, #special-arrow-icon, #shorts-arrow-icon, #faq-arrow-icon {
+#arrow-icon, #special-arrow-icon, #shorts-arrow-icon, #faq-arrow-icon, #matthew-arrow-icon {
   display: inline-block;
   transition: transform 0.3s;
 }
@@ -151,7 +151,8 @@
 #toggle-sermon-list.open #arrow-icon,
 #toggle-special-list.open #special-arrow-icon,
 #toggle-shorts-list.open #shorts-arrow-icon,
-#toggle-faq-list.open #faq-arrow-icon {
+#toggle-faq-list.open #faq-arrow-icon,
+#toggle-matthew-list.open #matthew-arrow-icon {
   transform: rotate(180deg);
 }
 
