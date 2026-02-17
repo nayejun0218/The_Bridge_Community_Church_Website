@@ -127,7 +127,7 @@
   margin-bottom: 0;
 }
 
-#toggle-sermon-list {
+#toggle-sermon-list, #toggle-matthew-list, #toggle-shorts-list, #toggle-special-list, #toggle-faq-list {
   background: none;
   border: none;
   cursor: pointer;
