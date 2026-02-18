@@ -6,6 +6,7 @@ const PLAYLISTS = [
   { id: process.env.YT_PLAYLIST_MATTHEW, series: '마태복음 강해' },
   { id: process.env.YT_PLAYLIST_SPECIAL, series: '특별주일 설교' },
   { id: process.env.YT_PLAYLIST_SHORTS, series: '1분 말씀' },
+  { id: process.env.YT_PLAYLIST_Matthew, series: '마태복음 강해' }, // 마태복음 추가 20260119
 ];
 
 const YT_KEY = process.env.YT_API_KEY;
@@ -30,13 +31,13 @@ async function fetchPlaylistItems(playlistId, series) {
     do {
       if (nextPageToken) url.searchParams.set('pageToken', nextPageToken);
       const res = await fetch(url);
-      
+
       if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));
         const errorMsg = errorData?.error?.message || `${res.status} ${res.statusText}`;
         throw new Error(`YouTube API 오류: ${errorMsg}`);
       }
-      
+
       const data = await res.json();
       items = items.concat(data.items || []);
       nextPageToken = data.nextPageToken;
@@ -46,23 +47,23 @@ async function fetchPlaylistItems(playlistId, series) {
       const videoId = contentDetails?.videoId || snippet?.resourceId?.videoId;
       const title = snippet?.title || '';
       const published = snippet?.publishedAt || '';
-      
+
       // 제목에서 날짜 추출 (2025.06.29 형식)
       const titleDateMatch = title.match(/(\d{4})\.(\d{1,2})\.(\d{1,2})/);
       let date = '';
       let sortDate = published; // 정렬용 기본값은 업로드 날짜
-      
+
       if (titleDateMatch) {
         // 제목에서 날짜를 찾았으면 사용
         const [, year, month, day] = titleDateMatch;
-        date = `${year}.${month.padStart(2,'0')}.${day.padStart(2,'0')}`;
+        date = `${year}.${month.padStart(2, '0')}.${day.padStart(2, '0')}`;
         // 정렬용 날짜도 제목 날짜로 설정
-        sortDate = `${year}-${month.padStart(2,'0')}-${day.padStart(2,'0')}T09:00:00Z`;
+        sortDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T09:00:00Z`;
       } else {
         // 제목에 날짜가 없으면 업로드 날짜 사용
         const d = new Date(published);
         date = isNaN(d) ? '' :
-          `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
+          `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
         sortDate = published;
       }
 
@@ -75,16 +76,16 @@ async function fetchPlaylistItems(playlistId, series) {
         'This video is unavailable',
         'Video unavailable'
       ];
-      
+
       // 제목이 유효하지 않은 경우 null 반환 (나중에 필터링됨)
       if (!title || title.trim() === '') {
         console.log(`⚠️  빈 제목 영상 필터링: ${videoId}`);
         return null;
       }
-      
+
       // 금지된 제목들과 일치하는지 확인
       const titleLower = title.toLowerCase();
-      if (invalidTitles.some(invalidTitle => 
+      if (invalidTitles.some(invalidTitle =>
         titleLower.includes(invalidTitle.toLowerCase())
       )) {
         console.log(`⚠️  유효하지 않은 영상 필터링: ${title} (${videoId})`);
@@ -109,7 +110,7 @@ async function fetchPlaylistItems(playlistId, series) {
 
 async function updateSermons() {
   console.log('🚀 YouTube API를 통해 설교 데이터를 업데이트합니다...');
-  
+
   if (!YT_KEY) {
     console.error('❌ YouTube API 키가 설정되지 않았습니다.');
     process.exit(1);
@@ -117,7 +118,7 @@ async function updateSermons() {
 
   try {
     const results = await Promise.all(PLAYLISTS.map(p => fetchPlaylistItems(p.id, p.series)));
-    
+
     // 하나의 배열로 합치고 null 값 필터링 후 원본 발행 시각 기준 최신순 정렬(안정적)
     const all = results
       .flat()
@@ -132,19 +133,19 @@ async function updateSermons() {
     const cleanedData = all.map(({ publishedAt, ...rest }) => rest);
 
     writeFileSync('sermons.json', JSON.stringify(cleanedData, null, 2));
-    
+
     console.log(`✅ 업데이트 완료: ${cleanedData.length}개의 설교 데이터`);
     console.log(`📊 시리즈별 통계:`);
-    
+
     const stats = cleanedData.reduce((acc, item) => {
       acc[item.series] = (acc[item.series] || 0) + 1;
       return acc;
     }, {});
-    
+
     Object.entries(stats).forEach(([series, count]) => {
       console.log(`   - ${series}: ${count}개`);
     });
-    
+
   } catch (error) {
     console.error('❌ 설교 데이터 업데이트 실패:', error.message);
     process.exit(1);
