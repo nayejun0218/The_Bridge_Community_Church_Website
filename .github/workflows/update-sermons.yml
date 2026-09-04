@@ -53,6 +53,7 @@ jobs:
           YT_PLAYLIST_MATTHEW: ${{ secrets.YT_PLAYLIST_MATTHEW }}
           YT_PLAYLIST_SPECIAL: ${{ secrets.YT_PLAYLIST_SPECIAL }}
           YT_PLAYLIST_SHORTS: ${{ secrets.YT_PLAYLIST_SHORTS }}
+          YT_PLAYLIST_Matthew: ${{ secrets.YT_PLAYLIST_Matthew }}
       
       - name: Update bulletins.json
         run: node scripts/update_bulletins.mjs
